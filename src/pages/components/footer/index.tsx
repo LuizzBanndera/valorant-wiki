@@ -16,5 +16,10 @@ const FooterStyled = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  @media(max-width: 820px ) {
+    position: fixed;
+    bottom: 0;
+    clear: both;    
+  }
 `

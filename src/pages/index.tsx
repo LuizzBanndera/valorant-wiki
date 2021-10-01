@@ -44,6 +44,10 @@ const ContainerStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;  
+
+  @media(max-width: 820px) {
+    width: fit-content;
+  }
 `
 const MenuStyled = styled.ul`
   padding: 5rem 0;
@@ -53,7 +57,7 @@ const MenuStyled = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  list-style-type: none;   
+  list-style-type: none;
 `
 const BackGroundStyled = styled.li`  
   position: fixed;
