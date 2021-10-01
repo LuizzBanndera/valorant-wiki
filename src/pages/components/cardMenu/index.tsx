@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export default function CardMenu (props: any) {
   return (
-    <motion.div transition={{duration: 0.4}}  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.999 }}>
+    <motion.div transition={{duration: 0.4}}  whileHover={{ scale: 1.10 }} whileTap={{ scale: 0.999 }}>
       <CardStyled>
         <strong className="ter">{props.title ? props.title : 'menu'}</strong>
         <strong className="sec">{props.title ? props.title : 'menu'}</strong>

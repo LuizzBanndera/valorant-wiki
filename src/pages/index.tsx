@@ -28,8 +28,8 @@ const Home: NextPage = () => {
           <ItemStyled key={idx} image={image} position={idx+1}>
             <CardMenu title={title}/>
           </ItemStyled>
-        ))}
-        <BackGroundStyled/>        
+        ))}        
+          <BackGroundStyled/>                
       </MenuStyled>
       <Footer/>      
     </ContainerStyled>
@@ -62,12 +62,11 @@ const BackGroundStyled = styled.li`
   right: 0;
   bottom: 0;
   left: 0;
-  transition: .25s ease-in-out;
   pointer-events: none;  
   background-color: #EBE8E0;
   background-position: bottom right;  
   background-repeat: no-repeat;    
-`
+  `
 const ItemStyled = styled.li<{image: string; position: number}>`
   :nth-child(${(p) => p.position}):hover ~ li {background-image: url(${(p) => p.image})}
 `
