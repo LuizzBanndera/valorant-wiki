@@ -21,22 +21,22 @@ const Items  = [
 
 const Home: NextPage = () => {
   return (    
-    <ContainerStyled>
+    <WrapperStyled>
       <Header />
-      <MenuStyled>
+      <ContainerStyled>
         {Items.map(({title, image}, idx) => (
           <ItemStyled key={idx} image={image} position={idx+1}>
             <CardMenu title={title}/>
           </ItemStyled>
         ))}        
           <BackGroundStyled/>                
-      </MenuStyled>
+      </ContainerStyled>
       <Footer/>      
-    </ContainerStyled>
+    </WrapperStyled>
   )
 }
 
-const ContainerStyled = styled.div`
+const WrapperStyled = styled.div`
   display: flex;
   min-height: 100vh;
   padding: 0 1rem;
@@ -49,7 +49,7 @@ const ContainerStyled = styled.div`
     width: fit-content;
   }
 `
-const MenuStyled = styled.ul`
+const ContainerStyled = styled.ul`
   padding: 5rem 0;
   flex: 1;
   display: flex;
