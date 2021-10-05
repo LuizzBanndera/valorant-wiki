@@ -1,5 +1,5 @@
 
-import Brand from '../../../../public/images/v_logo_black.png'
+import Brand from '../../../public/images/v_logo_black.png'
 import Image from 'next/image'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
