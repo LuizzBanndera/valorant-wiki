@@ -10,8 +10,11 @@ interface iAgente {
   description : string
 }
 
-export default function CardAgentComponent (props: iAgente) {
+export default function CardAgentComponent (props: any) {
 
+  const data = props.agent
+  console.log(data)
+  
   return (
     <Card>      
       <Image id="picture" src={Img} objectFit="cover" layout="responsive" alt="logo"/>
@@ -45,6 +48,7 @@ const Card = styled.div`
   strong {    
   letter-spacing: 0.15em;  
   position: relative;
+  font-size: 20px;
   }
   
   p {

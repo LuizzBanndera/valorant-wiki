@@ -18,7 +18,8 @@
       "@public/*": ["public/*"],
       "@styles/*": ["src/styles/*"],
       "@components/*": ["src/pages/components/*"],
-      "@ctx/*": ["src/context/*"]
+      "@ctx/*": ["src/context/*"],
+      "@db/*":["src/*"]
     }    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
