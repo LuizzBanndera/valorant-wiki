@@ -1,15 +1,18 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import {Agent} from '../shared/types/types.agents'
+import {motion} from 'framer-motion'
 
 export default function CardAgentComponent ({data}: Agent) {      
   
   return (
+    <motion.div transition={{duration: 0.4}}  whileHover={{ scale: 1.10 }} whileTap={{ scale: 0.999 }} >
     <Card id="card">      
       <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
       <strong>{data.displayName}</strong>
       <p>{data.role.displayName}</p>
     </Card>
+    </motion.div>
   )
 }
 
@@ -19,7 +22,7 @@ const Card = styled.div`
   width: 145px;  
   font-family: 'Anton', cursive; 
   cursor: pointer;
-  border-style: solid;
+  border-bottom-style: solid;  
   border-color:#666666;
   color: #666666;
   transition: .3s ease-in-out;  

@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <CardMenu title={title}/>
           </ItemStyled>
         ))}        
-          <BackGroundStyled/>                
+          <BackGroundStyled/>
       </ContainerStyled>
       <Footer/>      
     </WrapperStyled>
@@ -59,7 +59,7 @@ const ContainerStyled = styled.ul`
   gap: 1rem;
   list-style-type: none;
 `
-const BackGroundStyled = styled.li`  
+const BackGroundStyled = styled.div`  
   position: fixed;
   z-index: -1;
   top: 0;
@@ -71,6 +71,9 @@ const BackGroundStyled = styled.li`
   background-repeat: no-repeat;    
   `
 const ItemStyled = styled.li<{image: string; position: number}>`
-  :nth-child(${(p) => p.position}):hover ~ li {background-image: url(${(p) => p.image})}
+  :nth-child(${(p) => p.position}):hover ~ div {
+    background-image: url(${(p) => p.image})!important;
+    z-index: auto;
+  }
 `
 export default Home

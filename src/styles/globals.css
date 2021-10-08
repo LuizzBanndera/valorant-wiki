@@ -3,7 +3,7 @@ html,body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    /* background-color: #EBE8E0;     */
+    background-color: #EBE8E0;
 }
 
 a {
@@ -35,7 +35,6 @@ a {
 }
 
 .container {
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: row;
