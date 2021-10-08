@@ -15,7 +15,7 @@ export default function AgentsMenu ({data}: Agents) {
       <ContainerStyled className="container">        
         {                 
           data.map((agent, idx) => (
-            <CardAgents data={agent} key={idx} position={idx+1}/>
+            <CardAgents data={agent} key={idx}/>
           ))        
         }        
       </ContainerStyled>

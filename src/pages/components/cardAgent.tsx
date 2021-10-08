@@ -1,18 +1,18 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import {Agent} from '../shared/types/types.agents'
-import {motion} from 'framer-motion'
+import {Bounce} from '../shared/motion'
 
 export default function CardAgentComponent ({data}: Agent) {      
   
   return (
-    <motion.div transition={{duration: 0.4}}  whileHover={{ scale: 1.10 }} whileTap={{ scale: 0.999 }} >
+    <Bounce>
     <Card id="card">      
       <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
       <strong>{data.displayName}</strong>
       <p>{data.role.displayName}</p>
     </Card>
-    </motion.div>
+    </Bounce>
   )
 }
 

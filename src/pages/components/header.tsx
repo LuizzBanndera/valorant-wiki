@@ -1,17 +1,33 @@
-
-import Brand from '../../../public/images/v_logo_black.png'
-import Image from 'next/image'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
+import {Bounce} from '../shared/motion'
+
+const menu = [
+  {
+    name: 'AGENTES',
+  },
+  {
+    name: 'ARMAS',
+  },
+  {
+    name: 'MAPAS',
+  },
+]
 
 export default function Header () {
 
   return (    
-    <NavStyled>
-      <Image src={Brand} alt="VALORANT" width={100} height={60}/>      
-      <ItemStyled>AGENTES</ItemStyled>
-      <ItemStyled>ARMAS</ItemStyled>
-      <ItemStyled>MAPAS</ItemStyled>
+    <NavStyled className="header">
+      <strong>VALORANT wiki</strong>      
+      {
+        menu.map((item, idx) => (
+        <Bounce key={idx}>        
+          <ItemStyled key={idx}>
+             {item.name}
+          </ItemStyled>
+        </Bounce>
+        ))
+      }
     </NavStyled>    
   )
 }
@@ -49,6 +65,7 @@ const ItemStyled = styled(Nav.Item)`
   padding: 5px;
   transition: all 500ms;
   :hover {
-    background-color: darkgrey;    
+    background-color: #FF4654;    
+    color: whitesmoke;
   }
 `

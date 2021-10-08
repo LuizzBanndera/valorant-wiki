@@ -1,10 +1,9 @@
-import styles from './cardMenu.module.scss'
-import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import {Bounce} from '../shared/motion'
 
 export default function CardMenu (props: any) {
   return (
-    <motion.div transition={{duration: 0.4}}  whileHover={{ scale: 1.10 }} whileTap={{ scale: 0.999 }}>
+    <Bounce>
       <CardStyled>
         <strong className="ter">{props.title ? props.title : 'menu'}</strong>
         <strong className="sec">{props.title ? props.title : 'menu'}</strong>
@@ -12,7 +11,7 @@ export default function CardMenu (props: any) {
         <strong className="sec">{props.title ? props.title : 'menu'}</strong>
         <strong className="ter">{props.title ? props.title : 'menu'}</strong>
       </CardStyled>
-    </motion.div>
+    </Bounce>
   )
 }
 
@@ -42,5 +41,6 @@ const CardStyled = styled.div`
   }  
   :hover {
   background-color: #FF4654;
+  z-index: 1;
 }
 `

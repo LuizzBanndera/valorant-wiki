@@ -74,6 +74,10 @@ const ItemStyled = styled.li<{image: string; position: number}>`
   :nth-child(${(p) => p.position}):hover ~ div {
     background-image: url(${(p) => p.image})!important;
     z-index: auto;
+
+  }
+  :nth-child(${(p) => p.position}):hover {
+    z-index: 1;
   }
 `
 export default Home
