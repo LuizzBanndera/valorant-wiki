@@ -1,25 +1,14 @@
-import {Panel} from 'rsuite'
 import Image from 'next/image'
-import Img from 'public/images/a_jett.svg'
 import styled from 'styled-components'
+import {Agent} from '../shared/types/types.agents'
 
-interface iAgente {
-  id : string,
-  name : string,
-  image : string,
-  description : string
-}
-
-export default function CardAgentComponent (props: any) {
-
-  const data = props.agent
-  console.log(data)
+export default function CardAgentComponent ({data}: Agent) {      
   
   return (
-    <Card>      
-      <Image id="picture" src={Img} objectFit="cover" layout="responsive" alt="logo"/>
-      <strong>JETT</strong>
-      <p>Duelista</p>
+    <Card id="card">      
+      <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
+      <strong>{data.displayName}</strong>
+      <p>{data.role.displayName}</p>
     </Card>
   )
 }
@@ -27,35 +16,37 @@ export default function CardAgentComponent (props: any) {
 const Card = styled.div`
   display: flex; 
   flex-direction: column;
-  width: 170px;  
+  width: 145px;  
   font-family: 'Anton', cursive; 
   cursor: pointer;
   border-style: solid;
   border-color:#666666;
   color: #666666;
-  transition: .30s ease-in-out;
+  transition: .3s ease-in-out;  
   :hover {
     background-color: #FF4654;
     border-color:#FF4654;
-    color: whitesmoke;
+    color: whitesmoke;    
   }  
 
   strong, p {
     padding: 5px;
     margin: 0px;
+    text-transform: uppercase;
   }
 
   strong {    
   letter-spacing: 0.15em;  
   position: relative;
   font-size: 20px;
+  color: #FF4654;
   }
   
   p {
     font-size: 12px;
   }
 
-  strong:after {
+  strong:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -72,6 +63,10 @@ const Card = styled.div`
     width: 100%;
     left: 0;
   }
-
+  
+  :hover  strong {
+    transition: .3s ease-in-out;
+    color: whitesmoke;
+  }
   
 `

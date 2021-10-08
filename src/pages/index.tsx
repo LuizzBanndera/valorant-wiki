@@ -67,7 +67,6 @@ const BackGroundStyled = styled.li`
   bottom: 0;
   left: 0;
   pointer-events: none;  
-  background-color: #EBE8E0;
   background-position: bottom right;  
   background-repeat: no-repeat;    
   `

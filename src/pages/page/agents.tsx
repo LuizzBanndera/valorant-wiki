@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import styled from 'styled-components'
@@ -6,55 +5,35 @@ import CardAgents from '../components/cardAgent'
 import db from '../../services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
+import {Agents} from '../shared/types/types.agents'
 
-type Agents = {
-  agent : Agent
-}
-
-type Agent = {
-  uuid : string
-  displayName : string
-  description : string
-  displayIcon : string
-}
-
-export default function AgentsMenu () {
-
-  const [data, setData] = useState<Agents[]>([])
-
-  useEffect(() => {
-    async function agents() {
-      try {
-        const {data}: AxiosResponse<Agents[]> = await db.get('/agents')
-        
-        setData(data)
-
-      } catch (error) {
-        console.log(error)
-      }
-    }    
-    agents()
-  }, [])
+export default function AgentsMenu ({data}: Agents) {
   
   return (
     <WrapperStyled className="wrapper">
       <Header/>
-      <ContainerStyled className="container">
-        {          
-          data.map(({agent}, idx) => (
-            <CardAgents key={idx} data={agent}/>
-          ))
-        }
+      <ContainerStyled className="container">        
+        {                 
+          data.map((agent, idx) => (
+            <CardAgents data={agent} key={idx} position={idx+1}/>
+          ))        
+        }        
       </ContainerStyled>
       <Footer/>
     </WrapperStyled>
   )
 }
 
+// pre-render function data fetch
 export const getStaticProps : GetStaticProps = async () => {
   try {
-    const {data}: AxiosResponse<Agents[]> = await db.get('/agents')
-      
+    const res : AxiosResponse<Agents> = await db.get('/agents', {
+      params: {        
+        isPlayableCharacter: true
+      }
+    })
+    
+    const data = res.data.data
     return {
       props: {
         data
@@ -73,7 +52,10 @@ export const getStaticProps : GetStaticProps = async () => {
 
 }
 
-const WrapperStyled = styled.div`
+//styled components
+const WrapperStyled = styled.div`  
 `
 const ContainerStyled = styled.div`
+  flex-wrap: wrap;
+  align-content: center;
 `
