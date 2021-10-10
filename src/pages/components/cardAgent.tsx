@@ -9,7 +9,7 @@ export default function CardAgentComponent ({data}: Agent) {
     <Bounce>
     <Card id="card">      
       <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
-      <strong>{data.displayName}</strong>
+      <p className='label'>{data.displayName}</p>
       <p>{data.role.displayName}</p>
     </Card>
     </Bounce>
@@ -38,36 +38,15 @@ const Card = styled.div`
     text-transform: uppercase;
   }
 
-  strong {    
-  letter-spacing: 0.15em;  
-  position: relative;
+  .label {        
   font-size: 20px;
   color: #FF4654;
   }
   
   p {
     font-size: 12px;
-  }
-
-  /* strong:after {    
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #fff;
-    transition: 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-  }
-
-  strong:hover:after {
-    width: 100%;
-    left: 0;
-  } */
-  
-  :hover  strong {
+  }  
+  :hover p {
     transition: .3s ease-in-out;
     color: whitesmoke;
   }

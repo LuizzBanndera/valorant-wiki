@@ -5,11 +5,11 @@ export default function CardMenu (props: any) {
   return (
     <Bounce>
       <CardStyled>
-        <strong className="ter">{props.title ? props.title : 'menu'}</strong>
-        <strong className="sec">{props.title ? props.title : 'menu'}</strong>
-        <strong className="first">{props.title ? props.title : 'menu'}</strong>
-        <strong className="sec">{props.title ? props.title : 'menu'}</strong>
-        <strong className="ter">{props.title ? props.title : 'menu'}</strong>
+        <p className="ter">{props.title ? props.title : 'menu'}</p>
+        <p className="sec">{props.title ? props.title : 'menu'}</p>
+        <p className="first">{props.title ? props.title : 'menu'}</p>
+        <p className="sec">{props.title ? props.title : 'menu'}</p>
+        <p className="ter">{props.title ? props.title : 'menu'}</p>
       </CardStyled>
     </Bounce>
   )
@@ -39,6 +39,10 @@ const CardStyled = styled.div`
   .ter {
     color: rgb(167 167 167);    
   }  
+  p {
+    margin: 0 ;
+    letter-spacing: 3px;
+  }
   :hover {
   background-color: #FF4654;
   z-index: 1;
