@@ -49,7 +49,7 @@ const Card = styled.div`
     font-size: 12px;
   }
 
-  strong:after {    
+  /* strong:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -65,7 +65,7 @@ const Card = styled.div`
   strong:hover:after {
     width: 100%;
     left: 0;
-  }
+  } */
   
   :hover  strong {
     transition: .3s ease-in-out;

@@ -1,6 +1,5 @@
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
-import {Bounce} from '../shared/motion'
 
 const menu = [
   {
@@ -17,15 +16,12 @@ const menu = [
 export default function Header () {
 
   return (    
-    <NavStyled className="header">
-      <strong>VALORANT wiki</strong>      
+    <NavStyled className="header">    
       {
-        menu.map((item, idx) => (
-        <Bounce key={idx}>        
+        menu.map((item, idx) => (       
           <ItemStyled key={idx}>
              {item.name}
           </ItemStyled>
-        </Bounce>
         ))
       }
     </NavStyled>    
@@ -36,9 +32,7 @@ const NavStyled = styled(Nav)`
   display: flex;
   color: whitesmoke;
   width: 100%;
-  margin-top: 5px;
   height: 50px;  
-  align-items: center;
   padding: 10px;
   gap: 20px !important;
   letter-spacing: 2px;
