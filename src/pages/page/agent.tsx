@@ -1,13 +1,16 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import Raze from '../../../public/images/v_agents.svg'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 
 export default function Agent() {
 
   return (
-    <Container className="container">
       <Wrapper className="wrapper">
+      <Header/>
+    <Container className="container">
         <Image src={Raze} layout='fixed' alt='test'/>
         <Details>
           <AgentDetail>
@@ -25,8 +28,9 @@ export default function Agent() {
               Enim, totam repellendus.</p>
           </RoleDetail>
         </Details>
-      </Wrapper>
     </Container>
+      <Footer/>
+      </Wrapper>
   )
 }
 

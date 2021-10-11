@@ -1,25 +1,36 @@
+import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
 
 const menu = [
   {
+    name: 'HOME',
+    path: '/'
+  },
+  {
     name: 'AGENTES',
+    path: '/page/agents'
   },
   {
     name: 'ARMAS',
+    path: '/page/guns'
   },
   {
     name: 'MAPAS',
+    path: '/page/maps'
   },
 ]
 
 export default function Header () {
+  const router = useRouter()
+
+  const handleClick = (path: string) => (router.push(path))
 
   return (    
     <NavStyled className="header">    
       {
         menu.map((item, idx) => (       
-          <ItemStyled key={idx}>
+          <ItemStyled key={idx} onClick={() => handleClick(item.path)}>
              {item.name}
           </ItemStyled>
         ))
