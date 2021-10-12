@@ -5,9 +5,9 @@ import CardAgents from '../components/cardAgent'
 import db from '../../services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
-import {Agents} from '../shared/types/types.agents'
+import {iAgents} from '../shared/types/types.agents'
 
-export default function AgentsMenu ({data}: Agents) {
+export default function AgentsMenu ({data}: iAgents) {
   
   return (
     <WrapperStyled className="wrapper">
@@ -24,10 +24,9 @@ export default function AgentsMenu ({data}: Agents) {
   )
 }
 
-// pre-render function data fetch
 export const getStaticProps : GetStaticProps = async () => {
   try {
-    const res : AxiosResponse<Agents> = await db.get('/agents', {
+    const res : AxiosResponse<iAgents> = await db.get('/agents', {
       params: {        
         isPlayableCharacter: true
       }

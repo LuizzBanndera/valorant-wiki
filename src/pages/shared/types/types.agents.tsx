@@ -1,20 +1,29 @@
-export type Role = {
+export type iRole = {
   uuid : string
   displayName : string
   description : string
   displayIcon : string
 }
 
-export type Agent = {
+export type iAbilitie = {
+  slot : string
+  displayName : string
+  description : string
+  displayIcon : string
+}
+
+export type iAgent = {
   data : {
     uuid : string
     displayName : string
     description : string
     displayIcon : string
-    role : Role
+    fullPortrait : string    
+    role : iRole
+    abilities : iAbilitie[]
   }
 }
 
-export type Agents = {  
-  data : Agent[]
+export type iAgents = {  
+  data : iAgent[]
 }
