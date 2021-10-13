@@ -13,14 +13,30 @@ export default function Agent(agent: iAgent) {
 
   const {data} = agent
   
-  const [abilitie, setAbiilite] = useState(data.abilities[0].description)
+  const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
+  const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
+
+  const handleAbilitie = (description: string, name : string) => {
+    setAbiiliteDescription(description)
+    setAbilitieName(name)
+  }
   
   return (
     <Wrapper className="wrapper">
     <Header/>
       <Container className="container">
         <React.Fragment >
-          <Image id="agent"  src={data.fullPortrait}  width={800} height={800} alt='agent'/>
+          <ImageWrapper>
+            <div>
+              <p className='label'>{data.displayName}</p>
+              <p className='label'>{data.displayName}</p>
+              <p className='label'>{data.displayName}</p>
+              <p className='label'>{data.displayName}</p>
+              <p className='label'>{data.displayName}</p>
+            </div>
+            <Image id="agent" src={data.fullPortrait}  width={800} height={800} alt='agent'/>
+            <div id="square"></div>
+          </ImageWrapper>
           <Details>
             <AgentDetail>
               <p className='label'>{data.displayName}</p>
@@ -31,17 +47,16 @@ export default function Agent(agent: iAgent) {
               <p>{data.role.description}</p>
             </RoleDetail>
             <Skills>
-              <p className='label'>/HABILIDADES</p>
+              <p className='label'>/HABILIDADES/<a>{abilitieName}</a></p>
               <SkillsDetails>
                 {data.abilities.map((abilitie, idx) => (                  
-                  <SkillImage key={idx} onMouseOver={() => setAbiilite(abilitie.description)}>
+                  <SkillImage key={idx} onMouseOver={() => handleAbilitie(abilitie.description, abilitie.displayName)}>
                     <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
                   </SkillImage>                  
                 ))}      
               </SkillsDetails>
-              <SkillDescription>
-                <p className='label'>NOME</p>
-                <p>{abilitie}</p>
+              <SkillDescription>                
+                <p>{abilitieDescription}</p>
               </SkillDescription>
             </Skills>
           </Details>          
@@ -98,8 +113,14 @@ export const getStaticProps : GetStaticProps = async ({params}) => {
 }
 
 const Container = styled.div`
+justify-content: center;
   #agent {
-    z-index: -1;
+    z-index: -1;  
+  }
+  img {
+    max-width: none !important;
+    margin: none;  
+    filter: grayscale(1) ;
   }
 `
 const Wrapper = styled.div`
@@ -114,19 +135,47 @@ const Wrapper = styled.div`
     font-size: 20px;    
   }
 `
+const ImageWrapper = styled.div`
+  display: flex;
+  z-index: -1;
+  align-items: center;
+
+  div .label {
+    position: relative;
+    font-size: 6rem;
+    right: -27rem;    
+    z-index: -1;
+    color: darkgray;
+  }
+  #agent {
+    position: absolute !important;
+    right: -299px !important;
+  }
+  #square { 
+    position: relative; 
+    background-color: #858585;
+    width: 300px;
+    height: 400px;  
+    z-index: -2;
+    right: 352px;
+    background-color: #FF4654;    
+  }
+`
 const Details = styled.div`
   display: flex;
   flex-direction: column;  
   position: relative;
   width: 112vh;
-  left: -112px;
+  left: -390px;
   z-index: 1;
-  gap: 2rem;
+  gap: 1rem;
   border-style: groove;
+  border-color: #FF4654;
   max-width: 40rem;  
   background-color: whitesmoke;
   padding: 0.5rem;
   transition: all 500ms;
+  font-size: 14px;
 `
 const AgentDetail = styled.div`
   display: flex;
@@ -135,21 +184,32 @@ const AgentDetail = styled.div`
 
   .label {
     font-size: 48px;
-    color: red;
+    color: #FF4654;
   }
 `
 const RoleDetail = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 40rem;
+  margin-left: 20px;
+  .label {
+    border-bottom-style: groove;
+  }
 `
 
 const Skills = styled.div`
+  margin-left: 20px;  
+  .label {
+    border-bottom-style: groove;
+    a {
+      color: #FF4654;
+    }
+  } 
 `
 const SkillsDetails = styled.div`
   display: flex;  
   height: 6rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   gap: 0.5rem;
   width: max-content;
   `
@@ -160,13 +220,14 @@ display: flex;
   align-items: center;
   width: 5rem;  
   border-radius: 42px !important;
-  background-color: black;
+  background-color: #858585;
   
   :hover {
-    background-color: red;
+    background-color: #FF4654;
   }  
 `
-const SkillDescription = styled.div`  
-  margin-top: 10px;  
+const SkillDescription = styled.div`    
   max-width: 40rem;
+  margin-top: 0px;
+  font-size: 13px;
 `
