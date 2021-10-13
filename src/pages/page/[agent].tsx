@@ -157,8 +157,7 @@ const ImageWrapper = styled.div`
     width: 300px;
     height: 400px;  
     z-index: -2;
-    right: 352px;
-    background-color: #FF4654;    
+    right: 352px;     
   }
 `
 const Details = styled.div`
