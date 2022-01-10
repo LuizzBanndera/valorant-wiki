@@ -13,7 +13,7 @@ const menu = [
   },
   {
     name: 'ARMAS',
-    path: '/page/guns'
+    path: '/page/weapons'
   },
   {
     name: 'MAPAS',
@@ -22,8 +22,8 @@ const menu = [
 ]
 
 export default function Header () {
-  const router = useRouter()
 
+  const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
 
   return (    

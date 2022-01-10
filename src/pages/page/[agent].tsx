@@ -8,7 +8,6 @@ import { iAgents, iAgent } from '../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-
 export default function Agent(agent: iAgent) {
 
   const {data} = agent
@@ -119,8 +118,7 @@ justify-content: center;
   }
   img {
     max-width: none !important;
-    margin: none;  
-    filter: grayscale(1) ;
+    margin: none;      
   }
 `
 const Wrapper = styled.div`

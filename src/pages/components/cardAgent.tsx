@@ -1,16 +1,17 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import {Agent} from '../shared/types/types.agents'
+import {iAgent} from '../shared/types/types.agents'
 import {Bounce} from '../shared/motion'
 
-export default function CardAgentComponent ({data}: Agent) {      
+export default function CardAgent (agent: iAgent) {   
   
+
   return (
     <Bounce>
     <Card id="card">      
-      <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
-      <p className='label'>{data.displayName}</p>
-      <p>{data.role.displayName}</p>
+      <Image id="picture" src={agent.displayIcon} width="200" height="200" alt="logo"/>
+      <p className='label'>{agent.displayName}</p>
+      <p>{agent.role.displayName}</p>
     </Card>
     </Bounce>
   )

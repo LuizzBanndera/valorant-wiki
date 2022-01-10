@@ -13,7 +13,7 @@ export type iAbilitie = {
 }
 
 export type iAgent = {
-  data : {
+  
     uuid : string
     displayName : string
     description : string
@@ -21,7 +21,7 @@ export type iAgent = {
     fullPortrait : string    
     role : iRole
     abilities : iAbilitie[]
-  }
+  
 }
 
 export type iAgents = {  
