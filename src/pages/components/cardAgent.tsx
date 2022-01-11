@@ -8,7 +8,7 @@ export default function CardAgent (data: iAgent) {
   
   const Router = useRouter()  
 
-  const handleClick = (uuid: string) => Router.push({pathname:`/page/agent/[uuid]`, query: {uuid}}) 
+  const handleClick = (uuid: string) => Router.push({pathname:`/page/agents/[uuid]`, query: {uuid}}) 
 
   return (
     <Bounce>

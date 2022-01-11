@@ -14,30 +14,19 @@ export default function Agent(agent: iAgentData) {
   
   const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
   const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
-  const [loading, setLoading] = useState(true)
 
   const handleAbilitie = (description: string, name : string) => {
     setAbiiliteDescription(description)
     setAbilitieName(name)
-  }
-
-
-  useEffect(() => {
-    setLoading(false)    
-  },[data])    
+  }  
   
   return (
     <Wrapper className="wrapper">
     <Header/>
-      <Container className="container">
-        {
-          loading
-          ?
-          <>loading</>
-          :        
+      <Container className="container">       
         <React.Fragment >
           <ImageWrapper>
-            <div>
+            <div>           
               <p className='label'>{data.displayName}</p>
               <p className='label'>{data.displayName}</p>
               <p className='label'>{data.displayName}</p>
@@ -70,8 +59,7 @@ export default function Agent(agent: iAgentData) {
               </SkillDescription>
             </Skills>
           </Details>          
-        </React.Fragment>   
-        }           
+        </React.Fragment>           
       </Container>
     <Footer/>
   </Wrapper>
