@@ -2,13 +2,19 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import {iAgent} from '../shared/types/types.agents'
 import {Bounce} from '../shared/motion'
+import {useRouter} from 'next/router'
 
 export default function CardAgent (agent: iAgent) {   
   
+  const Router = useRouter()  
+
+  const handleClick = (uuid: string) => {    
+    Router.push({pathname:`/page/agent/[uuid]`, query: {uuid}})    
+  }
 
   return (
     <Bounce>
-    <Card id="card">      
+    <Card id="card" onClick={() => handleClick(agent.uuid)}>      
       <Image id="picture" src={agent.displayIcon} width="200" height="200" alt="logo"/>
       <p className='label'>{agent.displayName}</p>
       <p>{agent.role.displayName}</p>

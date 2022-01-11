@@ -6,17 +6,8 @@ import db from '../../services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
 import {iAgents} from '../shared/types/types.agents'
-import { useRouter } from 'next/router'
 
 export default function AgentsMenu ({data}: iAgents) {
-
-  const Router = useRouter()
-
-  const handleClick = (agent: string ,id: string) => {
-    console.log('agent');
-    
-    Router.push(`/page/`+agent)
-  }
 
   return (
     <WrapperStyled className="wrapper">
