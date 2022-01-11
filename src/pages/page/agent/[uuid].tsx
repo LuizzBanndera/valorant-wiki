@@ -1,29 +1,40 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import db from '../../../services/api'
-import { iAgents, iAgent } from '../../shared/types/types.agents'
+import { iAgents, iAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-export default function Agent(agent: any) {
+export default function Agent(agent: iAgentData) {
   
-  const {data} = agent  
+  const {data} = agent
   
   const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
   const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
+  const [loading, setLoading] = useState(true)
 
   const handleAbilitie = (description: string, name : string) => {
     setAbiiliteDescription(description)
     setAbilitieName(name)
   }
+
+
+  useEffect(() => {
+    setLoading(false)    
+  },[data])    
   
   return (
     <Wrapper className="wrapper">
     <Header/>
       <Container className="container">
+        {
+          loading
+          ?
+          <>loading</>
+          :        
         <React.Fragment >
           <ImageWrapper>
             <div>
@@ -59,7 +70,8 @@ export default function Agent(agent: any) {
               </SkillDescription>
             </Skills>
           </Details>          
-        </React.Fragment>              
+        </React.Fragment>   
+        }           
       </Container>
     <Footer/>
   </Wrapper>
@@ -87,7 +99,6 @@ export const getStaticPaths : GetStaticPaths = async () => {
 export const getStaticProps : GetStaticProps = async ({params}: any) => {  
 
   try {
-    const uuid = params.uuid
     const res : AxiosResponse<iAgents> = await db.get(`/agents/${params.uuid}`, {
       params: {        
         isPlayableCharacter: true,

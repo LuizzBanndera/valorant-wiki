@@ -6,8 +6,16 @@ import db from '../../services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
 import {iAgents} from '../shared/types/types.agents'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 export default function AgentsMenu ({data}: iAgents) {
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(false)    
+  },[data])  
 
   return (
     <WrapperStyled className="wrapper">
@@ -16,7 +24,13 @@ export default function AgentsMenu ({data}: iAgents) {
         {            
           data.map((agent, idx) => (            
             <div key={idx}>
-              <CardAgents {...agent} />
+              {
+                loading
+                ?
+                <>loading</>
+                :
+                <CardAgents {...agent} />
+              }
             </div>
           ))        
         }        

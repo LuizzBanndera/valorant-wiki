@@ -12,16 +12,27 @@ export type iAbilitie = {
   displayIcon : string
 }
 
-export type iAgent = {
-
+export type iAgentData = {
+  data :{
     uuid : string
     displayName : string
     description : string
     displayIcon : string
     fullPortrait : string    
     role : iRole
-    abilities : iAbilitie[]
+    abilities : iAbilitie[] 
+  }
+}
 
+export type iAgent = {
+  uuid : string
+  displayName : string
+  description : string
+  displayIcon : string
+  fullPortrait : string    
+  role : iRole
+  abilities : iAbilitie[] 
+    
 }
 
 export type iAgents = {  

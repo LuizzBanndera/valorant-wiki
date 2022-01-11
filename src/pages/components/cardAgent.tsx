@@ -4,20 +4,18 @@ import {iAgent} from '../shared/types/types.agents'
 import {Bounce} from '../shared/motion'
 import {useRouter} from 'next/router'
 
-export default function CardAgent (agent: iAgent) {   
+export default function CardAgent (data: iAgent) {   
   
   const Router = useRouter()  
 
-  const handleClick = (uuid: string) => {    
-    Router.push({pathname:`/page/agent/[uuid]`, query: {uuid}})    
-  }
+  const handleClick = (uuid: string) => Router.push({pathname:`/page/agent/[uuid]`, query: {uuid}}) 
 
   return (
     <Bounce>
-    <Card id="card" onClick={() => handleClick(agent.uuid)}>      
-      <Image id="picture" src={agent.displayIcon} width="200" height="200" alt="logo"/>
-      <p className='label'>{agent.displayName}</p>
-      <p>{agent.role.displayName}</p>
+    <Card id="card" onClick={() => handleClick(data.uuid)}>      
+      <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
+      <p className='label'>{data.displayName}</p>
+      <p>{data.role.displayName}</p>
     </Card>
     </Bounce>
   )
