@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import {iAgent} from '../shared/types/types.agents'
+import {TAgent} from '../shared/types/types.agents'
 import {Bounce} from '../shared/motion'
 import {useRouter} from 'next/router'
 
-export default function CardAgent (data: iAgent) {   
+export default function CardAgent (data: TAgent) {   
   
   const Router = useRouter()  
 

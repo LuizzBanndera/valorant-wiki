@@ -4,11 +4,11 @@ import styled from 'styled-components'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import db from '../../../services/api'
-import { iAgents, iAgentData } from '../../shared/types/types.agents'
+import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-export default function Agent(agent: iAgentData) {
+export default function Agent(agent: TAgentData) {
   
   const {data} = agent
   
@@ -26,7 +26,7 @@ export default function Agent(agent: iAgentData) {
       <Container className="container">       
         <React.Fragment >
           <ImageWrapper>
-            <div>           
+            <div>              
               <p className='label'>{data.displayName}</p>
               <p className='label'>{data.displayName}</p>
               <p className='label'>{data.displayName}</p>
@@ -36,6 +36,7 @@ export default function Agent(agent: iAgentData) {
             <Image id="agent" src={data.fullPortrait}  width={800} height={800} alt='agent'/>
             <div id="square"></div>
           </ImageWrapper>
+          <Bio>
           <Details>
             <AgentDetail>
               <p className='label'>{data.displayName}</p>
@@ -54,11 +55,12 @@ export default function Agent(agent: iAgentData) {
                   </SkillImage>                  
                 ))}      
               </SkillsDetails>
+            </Skills>
+          </Details>          
               <SkillDescription>                
                 <p>{abilitieDescription}</p>
               </SkillDescription>
-            </Skills>
-          </Details>          
+          </Bio>
         </React.Fragment>           
       </Container>
     <Footer/>
@@ -68,7 +70,7 @@ export default function Agent(agent: iAgentData) {
 
 export const getStaticPaths : GetStaticPaths = async () => {
 
-  const res : AxiosResponse<iAgents> = await db.get('/agents', {
+  const res : AxiosResponse<TAgents> = await db.get('/agents', {
     params: {        
       isPlayableCharacter: true
     }
@@ -87,7 +89,7 @@ export const getStaticPaths : GetStaticPaths = async () => {
 export const getStaticProps : GetStaticProps = async ({params}: any) => {  
 
   try {
-    const res : AxiosResponse<iAgents> = await db.get(`/agents/${params.uuid}`, {
+    const res : AxiosResponse<TAgents> = await db.get(`/agents/${params.uuid}`, {
       params: {        
         isPlayableCharacter: true,
       }
@@ -160,16 +162,23 @@ const ImageWrapper = styled.div`
     right: 352px;     
   }
 `
-const Details = styled.div`
+const Bio = styled.div`
   display: flex;
   flex-direction: column;  
   position: relative;
-  width: 112vh;
+  min-width: 450px;
   left: -390px;
   z-index: 1;
+  min-height: 37rem;
+  margin-top: 3rem;
+  min-width: 470px;
+`
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   border-style: groove;
-  border-color: #FF4654;
+  /* border-color: #FF4654; */
   max-width: 40rem;  
   background-color: whitesmoke;
   padding: 0.5rem;
@@ -192,6 +201,7 @@ const RoleDetail = styled.div`
   max-width: 40rem;
   margin-left: 20px;
   .label {
+    color: #858585;
     border-bottom-style: groove;
   }
 `
@@ -199,6 +209,7 @@ const Skills = styled.div`
   margin-left: 20px;  
   .label {
     border-bottom-style: groove;
+    color: #858585;
     a {
       color: #FF4654;
     }
@@ -208,7 +219,7 @@ const SkillsDetails = styled.div`
   display: flex;  
   height: 6rem;
   padding: 0.5rem 0;
-  gap: 0.5rem;
+  gap: 1.5rem;
   width: max-content;
   `
 const SkillImage = styled.div`
@@ -216,8 +227,7 @@ display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  width: 5rem;  
-  border-radius: 42px !important;
+  width: 5rem;    
   background-color: #858585;
   
   :hover {
@@ -227,5 +237,6 @@ display: flex;
 const SkillDescription = styled.div`    
   max-width: 40rem;
   margin-top: 0px;
-  font-size: 13px;
+  font-size: 13px;  
+  margin-left: 25px;
 `

@@ -5,17 +5,9 @@ import CardAgents from '../components/cardAgent'
 import db from '../../services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
-import {iAgents} from '../shared/types/types.agents'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import {TAgents} from '../shared/types/types.agents'
 
-export default function AgentsMenu ({data}: iAgents) {
-
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setLoading(false)    
-  },[data])  
+export default function AgentsMenu ({data}: TAgents) {
 
   return (
     <WrapperStyled className="wrapper">
@@ -23,14 +15,8 @@ export default function AgentsMenu ({data}: iAgents) {
       <ContainerStyled className="container">        
         {            
           data.map((agent, idx) => (            
-            <div key={idx}>
-              {
-                loading
-                ?
-                <>loading</>
-                :
-                <CardAgents {...agent} />
-              }
+            <div key={idx}>     
+              <CardAgents {...agent} />
             </div>
           ))        
         }        
@@ -42,7 +28,7 @@ export default function AgentsMenu ({data}: iAgents) {
 
 export const getStaticProps : GetStaticProps = async () => {
   try {
-    const res : AxiosResponse<iAgents> = await db.get('/agents', {
+    const res : AxiosResponse<TAgents> = await db.get('/agents', {
       params: {        
         isPlayableCharacter: true
       }

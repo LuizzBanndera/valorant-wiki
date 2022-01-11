@@ -1,40 +1,40 @@
-export type iRole = {
+export type TRole = {
   uuid : string
   displayName : string
   description : string
   displayIcon : string
 }
 
-export type iAbilitie = {
+export type TAbilitie = {
   slot : string
   displayName : string
   description : string
   displayIcon : string
 }
 
-export type iAgentData = {
+export type TAgentData = {
   data :{
     uuid : string
     displayName : string
     description : string
     displayIcon : string
     fullPortrait : string    
-    role : iRole
-    abilities : iAbilitie[] 
+    role : TRole
+    abilities : TAbilitie[] 
   }
 }
 
-export type iAgent = {
+export type TAgent = {
   uuid : string
   displayName : string
   description : string
   displayIcon : string
   fullPortrait : string    
-  role : iRole
-  abilities : iAbilitie[] 
+  role : TRole
+  abilities : TAbilitie[] 
     
 }
 
-export type iAgents = {  
-  data : iAgent[]
+export type TAgents = {  
+  data : TAgent[]
 }
