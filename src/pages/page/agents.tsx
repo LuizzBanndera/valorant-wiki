@@ -59,4 +59,5 @@ const WrapperStyled = styled.div`
 const ContainerStyled = styled.div`
   flex-wrap: wrap;
   align-content: center;
+  padding: 10% !important;
 `

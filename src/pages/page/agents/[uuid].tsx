@@ -11,6 +11,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 export default function Agent(agent: TAgentData) {
   
   const {data} = agent
+
+  console.log(data);
+  
   
   const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
   const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
@@ -33,7 +36,7 @@ export default function Agent(agent: TAgentData) {
               <p className='label'>{data.displayName}</p>
               <p className='label'>{data.displayName}</p>
             </div>
-            <Image id="agent" src={data.fullPortrait}  width={800} height={800} alt='agent'/>
+            <Image id="agent" src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
             <div id="square"></div>
           </ImageWrapper>
           <Bio>
@@ -51,7 +54,13 @@ export default function Agent(agent: TAgentData) {
               <SkillsDetails>
                 {data.abilities.map((abilitie, idx) => (                  
                   <SkillImage key={idx} onMouseOver={() => handleAbilitie(abilitie.description, abilitie.displayName)}>
-                    <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
+                    {
+                      abilitie.displayIcon
+                      ?
+                      <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
+                      :
+                      <a>P</a>
+                    }
                   </SkillImage>                  
                 ))}      
               </SkillsDetails>
@@ -95,7 +104,7 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
       }
     })
     
-    const data = res.data.data
+    const data = res.data.data    
     
     return {
       props: {
@@ -118,7 +127,7 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
 const Container = styled.div`
 justify-content: center;
   #agent {
-    z-index: -1;  
+    z-index: 0;  
   }
   img {
     max-width: none !important;
@@ -147,7 +156,7 @@ const ImageWrapper = styled.div`
     font-size: 6rem;
     right: -27rem;    
     z-index: -1;
-    color: darkgray;
+    color: #858585;
   }
   #agent {
     position: absolute !important;
@@ -155,11 +164,11 @@ const ImageWrapper = styled.div`
   }
   #square { 
     position: relative; 
-    background-color: #858585;
-    width: 300px;
-    height: 400px;  
+    background-color: #161616;
+    left: -42rem;
+    width: 40rem;
+    height: 38rem;  
     z-index: -2;
-    right: 352px;     
   }
 `
 const Bio = styled.div`
@@ -167,10 +176,9 @@ const Bio = styled.div`
   flex-direction: column;  
   position: relative;
   min-width: 450px;
-  left: -390px;
+  left: -40rem;
   z-index: 1;
-  min-height: 37rem;
-  margin-top: 3rem;
+  min-height: 38rem;
   min-width: 470px;
 `
 const Details = styled.div`
@@ -233,6 +241,12 @@ display: flex;
   :hover {
     background-color: #FF4654;
   }  
+  a {
+    font-family: 'Anton', cursive !important;
+    
+    font-size: 3rem;
+    color: whitesmoke;
+  }
 `
 const SkillDescription = styled.div`    
   max-width: 40rem;

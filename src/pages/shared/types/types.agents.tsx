@@ -18,7 +18,7 @@ export type TAgentData = {
     displayName : string
     description : string
     displayIcon : string
-    fullPortrait : string    
+    fullPortrait : string
     role : TRole
     abilities : TAbilitie[] 
   }
