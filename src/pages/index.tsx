@@ -32,8 +32,7 @@ const Home: NextPage = () => {
 
 const ContainerStyled = styled.ul`
   display: flex;
-  min-height: 86vh;
-  padding: 3rem;  
+  min-height: 85vh;  
   justify-content: center;
   align-items: center;
   gap: 1rem;

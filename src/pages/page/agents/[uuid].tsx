@@ -68,7 +68,7 @@ export default function Agent(agent: TAgentData) {
                 {                  
                   abilitie.displayIcon
                   ?
-                  <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
+                  <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie' quality={100}/>
                   :
                   <a>P</a>
                 }

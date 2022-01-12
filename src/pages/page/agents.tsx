@@ -53,9 +53,8 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  padding: 10%;  
+  padding: 5%;  
   flex: 1;
-  height: 86vh;  
   justify-content: center;
   gap: 1rem;
 `
