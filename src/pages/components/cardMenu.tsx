@@ -5,11 +5,11 @@ export default function CardMenu (props: any) {
   return (
     <Bounce>
       <CardStyled {...props}>
-        <p className="ter">{props.title ? props.title : 'menu'}</p>
-        <p className="sec">{props.title ? props.title : 'menu'}</p>
-        <p className="first">{props.title ? props.title : 'menu'}</p>
-        <p className="sec">{props.title ? props.title : 'menu'}</p>
-        <p className="ter">{props.title ? props.title : 'menu'}</p>
+        <p className="ter">{props.name ? props.name : 'menu'}</p>
+        <p className="sec">{props.name ? props.name : 'menu'}</p>
+        <p className="first">{props.name ? props.name : 'menu'}</p>
+        <p className="sec">{props.name ? props.name : 'menu'}</p>
+        <p className="ter">{props.name ? props.name : 'menu'}</p>
       </CardStyled>
     </Bounce>
   )

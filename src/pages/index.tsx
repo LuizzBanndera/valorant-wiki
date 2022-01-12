@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       <ContainerStyled>
         {Items.map(({title, image, path}, idx) => (
           <ItemStyled key={idx} image={image} position={idx+1}>
-            <CardMenu onClick={() => handleClick(path)} title={title}/>
+            <CardMenu onClick={() => handleClick(path)} name={title}/>
           </ItemStyled>
         ))}
           <BackGroundStyled/>
