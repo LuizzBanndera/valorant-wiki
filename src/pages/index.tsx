@@ -1,28 +1,36 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import CardMenu from './components/cardMenu'
 
 const Items  = [
   {
     title : 'AGENTES',
-    image : '/images/v_agents.svg'
+    image : '/images/v_agents.svg',
+    path  :'/page/agents'
   },
   {
     title : 'ARMAS',
-    image : '/images/v_guns.svg'
+    image : '/images/v_guns.svg',
+    path  : '/page/weapons'
   },
   {
     title : 'MAPAS',
-    image : '/images/v_maps.svg'
+    image : '/images/v_maps.svg',
+    path  : '/page/maps'
   }
 ]
 
 const Home: NextPage = () => {
+
+  const router = useRouter()
+  const handleClick = (path: string) => (router.push(path))
+
   return (
       <ContainerStyled>
-        {Items.map(({title, image}, idx) => (
+        {Items.map(({title, image, path}, idx) => (
           <ItemStyled key={idx} image={image} position={idx+1}>
-            <CardMenu title={title}/>
+            <CardMenu onClick={() => handleClick(path)} title={title}/>
           </ItemStyled>
         ))}
           <BackGroundStyled/>
@@ -53,7 +61,6 @@ const ItemStyled = styled.li<{image: string; position: number}>`
   :nth-child(${(p) => p.position}):hover ~ div {
     background-image: url(${(p) => p.image})!important;
     z-index: auto;
-
   }
   :nth-child(${(p) => p.position}):hover {
     z-index: 1;
