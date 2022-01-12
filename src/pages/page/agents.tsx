@@ -1,5 +1,3 @@
-import Header from '../components/header'
-import Footer from '../components/footer'
 import styled from 'styled-components'
 import CardAgents from '../components/cardAgent'
 import db from '../../services/api'
@@ -10,19 +8,15 @@ import {TAgents} from '../shared/types/types.agents'
 export default function AgentsMenu ({data}: TAgents) {
 
   return (
-    <WrapperStyled className="wrapper">
-      <Header/>
-      <ContainerStyled className="container">        
-        {            
-          data.map((agent, idx) => (            
-            <div key={idx}>     
-              <CardAgents {...agent} />
-            </div>
-          ))        
-        }        
-      </ContainerStyled>
-      <Footer/>
-    </WrapperStyled>
+    <ContainerStyled className="container">        
+      {            
+        data.map((agent, idx) => (            
+          <div key={idx}>     
+            <CardAgents {...agent} />
+          </div>
+        ))        
+      }        
+    </ContainerStyled>
   )
 }
 
@@ -54,10 +48,14 @@ export const getStaticProps : GetStaticProps = async () => {
 }
 
 //styled components
-const WrapperStyled = styled.div`  
-`
+
 const ContainerStyled = styled.div`
+  display: flex;
   flex-wrap: wrap;
   align-content: center;
-  padding: 10% !important;
+  padding: 10%;  
+  flex: 1;
+  height: 86vh;  
+  justify-content: center;
+  gap: 1rem;
 `

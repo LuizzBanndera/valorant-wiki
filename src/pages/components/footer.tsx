@@ -10,6 +10,7 @@ export default function FooterFC () {
 }
 
 const FooterStyled = styled.div`
+  background: red;
   @media(max-width: 820px ) {
     position: fixed;
     bottom: 0;

@@ -1,8 +1,6 @@
 import type { NextPage } from 'next'
 import styled from 'styled-components'
 import CardMenu from './components/cardMenu'
-import Header from './components/header'
-import Footer from './components/footer'
 
 const Items  = [
   {
@@ -20,40 +18,22 @@ const Items  = [
 ]
 
 const Home: NextPage = () => {
-  return (    
-    <WrapperStyled>
-      <Header />
+  return (
       <ContainerStyled>
         {Items.map(({title, image}, idx) => (
           <ItemStyled key={idx} image={image} position={idx+1}>
             <CardMenu title={title}/>
           </ItemStyled>
-        ))}        
+        ))}
           <BackGroundStyled/>
       </ContainerStyled>
-      <Footer/>      
-    </WrapperStyled>
   )
 }
 
-const WrapperStyled = styled.div`
-  display: flex;
-  min-height: 100vh;
-  padding: 0 1rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;  
-
-  @media(max-width: 820px) {
-    width: fit-content;
-  }
-`
 const ContainerStyled = styled.ul`
-  padding: 5rem 0;
-  flex: 1;
   display: flex;
-  flex-direction: row;
+  min-height: 86vh;
+  padding: 3rem;  
   justify-content: center;
   align-items: center;
   gap: 1rem;

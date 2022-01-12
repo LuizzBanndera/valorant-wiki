@@ -1,79 +1,87 @@
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
 import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import {AvgColor} from '../../shared/utils'
+import { repeat } from 'lodash'
+
+
+type TStyledProps = {   
+  idx: number
+}
 
 export default function Agent(agent: TAgentData) {
   
-  const {data} = agent
-
-  console.log(data);
-  
+  const {data} = agent    
   
   const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
   const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
-
+  
   const handleAbilitie = (description: string, name : string) => {
     setAbiiliteDescription(description)
     setAbilitieName(name)
-  }  
+  }
   
-  return (
-    <Wrapper className="wrapper">
-    <Header/>
-      <Container className="container">       
-        <React.Fragment >
-          <ImageWrapper>
-            <div>              
-              <p className='label'>{data.displayName}</p>
-              <p className='label'>{data.displayName}</p>
-              <p className='label'>{data.displayName}</p>
-              <p className='label'>{data.displayName}</p>
-              <p className='label'>{data.displayName}</p>
-            </div>
-            <Image id="agent" src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
-            <div id="square"></div>
-          </ImageWrapper>
-          <Bio>
-          <Details>
-            <AgentDetail>
-              <p className='label'>{data.displayName}</p>
-              <p>{data.description}</p>
-            </AgentDetail>
-            <RoleDetail>
-              <p className='label'>/{data.role.displayName}</p>
-              <p>{data.role.description}</p>
-            </RoleDetail>
-            <Skills>
-              <p className='label'>/HABILIDADES/<a>{abilitieName}</a></p>
-              <SkillsDetails>
-                {data.abilities.map((abilitie, idx) => (                  
-                  <SkillImage key={idx} onMouseOver={() => handleAbilitie(abilitie.description, abilitie.displayName)}>
-                    {
-                      abilitie.displayIcon
-                      ?
-                      <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
-                      :
-                      <a>P</a>
-                    }
-                  </SkillImage>                  
-                ))}      
-              </SkillsDetails>
-            </Skills>
-          </Details>          
-              <SkillDescription>                
-                <p>{abilitieDescription}</p>
-              </SkillDescription>
-          </Bio>
-        </React.Fragment>           
-      </Container>
-    <Footer/>
-  </Wrapper>
+  const agentName = () => {
+
+    for (let index = 0; index < 5; index++) {
+      return <p className='label'>{data.displayName}</p>      
+    }
+  }
+
+   agentName()
+
+
+  return (    
+    <Container>               
+      <ImageWrapper>
+        <div> 
+          {
+            Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))
+          }
+        </div>
+        <Image id="agent" src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
+        <Square/>
+      </ImageWrapper>
+      <Bio>
+      <Details>
+        <AgentDetail>
+          <p className='label'>{data.displayName}</p>
+          <p>{data.description}</p>
+        </AgentDetail>
+        <RoleDetail>
+          <p className='label'>/{data.role.displayName}</p>
+          <p>{data.role.description}</p>
+        </RoleDetail>
+        <Skills>
+          <p className='label'>/HABILIDADES/<a>{abilitieName}</a></p>
+          <SkillsDetails>
+            {data.abilities.map((abilitie, idx) => (                  
+              <SkillImage              
+              key={idx} 
+              idx={idx}
+              onMouseOver={() => handleAbilitie(abilitie.description, abilitie.displayName)}
+              >                
+                {                  
+                  abilitie.displayIcon
+                  ?
+                  <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie'/>
+                  :
+                  <a>P</a>
+                }
+              </SkillImage>                  
+            ))}      
+          </SkillsDetails>
+        </Skills>
+      </Details>          
+          <SkillDescription>                
+            <p>{abilitieDescription}</p>
+          </SkillDescription>
+      </Bio>
+    </Container>
   )
 }
 
@@ -125,7 +133,18 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
 }
 
 const Container = styled.div`
-justify-content: center;
+  display: flex;
+  z-index: 0;
+  flex: 1;
+  padding: 3rem;
+  height: 86vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+  padding: 0 1rem;
+
   #agent {
     z-index: 0;  
   }
@@ -133,62 +152,54 @@ justify-content: center;
     max-width: none !important;
     margin: none;      
   }
-`
-const Wrapper = styled.div`
-  width: 100%;
-  align-items: flex-start;
-  justify-content: center !important;
-  flex-direction: row !important ;
   p {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;    
   }  
   .label {
     font-size: 20px;    
-  }
+  }  
 `
 const ImageWrapper = styled.div`
   display: flex;
-  z-index: -1;
+  z-index: 0;
   align-items: center;
 
   div .label {
     position: relative;
     font-size: 6rem;
-    right: -27rem;    
+    right: -29rem;    
     z-index: -1;
-    color: #858585;
+    color: #ece8e1;
   }
   #agent {
     position: absolute !important;
-    right: -299px !important;
+    left: 20% !important;
   }
-  #square { 
-    position: relative; 
-    background-color: #161616;
-    left: -42rem;
-    width: 40rem;
-    height: 38rem;  
-    z-index: -2;
-  }
+`
+const Square = styled.div`
+  position: relative; 
+  background-color: #FF4654;
+  right: 41%;
+  width: 30rem;
+  height: 38rem;  
+  z-index: -2;
 `
 const Bio = styled.div`
   display: flex;
   flex-direction: column;  
   position: relative;
-  min-width: 450px;
-  left: -40rem;
-  z-index: 1;
+  left: -33rem;
   min-height: 38rem;
-  min-width: 470px;
+  min-width: 500px;
 `
 const Details = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   border-style: groove;
-  /* border-color: #FF4654; */
   max-width: 40rem;  
   background-color: whitesmoke;
+  border-color: #ff4654c2;
   padding: 0.5rem;
   transition: all 500ms;
   font-size: 14px;
@@ -227,17 +238,15 @@ const SkillsDetails = styled.div`
   display: flex;  
   height: 6rem;
   padding: 0.5rem 0;
-  gap: 1.5rem;
-  width: max-content;
+  width: auto;
   `
-const SkillImage = styled.div`
+const SkillImage = styled.div<TStyledProps>`
 display: flex;  
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  width: 5rem;    
-  background-color: #858585;
-  
+  width: 5rem;       
+  background-color: #858585;  
   :hover {
     background-color: #FF4654;
   }  
