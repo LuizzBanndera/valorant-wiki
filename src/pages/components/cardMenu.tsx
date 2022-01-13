@@ -5,11 +5,11 @@ export default function CardMenu (props: any) {
   return (
     <Bounce>
       <CardStyled {...props}>
-        {/* <Label className="ter">{props.name ? props.name : 'menu'}</Label> */}
-        {/* <Label className="sec">{props.name ? props.name : 'menu'}</Label> */}
+        <Label className="ter">{props.name ? props.name : 'menu'}</Label>
+        <Label className="sec">{props.name ? props.name : 'menu'}</Label>
         <Label className="first">{props.name ? props.name : 'menu'}</Label>
-        {/* <Label className="sec">{props.name ? props.name : 'menu'}</Label> */}
-        {/* <Label className="ter">{props.name ? props.name : 'menu'}</Label> */}
+        <Label className="sec">{props.name ? props.name : 'menu'}</Label>
+        <Label className="ter">{props.name ? props.name : 'menu'}</Label>
       </CardStyled>
     </Bounce>
   )
@@ -30,7 +30,6 @@ const CardStyled = styled.button`
   flex-direction: column;
   height: 450px;
   width: 250px;
-  background-color: darkgrey;
   background-color: #858585;
   color: whitesmoke;
   font-size: 52px;

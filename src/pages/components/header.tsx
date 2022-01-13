@@ -43,12 +43,15 @@ const NavStyled = styled(Nav)`
   display: flex;
   color: whitesmoke;
   width: 100%;
-  height: 50px;  
   padding: 10px;
   gap: 20px !important;
   letter-spacing: 2px;
   border-radius: 2px;
   font-family: 'Anton', cursive;
+
+  @media (max-width: 576px) {
+    justify-content: space-between;  
+  }  
 `
 
 const ItemStyled = styled(Nav.Item)`

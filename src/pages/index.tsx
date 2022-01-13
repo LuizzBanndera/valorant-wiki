@@ -39,18 +39,16 @@ const Home: NextPage = () => {
 }
 
 const ContainerStyled = styled.ul`
+  all: unset;
   display: flex;  
-  min-height: 85vh;  
+  min-height: 87vh;  
   justify-content: center;
   align-items: center;
   gap: 1rem;
   list-style-type: none;
-  padding-inline-start: 0px;
 
   @media (max-width: 576px) {
-    flex-direction: column;
-    height: 100%;
-    min-height: auto;
+    flex-direction: column;    
   }
 `
 const BackGroundStyled = styled.div`  
