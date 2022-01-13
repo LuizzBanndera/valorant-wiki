@@ -39,12 +39,19 @@ const Home: NextPage = () => {
 }
 
 const ContainerStyled = styled.ul`
-  display: flex;
+  display: flex;  
   min-height: 85vh;  
   justify-content: center;
   align-items: center;
   gap: 1rem;
   list-style-type: none;
+  padding-inline-start: 0px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    height: 100%;
+    min-height: auto;
+  }
 `
 const BackGroundStyled = styled.div`  
   position: fixed;
@@ -55,9 +62,13 @@ const BackGroundStyled = styled.div`
   left: 0;
   pointer-events: none;  
   background-position: bottom right;  
-  background-repeat: no-repeat;    
+  background-repeat: no-repeat;
+
+  @media (max-width: 576px) {
+    display: none;
+  }  
   `
-const ItemStyled = styled.li<{image: string; position: number}>`
+const ItemStyled = styled.li<{image: string; position: number}>`  
   :nth-child(${(p) => p.position}):hover ~ div {
     background-image: url(${(p) => p.image})!important;
     z-index: auto;

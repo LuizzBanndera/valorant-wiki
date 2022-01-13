@@ -49,16 +49,6 @@ const NavStyled = styled(Nav)`
   letter-spacing: 2px;
   border-radius: 2px;
   font-family: 'Anton', cursive;
-
-  @media(max-width: 820px) {
-    margin-top: 10px;
-    font-size: 44px;
-    justify-content: center;
-    img {
-      visibility:hidden;
-      display: none !important;
-    }
-  }
 `
 
 const ItemStyled = styled(Nav.Item)`

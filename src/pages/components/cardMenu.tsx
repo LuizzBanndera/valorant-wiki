@@ -5,15 +5,22 @@ export default function CardMenu (props: any) {
   return (
     <Bounce>
       <CardStyled {...props}>
-        <p className="ter">{props.name ? props.name : 'menu'}</p>
-        <p className="sec">{props.name ? props.name : 'menu'}</p>
-        <p className="first">{props.name ? props.name : 'menu'}</p>
-        <p className="sec">{props.name ? props.name : 'menu'}</p>
-        <p className="ter">{props.name ? props.name : 'menu'}</p>
+        {/* <Label className="ter">{props.name ? props.name : 'menu'}</Label> */}
+        {/* <Label className="sec">{props.name ? props.name : 'menu'}</Label> */}
+        <Label className="first">{props.name ? props.name : 'menu'}</Label>
+        {/* <Label className="sec">{props.name ? props.name : 'menu'}</Label> */}
+        {/* <Label className="ter">{props.name ? props.name : 'menu'}</Label> */}
       </CardStyled>
     </Bounce>
   )
 }
+
+const Label = styled.p`
+  @media (max-width: 576px) {
+    display: ${props => props.className !== 'first' ? 'none' : 'block'};
+    visibility: ${props => props.className !== 'first' ? 'hidden' : 'visible'};
+  }
+`
 
 const CardStyled = styled.button`
   all: unset;
@@ -45,7 +52,12 @@ const CardStyled = styled.button`
     letter-spacing: 3px;
   }
   :hover {    
-  background-color: #FF4654;
-  z-index: 1;
-}
+    background-color: #FF4654;
+    z-index: 1;
+  }
+
+  @media (max-width: 576px) {
+    height: 175px;    
+    width: 300px;
+  }
 `

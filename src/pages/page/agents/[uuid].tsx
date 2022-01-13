@@ -169,7 +169,7 @@ const ImageWrapper = styled.div`
     font-size: 6rem;
     right: -29rem;    
     z-index: -1;
-    color: #ece8e1;
+    color: #bbbbbb;
   }
   #agent {
     position: absolute !important;
