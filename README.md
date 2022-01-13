@@ -8,12 +8,23 @@
   <img src="https://img.shields.io/badge/version-1.00-green"/>
 </ul>
 
+<h4 align="center"> 🚧 Em construção...  🚧</h4>
+
+### Features
+- [x] Menu inicial
+- [x] Seleção de agentes
+- [x] Detalhes do agente
+- [ ] Seleção/detalhes de armas
+- [ ] Seleção/detalhes de mapas
+
 # Tabela de conteúdos
-=================
 <ul>
-  <li href="#Sobre">Sobre</li>
-  <li>Tabela de conteúdos</li>
+  <li><a href="#sobre">Sobre</a></li>
+  <li><a href="#tabela-de-conteúdos">Tabela de conteúdos</a></li>
+  <li><a href="#features">Features</a></li>  
   <li>Instalação</li>
   <li>Como usar</li>
   <li>Tecnologias</li>
 </ul>
+
+# Instalação
