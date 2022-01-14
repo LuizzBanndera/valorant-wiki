@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <NextNProgress color='red' options={{ showSpinner: false }} />
       <Header/>
-      <Component {...pageProps} />
+      <div className="content">
+        <Component {...pageProps} />
+      </div>
       <Footer/>
     </>
   )

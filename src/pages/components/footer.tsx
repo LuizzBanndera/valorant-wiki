@@ -9,6 +9,6 @@ export default function FooterFC () {
   )
 }
 
-const FooterStyled = styled.div`
-      
+const FooterStyled = styled.div`  
+  
 `
