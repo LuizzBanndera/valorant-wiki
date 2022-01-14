@@ -5,9 +5,6 @@ import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import {AvgColor} from '../../shared/utils'
-import { repeat } from 'lodash'
-
 
 type TStyledProps = {   
   idx: number
@@ -37,15 +34,17 @@ export default function Agent(agent: TAgentData) {
 
   return (    
     <Container>               
-      <ImageWrapper>
-        <div> 
-          {
-            Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))
-          }
+      <HeaderContainer>
+        <div className='image-container'>
+          <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
         </div>
-        <Image id="agent" src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
-        <Square/>
-      </ImageWrapper>
+        <div className='header-content'>
+          <AgentName> 
+            {Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))}
+          </AgentName>
+          <SquareBackGround/>    
+        </div>
+      </HeaderContainer>
       <Bio>
       <Details>
         <AgentDetail>
@@ -134,82 +133,71 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
 
 const Container = styled.div`
   display: flex;
-  z-index: 0;
-  flex: 1;
-  padding: 3rem;
-  height: 86vh;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  list-style-type: none;
-  padding: 0 1rem;
+  flex-direction: column;
 
-  #agent {
-    z-index: 0;  
-  }
-  img {
-    max-width: none !important;
-    margin: none;      
-  }
-  p {
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;    
-  }  
-  .label {
-    font-size: 20px;    
-  }  
 `
-const ImageWrapper = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
-  z-index: 0;
   align-items: center;
 
-  div .label {
-    position: relative;
-    font-size: 6rem;
-    right: -29rem;    
-    z-index: -1;
-    color: #bbbbbb;
+  .image-container {
+    display: contents;
+    > div {
+      position: absolute !important;
+      z-index: 2 !important;   
+    }
   }
-  #agent {
-    position: absolute !important;
-    left: 20% !important;
+  
+  .header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+`
+const AgentName = styled.div`
+  color: #666666;
+
+  @media (max-width: 576px) {
+    position: relative;
+    z-index: 1;
+    left: 35px;
+    p {
+      font-size: 50px;
+    }
   }
 `
-const Square = styled.div`
-  position: relative; 
+const SquareBackGround = styled.div`
   background-color: #FF4654;
-  right: 41%;
-  width: 30rem;
-  height: 38rem;  
-  z-index: -2;
+
+  left: 25px !important;
+  @media (max-width: 576px) {
+    position: absolute;
+    width: 15rem;
+    height: 20rem;
+  }
 `
 const Bio = styled.div`
   display: flex;
-  flex-direction: column;  
-  position: relative;
-  left: -33rem;
-  min-height: 38rem;
-  min-width: 500px;
+  flex-direction: column;    
+  min-width: 100%;
+
+  @media (max-width: 576px) {
+
+  }
 `
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  border-style: groove;
-  max-width: 40rem;  
-  background-color: whitesmoke;
-  border-color: #ff4654c2;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   transition: all 500ms;
   font-size: 14px;
 `
 const AgentDetail = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 40rem;
 
-  .label {
+  .label {    
     font-size: 48px;
     color: #FF4654;
   }
@@ -217,17 +205,14 @@ const AgentDetail = styled.div`
 const RoleDetail = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 40rem;
-  margin-left: 20px;
   .label {
     color: #858585;
     border-bottom-style: groove;
   }
 `
-const Skills = styled.div`
-  margin-left: 20px;  
+const Skills = styled.div`  
   .label {
-    border-bottom-style: groove;
+
     color: #858585;
     a {
       color: #FF4654;
@@ -237,8 +222,7 @@ const Skills = styled.div`
 const SkillsDetails = styled.div`
   display: flex;  
   height: 6rem;
-  padding: 0.5rem 0;
-  width: auto;
+  padding: 0.5rem 0;    
   `
 const SkillImage = styled.div<TStyledProps>`
 display: flex;  
@@ -258,8 +242,7 @@ display: flex;
   }
 `
 const SkillDescription = styled.div`    
-  max-width: 40rem;
   margin-top: 0px;
-  font-size: 13px;  
-  margin-left: 25px;
+  font-size: 14px;
+  padding: 0 0.5rem;
 `
