@@ -36,7 +36,7 @@ export default function Agent(agent: TAgentData) {
     <Container>               
       <HeaderContainer>
         <div className='image-container'>
-          <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
+          {/* <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/> */}
         </div>
         <div className='header-content'>
           <AgentName> 
@@ -135,6 +135,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
 `
 const HeaderContainer = styled.div`
   display: flex;
@@ -179,11 +183,11 @@ const SquareBackGround = styled.div`
 `
 const Bio = styled.div`
   display: flex;
-  flex-direction: column;    
-  min-width: 100%;
+  flex-direction: column;
+  max-width: min-content;
 
   @media (max-width: 576px) {
-
+    min-width: 100%;
   }
 `
 const Details = styled.div`
