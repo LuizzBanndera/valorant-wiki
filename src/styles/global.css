@@ -4,7 +4,7 @@ html,body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #EBE8E0;
 }
-/*#262626*/
+
 a {
   color: inherit;
   text-decoration: none;
@@ -48,10 +48,4 @@ a {
   justify-content: center;
   align-items: center;        
   background: linear-gradient(0deg, rgba(235,232,224,1) 0%, rgba(235,232,224,0.8329466357308585) 35%, rgba(235,232,224,0.43) 100%);
-}
-
-/* responsive medias */
-
-@media (max-width: 576px) {
-
 }

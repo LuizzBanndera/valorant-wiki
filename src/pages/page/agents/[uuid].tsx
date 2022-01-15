@@ -135,7 +135,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   
-  @media (min-width: 768px) {
+  @media (min-width: 880px) {
     flex-direction: row;
     height: 88vh;
     align-items: center;
@@ -168,7 +168,7 @@ const AgentName = styled.div`
   font-size: 5rem;
   margin-left: 15px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 880px) {
     z-index: 1;
     left: 35px;
     p {
@@ -176,8 +176,8 @@ const AgentName = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
-    position: fixed;    
+  @media (min-width: 880px) {
+    position: absolute;    
   }
 `
 const SquareBackGround = styled.div`
@@ -186,7 +186,7 @@ const SquareBackGround = styled.div`
   width: 25rem;
   position: relative;  
   z-index: 0;
-  @media (max-width: 576px) {
+  @media (max-width: 880px) {
     left: 25px !important;
     position: absolute;
     width: 15rem;
@@ -202,7 +202,7 @@ const Bio = styled.div`
   min-width: 400px;
   height: 80%;
   
-  @media (max-width: 576px) {
+  @media (max-width: 880px) {
     margin-left: 0;
     min-width: 100%;
   }
