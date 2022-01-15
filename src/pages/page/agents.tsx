@@ -53,7 +53,7 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  padding: 0 5%;  
+  padding: 2% 5%;  
   flex: 1;
   justify-content: center;
   gap: 1rem;
