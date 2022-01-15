@@ -47,7 +47,7 @@ const ContainerStyled = styled.ul`
   gap: 1rem;
   list-style-type: none;
 
-  @media (max-width: 576px) {
+  @media (max-width: 880px) {
     flex-direction: column;    
   }
 `
@@ -62,7 +62,7 @@ const BackGroundStyled = styled.div`
   background-position: bottom right;  
   background-repeat: no-repeat;
 
-  @media (max-width: 576px) {
+  @media (max-width: 880px) {
     display: none;
   }  
   `
