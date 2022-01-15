@@ -36,7 +36,7 @@ export default function Agent(agent: TAgentData) {
     <Container>               
       <HeaderContainer>
         <div className='image-container'>
-          {/* <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/> */}
+          <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
         </div>
         <div className='header-content'>
           <AgentName> 
@@ -134,6 +134,7 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -149,6 +150,8 @@ const HeaderContainer = styled.div`
     > div {
       position: absolute !important;
       z-index: 2 !important;   
+      max-width: 40rem !important;
+      top: 1rem !important;
     }
   }
   
@@ -161,6 +164,7 @@ const HeaderContainer = styled.div`
 `
 const AgentName = styled.div`
   color: #666666;
+  z-index: 1;
 
   @media (max-width: 576px) {
     position: relative;
@@ -170,12 +174,20 @@ const AgentName = styled.div`
       font-size: 50px;
     }
   }
+
+  font-size: 5rem;
+  @media (min-width: 768px) {
+  }
 `
 const SquareBackGround = styled.div`
   background-color: #FF4654;
-
-  left: 25px !important;
+  height: 32rem;
+  width: 25rem;
+  position: relative;
+  right: 10rem;
+  z-index: 0;
   @media (max-width: 576px) {
+    left: 25px !important;
     position: absolute;
     width: 15rem;
     height: 20rem;
@@ -185,7 +197,7 @@ const Bio = styled.div`
   display: flex;
   flex-direction: column;
   max-width: min-content;
-
+  z-index: 1;
   @media (max-width: 576px) {
     min-width: 100%;
   }
