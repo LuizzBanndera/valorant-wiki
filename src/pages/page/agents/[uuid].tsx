@@ -39,10 +39,10 @@ export default function Agent(agent: TAgentData) {
           <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
         </div>
         <div className='header-content'>
+          <SquareBackGround/>    
           <AgentName> 
             {Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))}
           </AgentName>
-          <SquareBackGround/>    
         </div>
       </HeaderContainer>
       <Bio>
@@ -165,9 +165,9 @@ const HeaderContainer = styled.div`
 const AgentName = styled.div`
   color: #666666;
   z-index: 1;
+  position: relative;
 
   @media (max-width: 576px) {
-    position: relative;
     z-index: 1;
     left: 35px;
     p {
@@ -184,7 +184,7 @@ const SquareBackGround = styled.div`
   height: 32rem;
   width: 25rem;
   position: relative;
-  right: 10rem;
+  left: -45%;
   z-index: 0;
   @media (max-width: 576px) {
     left: 25px !important;
