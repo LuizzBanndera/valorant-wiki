@@ -23,7 +23,6 @@ export default function Agent(agent: TAgentData) {
   }
   
   const agentName = () => {
-
     for (let index = 0; index < 5; index++) {
       return <p className='label'>{data.displayName}</p>      
     }
@@ -39,10 +38,10 @@ export default function Agent(agent: TAgentData) {
           <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
         </div>
         <div className='header-content'>
-          <SquareBackGround/>    
           <AgentName> 
             {Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))}
           </AgentName>
+          <SquareBackGround/>    
         </div>
       </HeaderContainer>
       <Bio>
@@ -135,9 +134,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  
   @media (min-width: 768px) {
     flex-direction: row;
+    height: 88vh;
+    align-items: center;
   }
 
 `
@@ -151,7 +152,6 @@ const HeaderContainer = styled.div`
       position: absolute !important;
       z-index: 2 !important;   
       max-width: 40rem !important;
-      top: 1rem !important;
     }
   }
   
@@ -163,9 +163,10 @@ const HeaderContainer = styled.div`
 
 `
 const AgentName = styled.div`
-  color: #666666;
+  color: #cdcdcd;
   z-index: 1;
-  position: relative;
+  font-size: 5rem;
+  margin-left: 15px;
 
   @media (max-width: 576px) {
     z-index: 1;
@@ -175,16 +176,15 @@ const AgentName = styled.div`
     }
   }
 
-  font-size: 5rem;
   @media (min-width: 768px) {
+    position: fixed;    
   }
 `
 const SquareBackGround = styled.div`
   background-color: #FF4654;
   height: 32rem;
   width: 25rem;
-  position: relative;
-  left: -45%;
+  position: relative;  
   z-index: 0;
   @media (max-width: 576px) {
     left: 25px !important;
@@ -197,8 +197,13 @@ const Bio = styled.div`
   display: flex;
   flex-direction: column;
   max-width: min-content;
-  z-index: 1;
+  z-index: 2;
+  margin-left: 65px;
+  min-width: 400px;
+  height: 80%;
+  
   @media (max-width: 576px) {
+    margin-left: 0;
     min-width: 100%;
   }
 `
