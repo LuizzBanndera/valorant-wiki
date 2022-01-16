@@ -11,7 +11,6 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^0.22.0",
-    "fast-average-color": "^7.0.1",
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "nextjs-progressbar": "^0.0.13",
