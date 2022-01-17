@@ -1,18 +1,23 @@
 import styled from "styled-components"
 import Image from "next/image"
+import { Bounce } from "../shared/motion"
 
 export default function CardWeapons(data: TWeapon) {
+
+  const category = data.category.substring(data.category.indexOf('::')+2)
   
   return(
     <Container>
-      <div className="image-container">
-        <Image className="image" src={data.displayIcon} alt="weapon" layout="fill" objectFit="contain"/>
-        <div className="square-background"/>
-      </div>
-      <div className="description label">
-        <a>{data.displayName}</a>
-        <p>Assalt Rifle</p>
-      </div>
+      <Bounce>           
+        <div className="image-container">
+          <Image className="image" src={data.displayIcon} alt="weapon" layout="fill" objectFit="contain"/>
+          <div className="square-background"/>
+        </div>
+        <div className="description label">
+          <a>_{data.displayName}.</a>
+          <p>/{category}</p>
+        </div>
+      </Bounce>
     </Container>
   )
 }
@@ -20,53 +25,49 @@ export default function CardWeapons(data: TWeapon) {
 //styled components
 const Container = styled.div`
   display: flex;
+  -webkit-tap-highlight-color: transparent;
   flex-direction: column;
   cursor: pointer;
-
-  transition: .3s ease-in-out;  
+  height: 140px;
+  transition: all .3s ease-in-out;  
   :hover {
     background-color: #FF4654;
     border-color:#FF4654;
-    color: whitesmoke;    
-  }  
-
+  }
+  
   .image-container {
-    width: 312px;
-    height: 200px;
+    width: 312px;    
     position: relative;
     z-index: 0;
+    @media (min-width: 880px) {
+      width: 512px;
+    }
   }
 
   .square-background {
     width: 250px;
     height: 100px;
     margin-top: 20px;
-    margin-left: 20px;
-    background-color: #FF4654;
+    margin-left: 20px;    
   }
 
   .description {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    padding: 1rem 1rem 0;
-    border-bottom-style: solid;
-    position: relative;
-    top: -5rem;
-    color: #858585;
+    padding: 1rem 2rem 0;    
+    position: relative;    
     font-size: 12px;
-
+    color: #0f1923;    
+    top: -9.5rem; 
+    
     a {
-      color: #FF4654;
-      font-size: 20px;
+      color: #0f1923;
+      font-size: 30px;
     }
-  }
-  :hover a {
-    transition: .3s ease-in-out;
-    color: whitesmoke;
-  } 
-  :hover p {
-    transition: .3s ease-in-out;
-    color: whitesmoke;
+
+    p {
+      position: relative;      
+    }
   }
 `

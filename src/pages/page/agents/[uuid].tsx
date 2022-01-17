@@ -5,6 +5,7 @@ import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import BackGround from 'public/images/v_background.svg'
 
 type TStyledProps = {   
   idx: number
@@ -163,7 +164,7 @@ const HeaderContainer = styled.div`
 
 `
 const AgentName = styled.div`
-  color: #cdcdcd;
+  color: #0f1923;
   z-index: 1;
   font-size: 5rem;
   margin-left: 15px;
@@ -227,14 +228,14 @@ const RoleDetail = styled.div`
   display: flex;
   flex-direction: column;
   .label {
-    color: #858585;
+    color: #0f1923;
     border-bottom-style: groove;
   }
 `
 const Skills = styled.div`  
   .label {
 
-    color: #858585;
+    color: #0f1923;
     a {
       color: #FF4654;
     }
@@ -251,7 +252,7 @@ display: flex;
   justify-content: center;
   align-items: center;
   width: 5rem;       
-  background-color: #858585;  
+  background-color: #0f1923;  
   :hover {
     background-color: #FF4654;
   }  

@@ -26,8 +26,7 @@ const Card = styled.div`
   flex-direction: column;
   width: 145px;  
   font-family: 'Anton', cursive; 
-  cursor: pointer;
-  border-bottom-style: solid;  
+  cursor: pointer;  
   border-color:#666666;
   color: #666666;
   transition: .3s ease-in-out;  
