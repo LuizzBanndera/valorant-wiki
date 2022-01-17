@@ -71,53 +71,7 @@ export default function Agent(agent: TAgentData) {
   )
 }
 
-export const getStaticPaths : GetStaticPaths = async () => {
-
-  const res : AxiosResponse<TAgents> = await db.get('/agents', {
-    params: {        
-      isPlayableCharacter: true
-    }
-  })
-
-  const data = res.data.data
-
-  const paths = data.map((agent: any) => ({    
-    params: {uuid: agent.uuid}
-  }))
-
-  return {paths, fallback: false}
-
-}
-
-export const getStaticProps : GetStaticProps = async ({params}: any) => {  
-
-  try {
-    const res : AxiosResponse<TAgents> = await db.get(`/agents/${params.uuid}`, {
-      params: {        
-        isPlayableCharacter: true,
-      }
-    })
-    
-    const data = res.data.data    
-    
-    return {
-      props: {
-        data
-      },
-      revalidate: 180
-    }
-
-  } catch (error) {
-    return {
-      props: {
-        error
-      },
-      revalidate: 10
-    }
-  }
-
-}
-
+//styled-components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -259,3 +213,52 @@ const SkillsDetails = styled.div`
     font-size: 14px;
   }
   `
+
+//functions-next
+
+export const getStaticPaths : GetStaticPaths = async () => {
+
+  const res : AxiosResponse<TAgents> = await db.get('/agents', {
+    params: {        
+      isPlayableCharacter: true
+    }
+  })
+
+  const data = res.data.data
+
+  const paths = data.map((agent: any) => ({    
+    params: {uuid: agent.uuid}
+  }))
+
+  return {paths, fallback: false}
+
+}
+
+export const getStaticProps : GetStaticProps = async ({params}: any) => {  
+
+  try {
+    const res : AxiosResponse<TAgents> = await db.get(`/agents/${params.uuid}`, {
+      params: {        
+        isPlayableCharacter: true,
+      }
+    })
+    
+    const data = res.data.data    
+    
+    return {
+      props: {
+        data
+      },
+      revalidate: 180
+    }
+
+  } catch (error) {
+    return {
+      props: {
+        error
+      },
+      revalidate: 10
+    }
+  }
+
+}
