@@ -27,8 +27,12 @@ export default function Agent(agent: TAgentData) {
   return (    
     <Container>
       <AgentBio>
-        <p className='label'>{data.displayName}</p>
+        <p className='label'>{data.displayName}.</p>
         <p className='g-label'>{data.description}</p>
+        <div>
+          <p className='g-title'>{`//`+data.role.displayName}</p>
+          <p className='g-label'>{data.role.description}</p>
+        </div>        
       </AgentBio>               
       <AgentImage>
         <div className='image-container'>
@@ -41,13 +45,9 @@ export default function Agent(agent: TAgentData) {
           <SquareBackGround/>    
         </div>
       </AgentImage>
-      <Details>
-        <RoleDetail>
-          <p className='g-title'>/{data.role.displayName}</p>
-          <p className='g-label'>{data.role.description}</p>
-        </RoleDetail>
+      <AgentDetails>
         <AgentSkills>                
-        <p className='g-title'>/HABILIDADES</p>
+        <p className='g-title'>{`//HABILIDADES`}</p>
         {data.abilities.map((abilitie, idx) => (                  
           <SkillsDetails key={idx}>
             {                  
@@ -66,7 +66,7 @@ export default function Agent(agent: TAgentData) {
           </SkillsDetails>          
         ))}
         </AgentSkills>
-      </Details>          
+      </AgentDetails>          
     </Container>
   )
 }
@@ -76,12 +76,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3rem;
   padding: 2rem;
   
   @media (min-width: 880px) {
-    flex-direction: row;
-    height: 88vh;
+    gap: 3rem;
+    flex-direction: row;    
     align-items: center;
   }
 
@@ -89,7 +88,6 @@ const Container = styled.div`
 const AgentImage = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 5rem;
 
   .image-container {
     display: contents;
@@ -101,46 +99,41 @@ const AgentImage = styled.div`
   }
   
   .header-content {
-    width: 100%;
     display: flex;
     align-items: center;
   }
 
-`
+  @media (min-width: 880px) {
+  margin: 0 3rem 0 0;
+  }
 
-const AgentSkills = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: min-content;
-  z-index: 2;  
+`
+const AgentDetails = styled.div`
+  margin: 0 0.5rem;
+  transition: all 500ms;
+  max-width: min-content;  
   min-width: 400px;
-  height: 80%;
+  height: 80vh;
+  overflow: auto;
+  z-index: 2;  
+  `
+const AgentSkills = styled.div`
+  z-index: 2;
+  min-width: 400px;
 
   .image-container {
-    display: flex;
-    flex-direction: column;    
     img {
       width: 30px;
     }    
 
     .skill-name {      
       display: flex;
-      flex-direction: row;
       align-items: center;
       gap: 0.5rem;
     }
   }
-
-  .label {
-    color: #0f1923;
-    a {
-      color: #FF4654;
-    }
-  }   
-  
-  @media (max-width: 880px) {
-    margin-left: 0;
-    min-width: 100%;
+  .g-label {
+    margin-left: 15px;
   }
 `
 const AgentName = styled.div`
@@ -148,27 +141,22 @@ const AgentName = styled.div`
   z-index: 1;
   font-size: 5rem;
   margin-left: 15px;
-
-  @media (max-width: 880px) {
-    z-index: 1;
-    left: 35px;
-    p {
-      font-size: 50px;
-    }
-  }
-
+  
   @media (min-width: 880px) {
     position: absolute;    
   }
+  @media (max-width: 880px) {
+    p {
+      font-size: 50px;
+    }
+  }  
 `
 const SquareBackGround = styled.div`
   background-color: #FF4654;
   height: 32rem;
   width: 25rem;
-  position: relative;  
-  z-index: 0;
   @media (max-width: 880px) {
-    left: 25px !important;
+    left: 25px;
     position: absolute;
     width: 15rem;
     height: 20rem;
@@ -176,46 +164,23 @@ const SquareBackGround = styled.div`
 `
 const AgentBio = styled.div`
   display: flex;
-  flex-direction: column;
-  max-width: 20%;
+  flex-direction: column;  
+  max-width: 400px;
 
   .label {    
     font-size: 48px;
     color: #FF4654;
   }
 `
-const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 0.5rem;
-  transition: all 500ms;
-  font-size: 14px;  
-  position: relative;
-  max-width: min-content;  
-`
-const RoleDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  .label {
-    color: #0f1923;
-    border-bottom-style: groove;
-  }
-`
 const SkillsDetails = styled.div`
-  display: flex;
   padding: 0.5rem 0;
-  margin-left: 5px;
-  flex-direction: column;
-  cursor: pointer;
-  align-items: flex-start;
 
   .g-title {
     font-size: 14px;
   }
-  `
+`
 
 //functions-next
-
 export const getStaticPaths : GetStaticPaths = async () => {
 
   const res : AxiosResponse<TAgents> = await db.get('/agents', {
