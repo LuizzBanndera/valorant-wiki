@@ -11,9 +11,24 @@ a {
   text-decoration: none;
 }
 
+.g-title {
+  font-family: 'Anton', cursive !important;  
+  text-transform: uppercase;
+  letter-spacing: 3px;  
+  margin: 10px 0 10px;
+  font-size: 30px;
+  color: #EBE8E0;
+}
+.g-label {
+  font-size: 14px;
+  margin: 7px 0px 0px;
+  color: #EBE8E0;
+}
+
 .label {
   font-family: 'Anton', cursive !important;
   letter-spacing: 3px;
+  margin: 10px 0 10px;
   margin: 0px;
   text-transform: uppercase;
 }
@@ -35,8 +50,6 @@ a {
   position: sticky;
   top: 0;
   z-index: 5;  
-  /* background: rgb(235,232,224);
-  background: linear-gradient(180deg, rgba(235,232,224,1) 0%, rgba(235,232,224,0.8329466357308585) 35%, rgba(235,232,224,0.4338747099767981) 100%); */
   background-color: #0f1922;
 }
 

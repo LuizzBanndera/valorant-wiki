@@ -15,14 +15,6 @@ export default function Agent(agent: TAgentData) {
   
   const {data} = agent    
   
-  const [abilitieName, setAbilitieName] = useState(data.abilities[0].displayName)
-  const [abilitieDescription, setAbiiliteDescription] = useState(data.abilities[0].description)
-  
-  const handleAbilitie = (description: string, name : string) => {
-    setAbiiliteDescription(description)
-    setAbilitieName(name)
-  }
-  
   const agentName = () => {
     for (let index = 0; index < 5; index++) {
       return <p className='label'>{data.displayName}</p>      
@@ -33,8 +25,12 @@ export default function Agent(agent: TAgentData) {
 
 
   return (    
-    <Container>               
-      <HeaderContainer>
+    <Container>
+      <AgentBio>
+        <p className='label'>{data.displayName}</p>
+        <p className='g-label'>{data.description}</p>
+      </AgentBio>               
+      <AgentImage>
         <div className='image-container'>
           <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
         </div>
@@ -44,42 +40,33 @@ export default function Agent(agent: TAgentData) {
           </AgentName>
           <SquareBackGround/>    
         </div>
-      </HeaderContainer>
-      <Bio>
+      </AgentImage>
       <Details>
-        <AgentDetail>
-          <p className='label'>{data.displayName}</p>
-          <p>{data.description}</p>
-        </AgentDetail>
         <RoleDetail>
-          <p className='label'>/{data.role.displayName}</p>
-          <p>{data.role.description}</p>
+          <p className='g-title'>/{data.role.displayName}</p>
+          <p className='g-label'>{data.role.description}</p>
         </RoleDetail>
-        <Skills>
-          <p className='label'>/HABILIDADES/<a>{abilitieName}</a></p>
-          <SkillsDetails>
-            {data.abilities.map((abilitie, idx) => (                  
-              <SkillImage              
-              key={idx} 
-              idx={idx}
-              onMouseOver={() => handleAbilitie(abilitie.description, abilitie.displayName)}
-              >                
-                {                  
-                  abilitie.displayIcon
-                  ?
-                  <Image src={abilitie.displayIcon} width={50} height={50} alt='abilitie' quality={100}/>
-                  :
-                  <a>P</a>
-                }
-              </SkillImage>                  
-            ))}      
-          </SkillsDetails>
-        </Skills>
+        <AgentSkills>                
+        <p className='g-title'>/HABILIDADES</p>
+        {data.abilities.map((abilitie, idx) => (                  
+          <SkillsDetails key={idx}>
+            {                  
+              abilitie.displayIcon
+              ?
+              <div className='image-container'>
+                <div className='skill-name'>
+                  <Image className='image' src={abilitie.displayIcon} width={50} height={50} alt='abilitie' quality={100}/>
+                  <p className='g-title'>{abilitie.displayName}</p>      
+                </div>
+                <p className='g-label'>{abilitie.description}</p>
+              </div>
+              :
+              <a>P</a>
+            }
+          </SkillsDetails>          
+        ))}
+        </AgentSkills>
       </Details>          
-          <SkillDescription>                
-            <p>{abilitieDescription}</p>
-          </SkillDescription>
-      </Bio>
     </Container>
   )
 }
@@ -135,6 +122,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
   
   @media (min-width: 880px) {
     flex-direction: row;
@@ -143,9 +132,10 @@ const Container = styled.div`
   }
 
 `
-const HeaderContainer = styled.div`
+const AgentImage = styled.div`
   display: flex;
   align-items: center;
+  margin: 0 5rem;
 
   .image-container {
     display: contents;
@@ -162,6 +152,42 @@ const HeaderContainer = styled.div`
     align-items: center;
   }
 
+`
+
+const AgentSkills = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  z-index: 2;  
+  min-width: 400px;
+  height: 80%;
+
+  .image-container {
+    display: flex;
+    flex-direction: column;    
+    img {
+      width: 30px;
+    }    
+
+    .skill-name {      
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  .label {
+    color: #0f1923;
+    a {
+      color: #FF4654;
+    }
+  }   
+  
+  @media (max-width: 880px) {
+    margin-left: 0;
+    min-width: 100%;
+  }
 `
 const AgentName = styled.div`
   color: #0f1923;
@@ -194,18 +220,14 @@ const SquareBackGround = styled.div`
     height: 20rem;
   }
 `
-const Bio = styled.div`
+const AgentBio = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: min-content;
-  z-index: 2;
-  margin-left: 65px;
-  min-width: 400px;
-  height: 80%;
-  
-  @media (max-width: 880px) {
-    margin-left: 0;
-    min-width: 100%;
+  max-width: 20%;
+
+  .label {    
+    font-size: 48px;
+    color: #FF4654;
   }
 `
 const Details = styled.div`
@@ -213,16 +235,9 @@ const Details = styled.div`
   flex-direction: column;
   padding: 0 0.5rem;
   transition: all 500ms;
-  font-size: 14px;
-`
-const AgentDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  .label {    
-    font-size: 48px;
-    color: #FF4654;
-  }
+  font-size: 14px;  
+  position: relative;
+  max-width: min-content;  
 `
 const RoleDetail = styled.div`
   display: flex;
@@ -232,39 +247,15 @@ const RoleDetail = styled.div`
     border-bottom-style: groove;
   }
 `
-const Skills = styled.div`  
-  .label {
-
-    color: #0f1923;
-    a {
-      color: #FF4654;
-    }
-  } 
-`
 const SkillsDetails = styled.div`
-  display: flex;  
-  height: 6rem;
-  padding: 0.5rem 0;    
-  `
-const SkillImage = styled.div<TStyledProps>`
-display: flex;  
+  display: flex;
+  padding: 0.5rem 0;
+  margin-left: 5px;
+  flex-direction: column;
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  width: 5rem;       
-  background-color: #0f1923;  
-  :hover {
-    background-color: #FF4654;
-  }  
-  a {
-    font-family: 'Anton', cursive !important;
-    
-    font-size: 3rem;
-    color: whitesmoke;
+  align-items: flex-start;
+
+  .g-title {
+    font-size: 14px;
   }
-`
-const SkillDescription = styled.div`    
-  margin-top: 0px;
-  font-size: 14px;
-  padding: 0 0.5rem;
-`
+  `
