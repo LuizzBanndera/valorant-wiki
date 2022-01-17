@@ -3,6 +3,7 @@ html,body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #EBE8E0;
+  background-color: #0f1922;
 }
 
 a {
@@ -34,9 +35,9 @@ a {
   position: sticky;
   top: 0;
   z-index: 5;  
-  background: rgb(235,232,224);
-  background: linear-gradient(180deg, rgba(235,232,224,1) 0%, rgba(235,232,224,0.8329466357308585) 35%, rgba(235,232,224,0.4338747099767981) 100%);
-  
+  /* background: rgb(235,232,224);
+  background: linear-gradient(180deg, rgba(235,232,224,1) 0%, rgba(235,232,224,0.8329466357308585) 35%, rgba(235,232,224,0.4338747099767981) 100%); */
+  background-color: #0f1922;
 }
 
 .footer {

@@ -55,7 +55,7 @@ const NavStyled = styled(Nav)`
 `
 
 const ItemStyled = styled(Nav.Item)`
-  color: #0f1922;
+  /* color: #0f1922; */
   display: flex;
   height: 35px;
   align-items: center;

@@ -14,7 +14,7 @@ export default function CardWeapons(data: TWeapon) {
           <div className="square-background"/>
         </div>
         <div className="description label">
-          <a>_{data.displayName}.</a>
+          <a>_{data.displayName}</a>
           <p>/{category}</p>
         </div>
       </Bounce>
@@ -29,6 +29,8 @@ const Container = styled.div`
   flex-direction: column;
   cursor: pointer;
   height: 140px;
+  border-style: groove;
+  border-width: 1px;
   transition: all .3s ease-in-out;  
   :hover {
     background-color: #FF4654;
@@ -59,15 +61,9 @@ const Container = styled.div`
     position: relative;    
     font-size: 12px;
     color: #0f1923;    
-    top: -9.5rem; 
-    
+    top: -9.5rem;    
     a {
-      color: #0f1923;
       font-size: 30px;
-    }
-
-    p {
-      position: relative;      
     }
   }
 `
