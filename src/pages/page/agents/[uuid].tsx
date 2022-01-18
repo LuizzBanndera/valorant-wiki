@@ -63,7 +63,16 @@ export default function Agent(agent: TAgentData) {
                   :
                   <></>
                 }
-                <p className='g-title'>{abilitie.displayName}</p>      
+                {
+                  idx === 4 
+                  ?
+                  <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
+                    <p className='g-title'>{abilitie.displayName}</p>
+                    <p className='g-label' style={{margin: '0 0 0 5px'}}>(passiva)</p>
+                  </div>
+                  :
+                  <p className='g-title'>{abilitie.displayName}</p>
+                }
               </div>
               <p className='g-label'>{abilitie.description}</p>
             </div>         
