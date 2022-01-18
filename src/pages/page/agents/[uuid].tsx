@@ -5,25 +5,21 @@ import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import BackGround from 'public/images/v_background.svg'
-
-type TStyledProps = {   
-  idx: number
-}
 
 export default function Agent(agent: TAgentData) {
+
+  const [imageLoaded, setImageLoaded] = useState(false)
   
-  const {data} = agent    
-  
-  const agentName = () => {
-    for (let index = 0; index < 5; index++) {
-      return <p className='label'>{data.displayName}</p>      
+  const {data} = agent
+
+  const handleLoadImage = (e: any) => {
+    const target = e.target
+    if (target.src.indexOf('data:image/gif;base64') < 0) {
+      setImageLoaded(true)
     }
   }
 
-   agentName()
-
-
+  useEffect(() => {}, [imageLoaded])
   return (    
     <Container>
       <AgentBio>
@@ -35,8 +31,16 @@ export default function Agent(agent: TAgentData) {
         </div>        
       </AgentBio>               
       <AgentImage>
-        <div className='image-container'>
-          <Image className='image' src={data.fullPortrait} quality={100}  width={800} height={800} alt='agent'/>
+        <div className='image-container'>  
+          <Image 
+            onLoad={e => handleLoadImage(e)} 
+            priority className='image' 
+            src={data.fullPortrait} 
+            quality={100}
+            width={800}
+            height={800}
+            alt='agent'
+          />
         </div>
         <div className='header-content'>
           <AgentName> 
@@ -49,20 +53,20 @@ export default function Agent(agent: TAgentData) {
         <AgentSkills>                
         <p className='g-title'>{`//HABILIDADES`}</p>
         {data.abilities.map((abilitie, idx) => (                  
-          <SkillsDetails key={idx}>
-            {                  
-              abilitie.displayIcon
-              ?
-              <div className='image-container'>
-                <div className='skill-name'>
+          <SkillsDetails key={idx}>                               
+            <div className='image-container'>
+              <div className='skill-name'>
+                {
+                  abilitie.displayIcon
+                  ?
                   <Image className='image' src={abilitie.displayIcon} width={50} height={50} alt='abilitie' quality={100}/>
-                  <p className='g-title'>{abilitie.displayName}</p>      
-                </div>
-                <p className='g-label'>{abilitie.description}</p>
+                  :
+                  <></>
+                }
+                <p className='g-title'>{abilitie.displayName}</p>      
               </div>
-              :
-              <a>P</a>
-            }
+              <p className='g-label'>{abilitie.description}</p>
+            </div>         
           </SkillsDetails>          
         ))}
         </AgentSkills>
@@ -115,7 +119,10 @@ const AgentDetails = styled.div`
   min-width: 400px;
   height: 80vh;
   overflow: auto;
-  z-index: 2;  
+  z-index: 2;
+  border-bottom-style: inset;
+  border-width: 2px;
+  border-color: var(--g-white);
   `
 const AgentSkills = styled.div`
   z-index: 2;
@@ -137,7 +144,7 @@ const AgentSkills = styled.div`
   }
 `
 const AgentName = styled.div`
-  color: #0f1923;
+  color: var(--g-darkblue);
   z-index: 1;
   font-size: 5rem;
   margin-left: 15px;
@@ -152,7 +159,7 @@ const AgentName = styled.div`
   }  
 `
 const SquareBackGround = styled.div`
-  background-color: #FF4654;
+  background-color: var(--g-red);
   height: 32rem;
   width: 25rem;
   @media (max-width: 880px) {
@@ -169,7 +176,7 @@ const AgentBio = styled.div`
 
   .label {    
     font-size: 48px;
-    color: #FF4654;
+    color: var(--g-red);
   }
 `
 const SkillsDetails = styled.div`

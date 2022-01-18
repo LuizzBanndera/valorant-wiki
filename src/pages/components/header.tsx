@@ -41,14 +41,16 @@ export default function Header () {
 
 const NavStyled = styled(Nav)`
   display: flex;
-  color: whitesmoke;
+  color: var(--g-white);
   width: 100%;
   padding: 10px;
   gap: 20px !important;
   letter-spacing: 2px;
   border-radius: 2px;
   font-family: 'Anton', cursive;
-
+  border-bottom-style: groove;
+  border-width: 2px;
+  border-color: var(--g-white);
   @media (max-width: 576px) {
     justify-content: space-between;  
   }  

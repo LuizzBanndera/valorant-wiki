@@ -30,8 +30,8 @@ const CardStyled = styled.button`
   flex-direction: column;
   height: 450px;
   width: 250px;
-  background-color: #858585;
-  color: whitesmoke;
+  background-color: var(--g-gray);
+  color: var(--g-white);
   font-size: 52px;
   font-family: 'Anton', cursive;  
   user-select: none;
@@ -41,17 +41,17 @@ const CardStyled = styled.button`
   border-radius: 2px;
   cursor: pointer;
   .sec {
-    color: rgb(203 203 203);    
+    color: #d3c7b8;    
   }
   .ter {
-    color: rgb(167 167 167);    
+    color: #ab9f90;    
   }  
   p {
     margin: 0 ;
     letter-spacing: 3px;
   }
   :hover {    
-    background-color: #FF4654;
+    background-color: var(--g-red);
     z-index: 1;
   }
 

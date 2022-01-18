@@ -17,12 +17,12 @@ a {
   letter-spacing: 3px;  
   margin: 10px 0 0px;
   font-size: 30px;
-  color: #EBE8E0;
+  color: antiquewhite;
 }
 .g-label {
   font-size: 14px;
   margin: 7px 0px 0px;
-  color: #EBE8E0;
+  color: antiquewhite;
 }
 
 .label {
@@ -62,4 +62,12 @@ a {
   justify-content: center;
   align-items: center;        
   background: linear-gradient(0deg, rgba(235,232,224,1) 0%, rgba(235,232,224,0.8329466357308585) 35%, rgba(235,232,224,0.43) 100%);
+}
+
+/*vars*/
+* {
+  --g-red: #FF4654;
+  --g-white: antiquewhite;
+  --g-darkblue: #0f1923;
+  --g-gray: #666666;
 }

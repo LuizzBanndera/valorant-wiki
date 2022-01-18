@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   const handleClick = (path: string) => (router.push(path))
 
   return (
-      <ContainerStyled>
+      <ContainerStyled image={'/images/v_background.svg'}>
         {Items.map(({title, image, path}, idx) => (
           <ItemStyled key={idx} image={image} position={idx+1}>
             <CardMenu onClick={() => handleClick(path)} name={title}/>
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
   )
 }
 
-const ContainerStyled = styled.ul`
+const ContainerStyled = styled.ul<{image: string}>`
   all: unset;
   display: flex;  
   min-height: 87vh;  
@@ -46,7 +46,9 @@ const ContainerStyled = styled.ul`
   align-items: center;
   gap: 1rem;
   list-style-type: none;
-
+  background-image: url(${p => p.image});
+  background-position: bottom left;  
+  background-repeat: no-repeat;
   @media (max-width: 880px) {
     flex-direction: column;    
   }

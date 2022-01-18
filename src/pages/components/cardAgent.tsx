@@ -27,12 +27,12 @@ const Card = styled.div`
   width: 145px;  
   font-family: 'Anton', cursive; 
   cursor: pointer;  
-  border-color:#666666;
-  color: #666666;
+  border-color: var(--g-gray);
+  color: var(--g-gray);
   transition: .3s ease-in-out;  
   :hover {
-    background-color: #FF4654;
-    border-color:#FF4654;
+    background-color: var(--g-red);
+    border-color:var(--g-red);
     color: whitesmoke;    
   }  
 
@@ -44,7 +44,7 @@ const Card = styled.div`
 
   .label {        
   font-size: 20px;
-  color: #FF4654;
+  color: var(--g-white);
   }
   
   p {
