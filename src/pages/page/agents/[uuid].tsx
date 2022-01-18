@@ -89,7 +89,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   flex-wrap: wrap;
   
   @media (min-width: 880px) {
@@ -183,7 +183,7 @@ const SquareBackGround = styled.div`
 const AgentBio = styled.div`
   display: flex;
   flex-direction: column;  
-  max-width: 400px;
+  max-width: 300px;
 
   .label {    
     font-size: 48px;
