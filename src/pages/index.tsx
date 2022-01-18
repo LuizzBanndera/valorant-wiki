@@ -27,14 +27,14 @@ const Home: NextPage = () => {
   const handleClick = (path: string) => (router.push(path))
 
   return (
-      <ContainerStyled image={'/images/v_background.svg'}>
-        {Items.map(({title, image, path}, idx) => (
-          <ItemStyled key={idx} image={image} position={idx+1}>
-            <CardMenu onClick={() => handleClick(path)} name={title}/>
-          </ItemStyled>
-        ))}
-          <BackGroundStyled/>
-      </ContainerStyled>
+     <ContainerStyled image={'/images/v_background.svg'}>
+     {Items.map(({title, image, path}, idx) => (
+       <ItemStyled key={idx} image={image} position={idx+1}>
+         <CardMenu onClick={() => handleClick(path)} name={title}/>
+       </ItemStyled>
+     ))}
+       <BackGroundStyled/>
+     </ContainerStyled>
   )
 }
 
