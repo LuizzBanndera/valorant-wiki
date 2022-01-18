@@ -44,13 +44,14 @@ const ContainerStyled = styled.ul<{image: string}>`
   min-height: 87vh;  
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 5rem;
   list-style-type: none;
   background-image: url(${p => p.image});
   background-position: bottom left;  
   background-repeat: no-repeat;
   @media (max-width: 880px) {
-    flex-direction: column;    
+    flex-direction: column;
+    gap: 2rem;
   }
 `
 const BackGroundStyled = styled.div`  

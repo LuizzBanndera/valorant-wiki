@@ -3,7 +3,7 @@ import {Bounce} from '../shared/motion'
 
 export default function CardMenu (props: any) {
   return (
-    <Bounce>
+    // <Bounce>
       <CardStyled {...props}>
         <Label className="ter">{props.name ? props.name : 'menu'}</Label>
         <Label className="sec">{props.name ? props.name : 'menu'}</Label>
@@ -11,7 +11,7 @@ export default function CardMenu (props: any) {
         <Label className="sec">{props.name ? props.name : 'menu'}</Label>
         <Label className="ter">{props.name ? props.name : 'menu'}</Label>
       </CardStyled>
-    </Bounce>
+    //</Bounce>
   )
 }
 
@@ -28,9 +28,9 @@ const CardStyled = styled.button`
   align-items: center;
   justify-content: center;  
   flex-direction: column;
-  height: 450px;
+  /* height: 450px; */
   width: 250px;
-  background-color: var(--g-gray);
+  /* background-color: var(--g-gray); */
   color: var(--g-white);
   font-size: 52px;
   font-family: 'Anton', cursive;  
@@ -41,10 +41,10 @@ const CardStyled = styled.button`
   border-radius: 2px;
   cursor: pointer;
   .sec {
-    color: #d3c7b8;    
+    color: #d3c7b882;    
   }
   .ter {
-    color: #ab9f90;    
+    color: #ab9f9038;    
   }  
   p {
     margin: 0 ;
