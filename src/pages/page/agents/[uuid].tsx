@@ -90,6 +90,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
+  flex-wrap: wrap;
   
   @media (min-width: 880px) {
     gap: 3rem;
@@ -122,20 +123,21 @@ const AgentImage = styled.div`
 
 `
 const AgentDetails = styled.div`
-  margin: 0 0.5rem;
   transition: all 500ms;
-  max-width: min-content;  
-  min-width: 400px;
   height: 80vh;
   overflow: auto;
   z-index: 2;
   border-bottom-style: inset;
   border-width: 2px;
   border-color: var(--g-white);
+
+  @media (min-width: 500px ) {
+    max-width: min-content;  
+    min-width: 400px;
+  }
   `
 const AgentSkills = styled.div`
   z-index: 2;
-  min-width: 400px;
 
   .image-container {
     img {
