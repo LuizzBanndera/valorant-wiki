@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import {Bounce} from '../shared/motion'
 
 export default function CardMenu (props: any) {
   return (
@@ -28,9 +27,7 @@ const CardStyled = styled.button`
   align-items: center;
   justify-content: center;  
   flex-direction: column;
-  /* height: 450px; */
   width: 250px;
-  /* background-color: var(--g-gray); */
   color: var(--g-white);
   font-size: 52px;
   font-family: 'Anton', cursive;  

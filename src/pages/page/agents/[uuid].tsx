@@ -5,6 +5,7 @@ import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Loading from '@db/pages/shared/types/loading'
 
 export default function Agent(agent: TAgentData) {
 
@@ -20,8 +21,10 @@ export default function Agent(agent: TAgentData) {
   }
 
   useEffect(() => {}, [imageLoaded])
-  return (    
-    <Container>
+  return (  
+ <>
+  <Loading style={{visibility: imageLoaded ? 'hidden' : 'unset'}}/>
+<Container style={{visibility: imageLoaded ? 'unset' : 'hidden'}}>
       <AgentBio>
         <p className='label'>{data.displayName}.</p>
         <p className='g-label'>{data.description}</p>
@@ -31,10 +34,10 @@ export default function Agent(agent: TAgentData) {
         </div>        
       </AgentBio>               
       <AgentImage>
-        <div className='image-container'>  
+        <div className='image-container'>
           <Image 
-            onLoad={e => handleLoadImage(e)} 
-            priority className='image' 
+            onLoad={e => handleLoadImage(e)}             
+            className='image' 
             src={data.fullPortrait} 
             quality={100}
             width={800}
@@ -59,9 +62,15 @@ export default function Agent(agent: TAgentData) {
                 {
                   abilitie.displayIcon
                   ?
-                  <Image className='image' src={abilitie.displayIcon} width={50} height={50} alt='abilitie' quality={100}/>
-                  :
-                  <></>
+                  <Image 
+                  loading='lazy' 
+                  className='image' 
+                  src={abilitie.displayIcon} 
+                  width={50} height={50} 
+                    alt='abilitie' 
+                    quality={100}/>
+                    :
+                    <></>
                 }
                 {
                   idx === 4 
@@ -81,6 +90,7 @@ export default function Agent(agent: TAgentData) {
         </AgentSkills>
       </AgentDetails>          
     </Container>
+  </>
   )
 }
 
@@ -150,6 +160,9 @@ const AgentSkills = styled.div`
       gap: 0.5rem;
     }
   }
+  .g-title {
+    margin: 0;
+  }
   .g-label {
     margin-left: 15px;
   }
@@ -183,11 +196,13 @@ const SquareBackGround = styled.div`
 const AgentBio = styled.div`
   display: flex;
   flex-direction: column;  
-  max-width: 300px;
-
+  
   .label {    
     font-size: 48px;
     color: var(--g-red);
+  }
+  @media (min-width: 880px) {
+    max-width: 300px;
   }
 `
 const SkillsDetails = styled.div`
@@ -196,6 +211,7 @@ const SkillsDetails = styled.div`
   .g-title {
     font-size: 14px;
   }
+  
 `
 
 //functions-next
