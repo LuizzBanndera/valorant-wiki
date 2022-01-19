@@ -3,10 +3,9 @@
 </div>
 
 # Sobre
-<h3>Projeto feito no meu tempo livre para aprofundar conhecimento, consumindo uma api opensource de VALORANT.</h3>
+<h3>Wiki com principais informações sobre o jogo (agentes, mapas, armas, etc...), consumindo uma api opensource de VALORANT.</h3>
 <ul>
-  <img src="https://img.shields.io/badge/phs-wellcome-green"/>
-  <img src="https://img.shields.io/badge/license-MIT-blue"/>
+  <img src="https://img.shields.io/badge/phs-wellcome-green"/> 
   <img src="https://img.shields.io/badge/version-1.00-green"/>
 </ul>
 
@@ -29,3 +28,4 @@
 </ul>
 
 # Instalação
+
