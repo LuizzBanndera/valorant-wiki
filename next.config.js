@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains:['media.valorant-api.com'],
+    domains:['media.valorant-api.com', 'img.freepik.com'],
   }
 }

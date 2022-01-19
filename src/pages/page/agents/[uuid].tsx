@@ -5,7 +5,7 @@ import db from '../../../services/api'
 import { TAgents, TAgentData } from '../../shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Loading from '@db/pages/shared/types/loading'
+import Loading from '@components/loading'
 
 export default function Agent(agent: TAgentData) {
 

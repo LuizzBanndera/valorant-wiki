@@ -1,22 +1,25 @@
+import Card from '@components/card'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import CardMenu from './components/cardMenu'
 
 const Items  = [
   {
     title : 'AGENTES',
     image : '/images/v_agents.svg',
+    bg    : '/images/v_agents_bg.svg',
     path  :'/page/agents'
   },
   {
     title : 'ARMAS',
-    image : '/images/v_guns.svg',
+    image : '/images/v_weapons.svg',
+    bg    : '/images/v_weapons_bg.svg',    
     path  : '/page/weapons'
   },
   {
     title : 'MAPAS',
     image : '/images/v_maps.svg',
+    bg    : '/images/v_maps_bg.svg',    
     path  : '/page/maps'
   }
 ]
@@ -28,9 +31,9 @@ const Home: NextPage = () => {
 
   return (
      <ContainerStyled>
-     {Items.map(({title, image, path}, idx) => (
-       <ItemStyled key={idx} image={image} position={idx+1}>
-         <CardMenu onClick={() => handleClick(path)} name={title}/>
+     {Items.map(({title, image, bg, path}, idx) => (
+       <ItemStyled key={idx} bg={bg} position={idx+1}>
+         <Card onClick={() => handleClick(path)} name={title} image={image} />
        </ItemStyled>
      ))}
        <BackGroundStyled/>
@@ -66,9 +69,9 @@ const BackGroundStyled = styled.div`
     display: none;
   }  
   `
-const ItemStyled = styled.li<{image: string; position: number}>`  
+const ItemStyled = styled.li<{bg: string; position: number}>`  
   :nth-child(${(p) => p.position}):hover ~ div {
-    background-image: url(${(p) => p.image})!important;
+    background-image: url(${(p) => p.bg})!important;
     z-index: auto;
   }
   :nth-child(${(p) => p.position}):hover {
