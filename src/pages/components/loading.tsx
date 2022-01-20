@@ -15,7 +15,7 @@ const Animation = styled.div`
   z-index: 2;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: calc(50% - 50px);
 .lds-facebook {
   display: inline-block;
   position: relative;

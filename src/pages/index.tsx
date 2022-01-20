@@ -47,7 +47,6 @@ const ContainerStyled = styled.ul`
   min-height: 87vh;  
   justify-content: center;
   align-items: center;
-  gap: 5rem;
   list-style-type: none;
   @media (max-width: 880px) {
     flex-direction: column;

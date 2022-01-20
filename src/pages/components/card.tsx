@@ -1,43 +1,25 @@
 import styled from "styled-components"
 import Image from "next/image"
-import AgentsSVG from '@public/images/a_raze.svg'
-import weaponsSVG from '@public/images/v_weapons.svg'
-import mapsSVG from '@public/images/v_maps.svg'
+import { motion } from "framer-motion"
 
 
 export default function Card(props: any) {
 
   return(
-  <Container {...props}>
-    <div className="container">
-      <div className="box">
-        <div className="imgBox">          
-          <Image className="image" layout="fill" src={props.image} alt=""/>
+  <motion.div transition={{duration: 0.2}} whileTap={{ scale: 1.05 }}>    
+    <Container {...props}>
+      <div className="container">
+        <div className="box">
+          <div className="imgBox">          
+            <Image className="image" layout="fill" src={props.image} alt=""/>
+          </div>
+          <div className="content">
+            <h2 className="g-title">{props.name}</h2>
+          </div>
         </div>
-        <div className="content">
-          <h2 className="g-title">{props.name}</h2>
-        </div>
-      </div>
-
-      {/* <div className="box">
-        <div className="imgBox">
-          <Image className="image" layout="fill" src={weaponsSVG} alt=""/>                
-        </div>
-        <div className="content">
-          <h2 className="g-title">ARMAS.</h2>
-        </div>
-      </div>
-
-      <div className="box">
-        <div className="imgBox">
-          <Image className="image" layout="fill" src={mapsSVG} alt=""/>                
-        </div>
-        <div className="content">
-          <h2 className="g-title">MAPAS.</h2>
-        </div>            
-      </div>         */}
-    </div>        
-  </Container>
+      </div>        
+    </Container>
+  </motion.div>
   )
 }
 
@@ -78,7 +60,7 @@ body {
   position: relative;
   width: 20rem;
   height: 25rem;
-  margin: 4rem;
+  margin: 1rem;
 }
 
 .container .box:hover .imgBox {

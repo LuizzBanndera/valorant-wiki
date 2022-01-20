@@ -21,10 +21,11 @@ export default function Agent(agent: TAgentData) {
   }
 
   useEffect(() => {}, [imageLoaded])
+
   return (  
  <>
-  <Loading style={{visibility: imageLoaded ? 'hidden' : 'unset'}}/>
-<Container style={{visibility: imageLoaded ? 'unset' : 'hidden'}}>
+  <Loading style={{visibility: imageLoaded ? 'hidden' : 'unset'}}/>  
+  <Container style={{visibility: imageLoaded ? 'unset' : 'hidden'}}>
       <AgentBio>
         <p className='label'>{data.displayName}.</p>
         <p className='g-label'>{data.description}</p>
