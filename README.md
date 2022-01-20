@@ -36,4 +36,7 @@ e executar:</br>
 `$ yarn dev -H [seu ip local]` para iniciar o projeto como servidor na sua rede local.
 
 # Tecnologias
+<a href="https://nextjs.org/docs">Next.js</a></br>
+<a href="https://styled-components.com/docs">styled-components</a></br>
+<a href="https://www.framer.com/docs/">framer-motion</a></br>
 
