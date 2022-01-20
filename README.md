@@ -29,7 +29,7 @@
 # Instalação
 
 Caso queira colaborar com o projeto basta checar a aba de tecnologias
-pra saber o que estou utilizando e em seguida baixar o repo 
+pra saber o que estou utilizando, em seguida baixar o repo 
 e executar:</br>
 `$ yarn` para instalar as depencias.</br>
 `$ yarn dev` para iniciar o projeto em <a href="http://localhost:3000">localhost</a>.</br>
