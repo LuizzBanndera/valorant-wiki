@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Image from "next/image"
-import { Bounce } from "../shared/motion"
+import { Bounce } from "@shared/motion"
 
 export default function CardWeapons(data: TWeapon) {
 

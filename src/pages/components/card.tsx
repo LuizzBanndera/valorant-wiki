@@ -2,7 +2,6 @@ import styled from "styled-components"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
-
 export default function Card(props: any) {
 
   return(

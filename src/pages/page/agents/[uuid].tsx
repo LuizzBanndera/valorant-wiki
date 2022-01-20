@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import db from '../../../services/api'
-import { TAgents, TAgentData } from '../../shared/types/types.agents'
+import db from '@services/api'
+import { TAgents, TAgentData } from '@shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Loading from '@components/loading'
@@ -244,7 +244,7 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
     })
     
     const data = res.data.data    
-    
+    //TODO remover revalidate antes de lançar em produção
     return {
       props: {
         data

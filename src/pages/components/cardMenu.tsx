@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export default function CardMenu (props: any) {
   return (
-    // <Bounce>
       <CardStyled {...props}>
         <Label className="ter">{props.name ? props.name : 'menu'}</Label>
         <Label className="sec">{props.name ? props.name : 'menu'}</Label>
@@ -10,7 +9,6 @@ export default function CardMenu (props: any) {
         <Label className="sec">{props.name ? props.name : 'menu'}</Label>
         <Label className="ter">{props.name ? props.name : 'menu'}</Label>
       </CardStyled>
-    //</Bounce>
   )
 }
 

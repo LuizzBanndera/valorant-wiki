@@ -17,10 +17,12 @@
     "paths": {
       "@public/*": ["public/*"],
       "@styles/*": ["src/styles/*"],
+      "@images/*":["@public/images/*"],
       "@components/*": ["src/pages/components/*"],
       "@ctx/*": ["src/context/*"],
       "@db/*":["src/*"],
-      "@types/*":["src/pages/shared/types/*"]
+      "@shared/*":["src/pages/shared/*"],
+      "@services/*":["src/services/*"]
     }    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
