@@ -22,10 +22,18 @@
   <li><a href="#sobre">Sobre</a></li>
   <li><a href="#tabela-de-conteúdos">Tabela de conteúdos</a></li>
   <li><a href="#features">Features</a></li>  
-  <li>Instalação</li>
-  <li>Como usar</li>
+  <li><a href="#instalação">Instalação</a></li>
   <li>Tecnologias</li>
 </ul>
 
 # Instalação
+
+Caso queira colaborar com o projeto basta checar a aba de tecnologias
+pra saber o que estou utilizando e em seguida baixar o repo 
+e executar:</br>
+`$ yarn` para instalar as depencias.</br>
+`$ yarn dev` para iniciar o projeto em <a href="http://localhost:3000">localhost</a>.</br>
+`$ yarn dev -H [seu ip local]` para iniciar o projeto como servidor na sua rede local.
+
+# Tecnologias
 
