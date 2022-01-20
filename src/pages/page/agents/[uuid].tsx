@@ -20,6 +20,19 @@ export default function Agent(agent: TAgentData) {
     }
   }
 
+  const handleAbilite = (idx: number) => {
+    let label : string
+    switch (idx) {
+      case 4: label = '(passiva)'
+      break;
+      case 3: label = '(ultimate)'
+      break;
+      default:label = ''
+      break;
+    }
+    return label
+  }
+
   useEffect(() => {}, [imageLoaded])
 
   return (  
@@ -64,25 +77,19 @@ export default function Agent(agent: TAgentData) {
                   abilitie.displayIcon
                   ?
                   <Image 
-                  loading='lazy' 
                   className='image' 
                   src={abilitie.displayIcon} 
                   width={50} height={50} 
                     alt='abilitie' 
-                    quality={100}/>
+                    quality={80}/>
                     :
                     <></>
                 }
-                {
-                  idx === 4 
-                  ?
-                  <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
-                    <p className='g-title'>{abilitie.displayName}</p>
-                    <p className='g-label' style={{margin: '0 0 0 5px'}}>(passiva)</p>
-                  </div>
-                  :
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
                   <p className='g-title'>{abilitie.displayName}</p>
-                }
+                  <p className='g-label' style={{margin: '0 0 0 5px'}}>{handleAbilite(idx)}</p>
+                </div>
+              
               </div>
               <p className='g-label'>{abilitie.description}</p>
             </div>         
@@ -244,7 +251,7 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
     })
     
     const data = res.data.data    
-    //TODO remover revalidate antes de lançar em produção
+    //TODO remover revalidate antes de lanï¿½ar em produï¿½ï¿½o
     return {
       props: {
         data

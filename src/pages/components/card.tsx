@@ -23,6 +23,7 @@ export default function Card(props: any) {
 
 const Container = styled.button`
 all: unset;
+cursor: pointer;
 *,
 *::after,
 *::before {
@@ -58,6 +59,10 @@ body {
   width: 20rem;
   height: 25rem;
   margin: 1rem;
+
+  @media (max-width: 600px) {
+    height: 10rem;
+  }
 }
 
 .container .box:hover .imgBox {
