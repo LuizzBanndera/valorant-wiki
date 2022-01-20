@@ -23,7 +23,7 @@
   <li><a href="#tabela-de-conteúdos">Tabela de conteúdos</a></li>
   <li><a href="#features">Features</a></li>  
   <li><a href="#instalação">Instalação</a></li>
-  <li>Tecnologias</li>
+  <li><a href="#tecnologias">Tecnologias</a></li>
 </ul>
 
 # Instalação
