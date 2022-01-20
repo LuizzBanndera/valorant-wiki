@@ -18,7 +18,7 @@ const Items  = [
   },
   {
     title : 'MAPAS',
-    image : '/images/v_maps.svg',
+    image : '/images/maps-logo.png',
     bg    : '/images/v_maps_bg.svg',    
     path  : '/page/maps'
   }
