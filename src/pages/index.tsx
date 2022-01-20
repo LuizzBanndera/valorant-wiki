@@ -6,13 +6,13 @@ import styled from 'styled-components'
 const Items  = [
   {
     title : 'AGENTES',
-    image : '/images/v_agents.svg',
+    image : '/images/agent-logo.png',
     bg    : '/images/v_agents_bg.svg',
     path  :'/page/agents'
   },
   {
     title : 'ARMAS',
-    image : '/images/v_weapons.svg',
+    image : '/images/vandal-logo.png',
     bg    : '/images/v_weapons_bg.svg',    
     path  : '/page/weapons'
   },

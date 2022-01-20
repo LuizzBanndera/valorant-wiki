@@ -9,7 +9,7 @@ export default function Card(props: any) {
     <div className="container">
       <div className="box">
         <div className="imgBox">          
-          <Image className="image" blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
+          <Image className="image" quality={100} blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
         </div>
         <div className="content">
           <h2 className="g-title">{props.name}</h2>
@@ -56,7 +56,7 @@ body {
 
 .container .box {
   position: relative;
-  width: 20rem;
+  width: 17rem;
   height: 25rem;
   margin: 1rem;
 
