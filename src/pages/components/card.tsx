@@ -4,21 +4,19 @@ import { motion } from "framer-motion"
 
 export default function Card(props: any) {
 
-  return(
-  <motion.div transition={{duration: 0.2}} whileTap={{ scale: 1.05 }}>    
-    <Container {...props}>
-      <div className="container">
-        <div className="box">
-          <div className="imgBox">          
-            <Image className="image" layout="fill" src={props.image} alt=""/>
-          </div>
-          <div className="content">
-            <h2 className="g-title">{props.name}</h2>
-          </div>
+  return(    
+  <Container {...props}>
+    <div className="container">
+      <div className="box">
+        <div className="imgBox">          
+          <Image className="image" blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
         </div>
-      </div>        
-    </Container>
-  </motion.div>
+        <div className="content">
+          <h2 className="g-title">{props.name}</h2>
+        </div>
+      </div>
+    </div>        
+  </Container>
   )
 }
 

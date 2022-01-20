@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import CardAgents from '../components/cardAgent'
-import db from '../../services/api'
+import CardAgents from '@components/cardAgent'
+import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
-import {TAgents} from '../shared/types/types.agents'
+import {TAgents} from '@shared/types/types.agents'
 
 export default function AgentsMenu ({data}: TAgents) {
 

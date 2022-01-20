@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import db from '../../services/api'
+import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import styled from 'styled-components'
 import CardWeapons from '@components/cardWeapons';
