@@ -14,9 +14,10 @@
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "nextjs-progressbar": "^0.0.13",
+    "rc-progress": "^3.2.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "rsuite": "^5.0.0",
+    "rsuite": "^5.5.1",
     "sass": "^1.42.1",
     "styled-components": "^5.3.1"
   },

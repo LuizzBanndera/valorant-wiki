@@ -28,6 +28,15 @@ a {
   color: antiquewhite;
 }
 
+.g-red-title { 
+  font-family: 'Anton', cursive !important;    
+  font-family: 'Poppins', sans-serif;    
+  text-transform: uppercase;
+  letter-spacing: 3px;    
+  font-size: 48px;
+  color: var(--g-red);
+}
+
 .label {
   font-family: 'Anton', cursive !important;
   letter-spacing: 3px;
