@@ -41,6 +41,18 @@ type TWeapon = {
   skings: TSkins
 
 }
+type TWeaponData = {
+  data: {
+    uuid: string
+    displayName: string
+    category: string
+    defaultSkinUuid: string
+    displayIcon: string
+    weaponStats: TWeaponStats
+    shopData : TShopData
+    skings: TSkins
+  }
+}
 
 type TWeapons = {
   data: TWeapon[]

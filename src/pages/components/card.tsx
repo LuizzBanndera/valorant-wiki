@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import Image from "next/image"
-import { motion } from "framer-motion"
 
 export default function Card(props: any) {
 
@@ -9,7 +8,7 @@ export default function Card(props: any) {
     <div className="container">
       <div className="box">
         <div className="imgBox">          
-          <Image className="image" quality={100} blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
+          <Image priority className="image" quality={100} placeholder="blur" blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
         </div>
         <div className="content">
           <h2 className="g-title">{props.name}</h2>

@@ -1,13 +1,18 @@
 import styled from "styled-components"
 import Image from "next/image"
 import { Bounce } from "@shared/motion"
+import { useRouter } from "next/router"
 
 export default function CardWeapons(data: TWeapon) {
 
   const category = data.category.substring(data.category.indexOf('::')+2)
+
+  const Router = useRouter()
+
+  const handleClick = (uuid: string) => Router.push({pathname:`/page/weapons/[uuid]`, query: {uuid}}) 
   
   return(
-    <Container>
+    <Container onClick={() => handleClick(data.uuid)}>
       <Bounce>           
         <div className="image-container">
           <Image className="image" src={data.displayIcon} alt="weapon" layout="fill" objectFit="contain"/>
