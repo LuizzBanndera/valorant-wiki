@@ -23,7 +23,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2% 5%;
+  padding: 3rem ;
   gap: 2rem;
 `
 
@@ -31,6 +31,8 @@ export const getStaticProps : GetStaticProps = async () => {
   try {
     const res : AxiosResponse<TWeapons> = await db.get('/weapons')
     
+
+    //TODO remover revalidate
     const data = res.data.data
     return {
       props: {

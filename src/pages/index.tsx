@@ -44,13 +44,13 @@ const Home: NextPage = () => {
 const ContainerStyled = styled.ul`
   all: unset;
   display: flex;  
-  min-height: 92vh;  
+  height: 100%;
   justify-content: center;
   align-items: center;
   list-style-type: none;
   @media (max-width: 600px) {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
   }
 `
 const BackGroundStyled = styled.div`  

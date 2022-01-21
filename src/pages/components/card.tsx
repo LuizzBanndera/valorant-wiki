@@ -24,6 +24,7 @@ export default function Card(props: any) {
 const Container = styled.button`
 all: unset;
 cursor: pointer;
+-webkit-tap-highlight-color: transparent;
 *,
 *::after,
 *::before {
@@ -105,7 +106,7 @@ body {
   text-align: center;
   transition: 0.5s ease-in-out;
   @media (max-width: 600px) {
-    top: 3rem;
+    /* top: 3rem; */
   }
 }
 
@@ -128,11 +129,11 @@ body {
 @media (max-width: 600px) {
   .container .box:hover .content {
     transform: translate(0, 1.5rem);
-    transform: none;
+    /* transform: none; */
   }
   .container .box:hover .imgBox {
     transform: translate(0, -1.5rem);
-    transform: none;
+    /* transform: none; */
   }
 }
 

@@ -13,9 +13,9 @@ export default function CardWeapons(data: TWeapon) {
           <Image className="image" src={data.displayIcon} alt="weapon" layout="fill" objectFit="contain"/>
           <div className="square-background"/>
         </div>
-        <div className="description label">
-          <a>_{data.displayName}</a>
-          <p>/{category}</p>
+        <div className="description">
+          <a className="g-title">_{data.displayName}</a>
+          <p className="g-title">/{category}</p>
         </div>
       </Bounce>
     </Container>
@@ -41,7 +41,7 @@ const Container = styled.div`
     width: 312px;    
     position: relative;
     z-index: 0;
-    @media (min-width: 880px) {
+    @media (min-width: 880px) { 
       width: 512px;
     }
   }
@@ -59,11 +59,10 @@ const Container = styled.div`
     align-items: flex-start;
     padding: 1rem 2rem 0;    
     position: relative;    
-    font-size: 12px;
-    color: #0f1923;    
-    top: -9.5rem;    
-    a {
-      font-size: 30px;
+    color: var(--g-white);  
+    top: -10.5rem;
+    p {
+      font-size: 12px;
     }
   }
 `
