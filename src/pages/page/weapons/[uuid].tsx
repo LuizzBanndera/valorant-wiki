@@ -31,7 +31,7 @@ export default function Weapon({data}: TWeaponData) {
       wallPen,
       reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18))
     }
-
+    
     return stats
   }
 
