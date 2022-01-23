@@ -4,46 +4,70 @@ import styled from "styled-components"
 import db from '@services/api'
 import Image from 'next/image'
 import {Line} from 'rc-progress'
+import { useEffect, useState } from "react"
+import { sleep } from "@shared/utils"
+
+type TStats = {
+  fireRate: number
+  magSize: number
+  wallPen: number
+  reloadTime: number
+}
 
 
 export default function Weapon({data}: TWeaponData) {
 
-  const category = data.category.substring(data.category.indexOf('::')+2)
-  const wallPenetration = data.weaponStats.wallPenetration.substring(data.weaponStats.wallPenetration.indexOf('::')+2)
+  const category = data
+  .category
+  .substring(data.category.indexOf('::')+2)
 
-  const handleStats = () => {
+  const wallPenetration = data
+  .weaponStats
+  .wallPenetration
+  .substring(data.weaponStats.wallPenetration.indexOf('::')+2)
+
+  const [stats, setStats] = useState({fireRate : 0,
+    magSize : 0,
+    wallPen : 0,
+    reloadTime : 0,})
+  
+  const handleStats = async () => {
     let wallPen
-    
+
     switch (wallPenetration) {
       case 'Low': wallPen = 20
-        break;
+      break;
       case 'Medium': wallPen = 50
-        break;
+      break;
       case 'High': wallPen = 90
-        break;
+      break;
       default: wallPen = 0
-        break;
+      break;
     }
 
-    const stats = {
+    await sleep(1000)
+    
+    setStats({
       fireRate: (data.weaponStats.fireRate * 7),
       magSize: data.weaponStats.magazineSize,
-      wallPen,
+      wallPen: wallPen,
       reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18))
-    }
+    })
     
-    return stats
   }
 
-  const stats = handleStats()
   
-  return(
+  handleStats()
+
+  useEffect(() => {}, [stats.magSize])
+
+return (
+
   <Container>
     <WeaponContainer>
       <div className="weapon-image">
         <Image 
           quality={100} 
-          priority 
           className="image" 
           src={data.displayIcon} 
           alt="weapon" 
@@ -66,19 +90,19 @@ export default function Weapon({data}: TWeaponData) {
         <div className="weapon-stats">
           <div className="info-stats">
             <p className="g-label">taxa de disparo:</p>                        
-            <Line percent={stats.fireRate} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.fireRate || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">tamanho do pente:</p>
-            <Line percent={stats.magSize} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.magSize || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">penetração:</p>
-            <Line percent={stats.wallPen} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.wallPen || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">recarregamento:</p>
-            <Line percent={stats.reloadTime} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.reloadTime || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
         </div>
       </div>
@@ -149,6 +173,11 @@ const WeaponContainer = styled.div`
         .rc-progress-line {
           height: 0.5rem;
           width: 20rem;
+          * {
+            transition: all 500ms;
+          }
+            
+
         }
       }
     }
