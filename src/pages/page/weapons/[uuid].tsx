@@ -6,6 +6,7 @@ import Image from 'next/image'
 import {Line} from 'rc-progress'
 import { useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
+import {TWeaponData, TWeapons} from '@shared/types/types.weapons'
 
 export default function Weapon({data}: TWeaponData) {
 
@@ -18,40 +19,40 @@ export default function Weapon({data}: TWeaponData) {
   .wallPenetration
   .substring(data.weaponStats.wallPenetration.indexOf('::')+2)
 
-  const [stats, setStats] = useState({fireRate : 0,
-    magSize : 0,
-    wallPen : 0,
-    reloadTime : 0,})
+  const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0})
+  const [loaded, setLoaded] = useState(false)
   
   const handleStats = async () => {
-    let wallPen
 
-    switch (wallPenetration) {
-      case 'Low': wallPen = 20
-      break;
-      case 'Medium': wallPen = 50
-      break;
-      case 'High': wallPen = 90
-      break;
-      default: wallPen = 0
-      break;
-    }
-
-    await sleep(1000)
-    
-    setStats({
-      fireRate: (data.weaponStats.fireRate * 7),
-      magSize: data.weaponStats.magazineSize,
-      wallPen: wallPen,
-      reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18))
-    })
-    
+    if (!loaded) {      
+      setLoaded(true)
+      let wallPen
+      
+      switch (wallPenetration) {
+        case 'Low': wallPen = 20
+        break;
+        case 'Medium': wallPen = 50
+        break;
+        case 'High': wallPen = 90
+        break;
+        default: wallPen = 0
+        break;
+      }
+      
+      await sleep(1000)
+      
+      setStats({
+        fireRate: (data.weaponStats.fireRate * 7),
+        magSize: data.weaponStats.magazineSize,
+        wallPen: wallPen,
+        reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18))
+      })    
+    }    
   }
-
   
   handleStats()
 
-  useEffect(() => {}, [stats.magSize])
+  useEffect(() => {}, [stats])
 
 return (
 
@@ -148,6 +149,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  gap: 5rem;
   justify-content: center;
 `
 const WeaponContainer = styled.div`
@@ -223,7 +225,7 @@ const WeaponContainer = styled.div`
 const SkinsContainer = styled.div`  
   height: 100%;
   overflow: auto;
-  width: 40vw;
+  width: 29vw;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -235,8 +237,7 @@ const SkinsContainer = styled.div`
   }
   .skin-image {
     height: 15rem;  
-    max-width: 34rem;
-    left: 5rem;
+    max-width: 34rem;    
     position: relative;
     @media (max-width: 600px) {
       left: unset;
@@ -271,9 +272,9 @@ export const getStaticPaths : GetStaticPaths = async () => {
 export const getStaticProps : GetStaticProps = async ({params}: any) => {  
 
   try {
-    const res : AxiosResponse<TWeapons> = await db.get(`/weapons/${params.uuid}`)
+    const res : AxiosResponse<TWeapons> = await db.get(`/weapons/${params.uuid}`)    
     
-    const data = res.data.data
+    const data = res.data.data    
         
     //TODO remover revalidate antes de lan�ar em produ��o
     return {

@@ -21,6 +21,13 @@ type TShopData = {
   categoryText: string
 }
 
+type TChroma = {
+  uuid: string
+  displayName: string
+  displayIcon: string
+  swatch: string
+}
+
 type TSkins = {
   uuid: string
   displayName: string
@@ -28,9 +35,10 @@ type TSkins = {
   contentTierUuid: string
   displayIcon: string
   wallpaper: string
+  chromas: TChroma[]
 }
 
-type TWeapon = {
+export type TWeapon = {
   uuid: string
   displayName: string
   category: string
@@ -38,10 +46,11 @@ type TWeapon = {
   displayIcon: string
   weaponStats: TWeaponStats
   shopData : TShopData
-  skings: TSkins
+  skins: TSkins
 
 }
-type TWeaponData = {
+
+export type TWeaponData = {
   data: {
     uuid: string
     displayName: string
@@ -50,10 +59,10 @@ type TWeaponData = {
     displayIcon: string
     weaponStats: TWeaponStats
     shopData : TShopData
-    skings: TSkins
+    skins: TSkins[]
   }
 }
 
-type TWeapons = {
+export type TWeapons = {
   data: TWeapon[]
 }
