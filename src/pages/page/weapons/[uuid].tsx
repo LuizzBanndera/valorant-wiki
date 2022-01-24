@@ -7,14 +7,6 @@ import {Line} from 'rc-progress'
 import { useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
 
-type TStats = {
-  fireRate: number
-  magSize: number
-  wallPen: number
-  reloadTime: number
-}
-
-
 export default function Weapon({data}: TWeaponData) {
 
   const category = data
@@ -93,7 +85,7 @@ return (
             <Line percent={stats.fireRate || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">tamanho do pente:</p>
+            <p className="g-label">tam. do pente:</p>
             <Line percent={stats.magSize || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
@@ -118,11 +110,12 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  justify-content: center;
 `
 const WeaponContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  /* width: 60vw; */
   .weapon-image {
     height: 15rem;  
     max-width: 34rem;
@@ -139,12 +132,19 @@ const WeaponContainer = styled.div`
       bottom: -40px;
       left: 143px;
       z-index: 0;
+      @media (max-width: 600px) {
+        left: auto;
+      }      
     }
 
   }
   .weapon-info {
     padding: 1rem;
     max-width: 536px;
+    
+    @media (max-width: 600px) {
+      max-width: 100vw;
+    }
     .g-red-title {
       margin-top: 0;
     }
@@ -166,6 +166,7 @@ const WeaponContainer = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        gap: 1rem;
         justify-content: space-between;
         .g-label {
           margin: 3px 0 3px;
@@ -173,11 +174,9 @@ const WeaponContainer = styled.div`
         .rc-progress-line {
           height: 0.5rem;
           width: 20rem;
-          * {
-            transition: all 500ms;
+          @media (max-width: 600px) {
+            width: 8rem;
           }
-            
-
         }
       }
     }
@@ -185,7 +184,7 @@ const WeaponContainer = styled.div`
 `
 const SkinsContainer = styled.div`
 background-color: blueviolet;
-width: 40vw;
+/* width: 40vw; */
 `
 
 //functions-next
