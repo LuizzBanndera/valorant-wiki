@@ -100,8 +100,46 @@ return (
       </div>
     </WeaponContainer>
     <SkinsContainer>
-      <div className="skin-image"></div>
-      <div className="skin-stats"></div>
+      <div className="skin">
+        <div className="skin-image">
+          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
+        </div>
+        <div className="skin-stats">
+          <p className="g-title">phaton oni</p>
+          <p className="g-label">preço:</p>
+          <p className="g-label">pacote:</p>
+        </div>
+      </div>
+      <div className="skin">
+        <div className="skin-image">
+          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
+        </div>
+        <div className="skin-stats">
+          <p className="g-title">phaton oni</p>
+          <p className="g-label">preço:</p>
+          <p className="g-label">pacote:</p>
+        </div>
+      </div>
+      <div className="skin">
+        <div className="skin-image">
+          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
+        </div>
+        <div className="skin-stats">
+          <p className="g-title">phaton oni</p>
+          <p className="g-label">preço:</p>
+          <p className="g-label">pacote:</p>
+        </div>
+      </div>
+      <div className="skin">
+        <div className="skin-image">
+          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
+        </div>
+        <div className="skin-stats">
+          <p className="g-title">phaton oni</p>
+          <p className="g-label">preço:</p>
+          <p className="g-label">pacote:</p>
+        </div>
+      </div>
     </SkinsContainer>
   </Container>)
 }
@@ -115,7 +153,6 @@ const Container = styled.div`
 const WeaponContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 60vw; */
   .weapon-image {
     height: 15rem;  
     max-width: 34rem;
@@ -144,6 +181,7 @@ const WeaponContainer = styled.div`
     
     @media (max-width: 600px) {
       max-width: 100vw;
+      padding: unset;
     }
     .g-red-title {
       margin-top: 0;
@@ -182,9 +220,37 @@ const WeaponContainer = styled.div`
     }
   }
 `
-const SkinsContainer = styled.div`
-background-color: blueviolet;
-/* width: 40vw; */
+const SkinsContainer = styled.div`  
+  height: 100%;
+  overflow: auto;
+  width: 40vw;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 1rem;
+  }
+  .skin {
+    border-bottom-style: groove;
+    border-width: 1px;
+  }
+  .skin-image {
+    height: 15rem;  
+    max-width: 34rem;
+    left: 5rem;
+    position: relative;
+    @media (max-width: 600px) {
+      left: unset;
+    }
+    .image {
+      z-index: 2!important;
+    }
+  }
+  .skin-stats {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: -5rem;
+  }
 `
 
 //functions-next
