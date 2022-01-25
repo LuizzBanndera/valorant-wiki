@@ -12,7 +12,7 @@ export default function Weapon({data}: TWeaponData) {
 
   const category = data.category.substring(data.category.indexOf('::')+2)
 
-  const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0, catName: '', cost: 0})
+  const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0, catName: '*****', cost: 0})
 
   const [loaded, setLoaded] = useState(false)
   

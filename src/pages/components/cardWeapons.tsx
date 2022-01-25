@@ -2,10 +2,20 @@ import styled from "styled-components"
 import Image from "next/image"
 import { Bounce } from "@shared/motion"
 import { useRouter } from "next/router"
+import { TWeapon } from "../shared/types/types.weapons"
 
 export default function CardWeapons(data: TWeapon) {
 
   const category = data.category.substring(data.category.indexOf('::')+2)
+
+
+  const handleCategory = () => {
+    if (category === 'Melee') {
+      return category
+    } else {
+      return data.shopData.categoryText
+    }
+  }
 
   const Router = useRouter()
 
@@ -20,7 +30,7 @@ export default function CardWeapons(data: TWeapon) {
         </div>
         <div className="description">
           <a className="g-title">_{data.displayName}</a>
-          <p className="g-title">/{category}</p>
+          <p className="g-title">/{handleCategory()}</p>
         </div>
       </Bounce>
     </Container>
