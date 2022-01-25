@@ -7,75 +7,65 @@ import {Line} from 'rc-progress'
 import { useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
 import {TWeaponData, TWeapons, TSkins} from '@shared/types/types.weapons'
-import { TSkin } from "@db/pages/shared/types/types.skins"
 
 export default function Weapon({data}: TWeaponData) {
 
-  const category = data
-  .category
-  .substring(data.category.indexOf('::')+2)
+  const category = data.category.substring(data.category.indexOf('::')+2)
 
-  const wallPenetration = data
-  .weaponStats
-  .wallPenetration
-  .substring(data.weaponStats.wallPenetration.indexOf('::')+2)
-
-  const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0})
-  const [skins, setSkins] = useState({
-    uuid: '',
-    displayName: '',
-    themeUuid: '',
-    contentTierUuid: '',
-    displayIcon: '',
-    wallpaper: '',
-    fullRender: ''
-  })
+  const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0, catName: '', cost: 0})
 
   const [loaded, setLoaded] = useState(false)
   
   const handleStats = async () => {
-
+    
     if (!loaded) {      
+
       setLoaded(true)
-      let wallPen
-      
-      switch (wallPenetration) {
-        case 'Low': wallPen = 20
-        break;
-        case 'Medium': wallPen = 50
-        break;
-        case 'High': wallPen = 90
-        break;
-        default: wallPen = 0
-        break;
-      }
-      
-      await sleep(1000)
-      
-      setStats({
-        fireRate: (data.weaponStats.fireRate * 7),
-        magSize: data.weaponStats.magazineSize,
-        wallPen: wallPen,
-        reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18))
-      })    
-    }    
-  }
+            
+      if (category === 'Melee') {
 
-  const handleSkins = (skin: TSkins, idx: number, arr: TSkins[]) => {
+        setStats({
+          fireRate: 100,
+          magSize: 100,
+          wallPen: 100,
+          reloadTime: 100,
+          catName: category,
+          cost: 0
+        })
 
-      if (skin.displayIcon === null) {        
-        if (skin.fullRender) {
-          arr[idx].displayIcon = skin.fullRender
-        } else
-        if (skin.chromas[0].displayIcon) {
-          arr[idx].displayIcon = skin.chromas[0].displayIcon
-        } else {
-          arr[idx].displayIcon = ''
+      } else {        
+        
+        let wallPen
+        let wallPenetration = data
+        .weaponStats
+        .wallPenetration
+        .substring(data.weaponStats.wallPenetration.indexOf('::')+2)
+        switch (wallPenetration) {
+          case 'Low': wallPen = 20
+          break;
+          case 'Medium': wallPen = 50
+          break;
+          case 'High': wallPen = 90
+          break;
+          default: wallPen = 0
+          break;
         }
-      }
-  }
+        
+        await sleep(1000)
+        
+        setStats({
+          fireRate: (data.weaponStats.fireRate * 7),
+          magSize: data.weaponStats.magazineSize,
+          wallPen: wallPen,
+          reloadTime: (100-(data.weaponStats.reloadTimeSeconds * 18)),
+          catName: data.shopData.categoryText,
+          cost: data.shopData.cost
+        })    
 
-  data.skins.forEach(handleSkins)
+      }
+
+    }    
+  }  
   
   handleStats()
 
@@ -101,28 +91,28 @@ return (
         <p className="g-title">{`//características`}</p>
         <div className="info-item">
           <p className="g-label">categoria:</p>
-          <p className="g-label">{category}</p>
+          <p className="g-label">{stats.catName}</p>
         </div>
         <div className="info-item">
           <p className="g-label">valor:</p>
-          <p className="g-label">{data.shopData.cost}</p>
+          <p className="g-label">{stats.cost}</p>
         </div>                
         <div className="weapon-stats">
           <div className="info-stats">
             <p className="g-label">taxa de disparo:</p>                        
-            <Line percent={stats.fireRate || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.fireRate} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">tam. do pente:</p>
-            <Line percent={stats.magSize || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.magSize} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">penetração:</p>
-            <Line percent={stats.wallPen || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.wallPen} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
             <p className="g-label">recarregamento:</p>
-            <Line percent={stats.reloadTime || 0} strokeColor="antiquewhite" trailColor="#0f1923"/>
+            <Line percent={stats.reloadTime} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
         </div>
       </div>
@@ -134,7 +124,7 @@ return (
           <div className="skin" key={idx}>
             <div className="skin-image">
               {                                
-              <Image className="image" src={skin.displayIcon} alt="" layout="fill" objectFit="contain"/>                                    
+              <Image quality={90} className="image" src={skin.chromas[0].fullRender} alt="" layout="fill" objectFit="contain"/>                                    
               }
             </div>
             <div className="skin-stats">
@@ -246,14 +236,15 @@ const SkinsContainer = styled.div`
       left: unset;
     }
     .image {
-      z-index: 2!important;
+      z-index: 1!important;
     }
   }
   .skin-stats {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    margin-top: -5rem;
+    margin-top: -3rem;
+    z-index: 2;
   }
 `
 

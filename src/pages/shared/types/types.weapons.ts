@@ -25,6 +25,7 @@ export type TChroma = {
   uuid: string
   displayName: string
   displayIcon: string
+  fullRender: string
   swatch: string
 }
 
