@@ -14,7 +14,7 @@
 ### Features
 - [x] Menu inicial
 - [x] Seleção/detalhes de agentes
-- [ ] Seleção/detalhes de armas
+- [x] Seleção/detalhes de armas
 - [ ] Seleção/detalhes de mapas
 
 # Tabela de conteúdos
