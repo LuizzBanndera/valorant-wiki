@@ -21,20 +21,21 @@ type TShopData = {
   categoryText: string
 }
 
-type TChroma = {
+export type TChroma = {
   uuid: string
   displayName: string
   displayIcon: string
   swatch: string
 }
 
-type TSkins = {
+export type TSkins = {
   uuid: string
   displayName: string
   themeUuid: string
   contentTierUuid: string
   displayIcon: string
   wallpaper: string
+  fullRender: string
   chromas: TChroma[]
 }
 

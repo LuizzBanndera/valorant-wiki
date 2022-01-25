@@ -6,7 +6,8 @@ import Image from 'next/image'
 import {Line} from 'rc-progress'
 import { useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
-import {TWeaponData, TWeapons} from '@shared/types/types.weapons'
+import {TWeaponData, TWeapons, TSkins} from '@shared/types/types.weapons'
+import { TSkin } from "@db/pages/shared/types/types.skins"
 
 export default function Weapon({data}: TWeaponData) {
 
@@ -20,6 +21,16 @@ export default function Weapon({data}: TWeaponData) {
   .substring(data.weaponStats.wallPenetration.indexOf('::')+2)
 
   const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0})
+  const [skins, setSkins] = useState({
+    uuid: '',
+    displayName: '',
+    themeUuid: '',
+    contentTierUuid: '',
+    displayIcon: '',
+    wallpaper: '',
+    fullRender: ''
+  })
+
   const [loaded, setLoaded] = useState(false)
   
   const handleStats = async () => {
@@ -49,6 +60,22 @@ export default function Weapon({data}: TWeaponData) {
       })    
     }    
   }
+
+  const handleSkins = (skin: TSkins, idx: number, arr: TSkins[]) => {
+
+      if (skin.displayIcon === null) {        
+        if (skin.fullRender) {
+          arr[idx].displayIcon = skin.fullRender
+        } else
+        if (skin.chromas[0].displayIcon) {
+          arr[idx].displayIcon = skin.chromas[0].displayIcon
+        } else {
+          arr[idx].displayIcon = ''
+        }
+      }
+  }
+
+  data.skins.forEach(handleSkins)
   
   handleStats()
 
@@ -101,46 +128,22 @@ return (
       </div>
     </WeaponContainer>
     <SkinsContainer>
-      <div className="skin">
-        <div className="skin-image">
-          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
-        </div>
-        <div className="skin-stats">
-          <p className="g-title">phaton oni</p>
-          <p className="g-label">preço:</p>
-          <p className="g-label">pacote:</p>
-        </div>
-      </div>
-      <div className="skin">
-        <div className="skin-image">
-          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
-        </div>
-        <div className="skin-stats">
-          <p className="g-title">phaton oni</p>
-          <p className="g-label">preço:</p>
-          <p className="g-label">pacote:</p>
-        </div>
-      </div>
-      <div className="skin">
-        <div className="skin-image">
-          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
-        </div>
-        <div className="skin-stats">
-          <p className="g-title">phaton oni</p>
-          <p className="g-label">preço:</p>
-          <p className="g-label">pacote:</p>
-        </div>
-      </div>
-      <div className="skin">
-        <div className="skin-image">
-          <Image className="image" src={data.displayIcon} alt="" layout="fill" objectFit="contain"></Image>
-        </div>
-        <div className="skin-stats">
-          <p className="g-title">phaton oni</p>
-          <p className="g-label">preço:</p>
-          <p className="g-label">pacote:</p>
-        </div>
-      </div>
+      {
+        data.skins.map((skin, idx) => (
+          <div key={idx}>  
+          <div className="skin" key={idx}>
+            <div className="skin-image">
+              {                                
+              <Image className="image" src={skin.displayIcon} alt="" layout="fill" objectFit="contain"/>                                    
+              }
+            </div>
+            <div className="skin-stats">
+              <p className="g-title">{skin.displayName}</p>
+            </div>
+          </div> 
+          </div>
+        ))
+      }
     </SkinsContainer>
   </Container>)
 }
