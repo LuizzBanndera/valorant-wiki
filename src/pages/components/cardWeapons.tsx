@@ -44,7 +44,7 @@ const Container = styled.div`
   flex-direction: column;
   cursor: pointer;
   height: 140px;
-  border-style: groove;
+  border-bottom-style: groove;
   border-width: 1px;
   transition: all .3s ease-in-out;  
   :hover {
@@ -57,7 +57,7 @@ const Container = styled.div`
     position: relative;
     z-index: 0;
     @media (min-width: 880px) { 
-      width: 512px;
+      width: 440px;
     }
   }
 

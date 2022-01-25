@@ -216,9 +216,12 @@ const WeaponContainer = styled.div`
   }
 `
 const SkinsContainer = styled.div`  
-  height: 100%;
+  height: calc(98vh - 57px);
   overflow: auto;
-  width: 29vw;
+  border-top-style: groove;
+  margin-top: 5px;
+  border-bottom-style: groove;
+  border-width: 1px;  
 
   @media (max-width: 600px) {
     width: 100%;
