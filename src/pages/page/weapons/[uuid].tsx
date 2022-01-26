@@ -6,7 +6,7 @@ import Image from 'next/image'
 import {Line} from 'rc-progress'
 import { useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
-import {TWeaponData, TWeapons, TSkins} from '@shared/types/types.weapons'
+import {TWeaponData, TWeapons} from '@shared/types/types.weapons'
 
 export default function Weapon({data}: TWeaponData) {
 

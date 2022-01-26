@@ -10,6 +10,7 @@ export type TCallout = {
 export type TMap = {
   uuid: string
   displayName: string
+  displayIcon: string
   cordinates: string
   listViewIcon: string
   splash: string

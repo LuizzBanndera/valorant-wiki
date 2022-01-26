@@ -3,28 +3,55 @@ import { GetStaticProps } from "next"
 import Image from "next/image"
 import styled from "styled-components"
 import db from '@services/api'
-import { TMaps } from "../shared/types/types.maps"
+import { TMap, TMaps } from "../shared/types/types.maps"
+import React, { useState } from "react"
+import { SyntheticEvent } from "react"
 
 export default function Maps({data}: TMaps) {
 
+  const [map, setMap] = useState<TMap>({
+    uuid: '',
+    displayIcon: data[0].displayIcon,
+    displayName: '',    
+    cordinates: '',
+    listViewIcon: '',
+    splash: '',
+    xMultiplier: 0,
+    yMultiplier: 0,
+    xScalarToAdd: 0,
+    yScalarToAdd: 0,
+    callouts: [],  
+  })
+    
+  const handleArr = () => {    
+    data.forEach((value, idx, arr)=> {
+      if (value.uuid === 'ee613ee9-28b7-4beb-9666-08db13bb2244') {//remove (the range) from maps
+        arr.splice(idx, 1)
+      }
+    })
+  }
+
+  handleArr()  
+    console.log('redraw');
+    
   return(
-    <Container>
+    <Container> 
       <MapList>
-        {
-          data.map((map, idx) => (
-            <div key={idx} className="maps-list">
-              <div className="image-container"> 
-                <p className="map-name g-title">{map.displayName}</p> 
-                <Image quality={100} className="image" src={map.listViewIcon } alt="map" objectFit="contain" layout="fill"/>
-              </div>
-            </div>
-          ))
-        }
+      {
+        data.map((value, idx) => (
+          <Button onClick={() => setMap(value)} key={idx} uuid={value.uuid} uuidSelected={map.uuid} className="g-title">{value.displayName}</Button>          
+        ))
+      }
       </MapList>
-      <Map></Map>
+      <Map>
+        <div className="image-container">
+          <Image quality={100} className="image" src={map.displayIcon} alt="map" objectFit="contain" layout="fill"/>
+        </div>
+      </Map>
     </Container>
   )
 }
+
 
 const Container = styled.div`
   height: 100%;
@@ -35,46 +62,37 @@ const Container = styled.div`
   }
 `
 const MapList = styled.div`
-  
   height: calc(94vh - 57px);
   overflow: auto;
   display: flex;
+  min-width: max-content;
   border-bottom-style: groove;
   border-width: 1px;
   flex-direction: column;
   gap: 5px;
 
-  .image-container {
-    display: flex;
-    width: 370px;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    height: 5rem;
-    @media(max-width: 600px) {
-      width: 100%;
-    }
-    
-    .map-name {
-      visibility: hidden; 
-      width:100%;
-      height: 100%;
-      z-index: 2;
-      background: #666666b8;      
-      opacity: 0;
-      transition: opacity .2s, visibility .2s;
-      margin-top: 0;
-      padding-left: 1rem;
-    }      
-  }
-  .image-container:hover .map-name {    
-    visibility: visible;
-    opacity: 1;
-  }
 `
+const Button = styled.p<{uuid: string, uuidSelected: string}>`
+  font-size: 96px !important;
+  
+  cursor: pointer;
+  transition: 0.3s;
+  :hover {
+    color: var(--g-red);
+  }
+  color: ${props => props.uuid === props.uuidSelected ? 'var(--g-red) !important' : 'var(--g-white)'};
+  
+`
+
 const Map = styled.div`
   display: flex;
   padding: 1rem;
+  width: -webkit-fill-available;
+
+  .image-container {
+    position: relative;    
+    width: inherit;
+  }
 `
 
 //next functions
