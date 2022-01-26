@@ -39,6 +39,8 @@ const MapList = styled.div`
   height: calc(94vh - 57px);
   overflow: auto;
   display: flex;
+  border-bottom-style: groove;
+  border-width: 1px;
   flex-direction: column;
   gap: 5px;
 
