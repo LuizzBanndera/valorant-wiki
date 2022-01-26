@@ -118,22 +118,25 @@ return (
       </div>
     </WeaponContainer>
     <SkinsContainer>
-      {
-        data.skins.map((skin, idx) => (
-          <div key={idx}>  
-          <div className="skin" key={idx}>
-            <div className="skin-image">
-              {                                
-              <Image quality={90} className="image" src={skin.chromas[0].fullRender} alt="" layout="fill" objectFit="contain"/>                                    
-              }
+      <div className="g-title">{`//SKINS`}</div>
+      <div className="skins">
+        {
+          data.skins.map((skin, idx) => (
+            <div key={idx}>  
+            <div className="skin" key={idx}>
+              <div className="skin-image">
+                {                                
+                <Image quality={90} className="image" src={skin.chromas[0].fullRender} alt="" layout="fill" objectFit="contain"/>                                    
+                }
+              </div>
+              <div className="skin-stats">
+                <p className="g-title">{skin.displayName}</p>
+              </div>
+            </div> 
             </div>
-            <div className="skin-stats">
-              <p className="g-title">{skin.displayName}</p>
-            </div>
-          </div> 
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </SkinsContainer>
   </Container>)
 }
@@ -216,12 +219,14 @@ const WeaponContainer = styled.div`
   }
 `
 const SkinsContainer = styled.div`  
-  height: calc(98vh - 57px);
-  overflow: auto;
-  border-top-style: groove;
-  margin-top: 5px;
-  border-bottom-style: groove;
-  border-width: 1px;  
+  height: 100%;
+  .skins {
+    height: calc(100% - 57px);
+    overflow: auto;
+    border-top-style: groove;
+    margin-top: 5px;
+    border-width: 1px;  
+  }
 
   @media (max-width: 600px) {
     width: 100%;
@@ -230,6 +235,13 @@ const SkinsContainer = styled.div`
   .skin {
     border-bottom-style: groove;
     border-width: 1px;
+    .g-title {
+      font-size: 20px;
+    }
+    @media(min-width: 600px) {
+      min-width: 30rem;
+    }
+
   }
   .skin-image {
     height: 15rem;  
