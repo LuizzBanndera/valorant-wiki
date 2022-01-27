@@ -40,7 +40,6 @@ export default function CardWeapons(data: TWeapon) {
 //styled components
 const Container = styled.div`
   display: flex;
-  -webkit-tap-highlight-color: transparent;
   flex-direction: column;
   cursor: pointer;
   height: 140px;
@@ -78,6 +77,7 @@ const Container = styled.div`
     top: -10.5rem;
     p {
       font-size: 12px;
+      color: var(--g-gray)
     }
   }
 `

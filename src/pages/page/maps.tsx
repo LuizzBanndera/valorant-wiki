@@ -5,21 +5,20 @@ import styled from "styled-components"
 import db from '@services/api'
 import { TMap, TMaps } from "../shared/types/types.maps"
 import React, { useState } from "react"
-import { SyntheticEvent } from "react"
 
 export default function Maps({data}: TMaps) {
 
   const [map, setMap] = useState<TMap>({
-    uuid: '',
+    uuid: data[0].uuid,
     displayIcon: data[0].displayIcon,
-    displayName: '',    
-    cordinates: '',
-    listViewIcon: '',
-    splash: '',
-    xMultiplier: 0,
-    yMultiplier: 0,
-    xScalarToAdd: 0,
-    yScalarToAdd: 0,
+    displayName: data[0].displayName,    
+    cordinates: data[0].cordinates,
+    listViewIcon: data[0].listViewIcon,
+    splash: data[0].splash,
+    xMultiplier: data[0].xMultiplier,
+    yMultiplier: data[0].yMultiplier,
+    xScalarToAdd: data[0].xScalarToAdd,
+    yScalarToAdd: data[0].yScalarToAdd,
     callouts: [],  
   })
     
@@ -31,11 +30,10 @@ export default function Maps({data}: TMaps) {
     })
   }
 
-  handleArr()  
-    console.log('redraw');
+  handleArr()
     
   return(
-    <Container> 
+    <Container image={map.splash}> 
       <MapList>
       {
         data.map((value, idx) => (
@@ -45,6 +43,7 @@ export default function Maps({data}: TMaps) {
       </MapList>
       <Map>
         <div className="image-container">
+          <div className="image-bg"></div>
           <Image quality={100} className="image" src={map.displayIcon} alt="map" objectFit="contain" layout="fill"/>
         </div>
       </Map>
@@ -53,10 +52,16 @@ export default function Maps({data}: TMaps) {
 }
 
 
-const Container = styled.div`
+const Container = styled.div<{image: string}>`
   height: 100%;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
+  background-color: unset;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: background 0.5s ease-in-out;
+  background-image: url(${props => props.image});
   @media(max-width: 600px) {
     flex-direction: column;
   }
@@ -76,48 +81,59 @@ const Button = styled.p<{uuid: string, uuidSelected: string}>`
   font-size: 96px !important;
   
   cursor: pointer;
-  transition: 0.3s;
+  color: ${props => props.uuid === props.uuidSelected ? 'var(--g-red) !important' : ''};
   :hover {
     color: var(--g-red);
+  }  
+
+  @media(max-width: 600px) {
+    font-size: 64px !important;
   }
-  color: ${props => props.uuid === props.uuidSelected ? 'var(--g-red) !important' : 'var(--g-white)'};
-  
 `
 
 const Map = styled.div`
   display: flex;
   padding: 1rem;
   width: -webkit-fill-available;
+  height: -webkit-fill-available;
+
+  @media(max-width: 600px) {
+    padding: unset;
+  }
 
   .image-container {
     position: relative;    
     width: inherit;
+    transition: 0.3s ease-in-out;
+    .image-bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; 
+      left: 0;
+      background: #000;
+      opacity: 0.5;
+    }
   }
 `
 
 //next functions
 export const getStaticProps : GetStaticProps = async () => {
   try {
-    const res : AxiosResponse<TMaps> = await db.get('/maps', {
-      params: {        
-        isPlayableCharacter: true
-      }
-    })
+    const res : AxiosResponse<TMaps> = await db.get('/maps')
     
     const data = res.data.data
     return {
       props: {
         data
-      },
-      revalidate: 180
+      }
     }
 
   } catch (error) {
     return {
       props: {
         error
-      },
-      revalidate: 10
+      }
     }
   }
 

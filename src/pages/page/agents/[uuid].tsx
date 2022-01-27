@@ -251,20 +251,17 @@ export const getStaticProps : GetStaticProps = async ({params}: any) => {
     })
     
     const data = res.data.data    
-    //TODO remover revalidate antes de lan�ar em produ��o
     return {
       props: {
         data
-      },
-      revalidate: 180
+      }
     }
 
   } catch (error) {
     return {
       props: {
         error
-      },
-      revalidate: 10
+      }
     }
   }
 

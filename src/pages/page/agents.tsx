@@ -32,16 +32,14 @@ export const getStaticProps : GetStaticProps = async () => {
     return {
       props: {
         data
-      },
-      revalidate: 180
+      }
     }
 
   } catch (error) {
     return {
       props: {
         error
-      },
-      revalidate: 10
+      }
     }
   }
 
