@@ -1,10 +1,9 @@
 import type { AppProps } from 'next/app'
-import '../styles/global.css'
 import "animate.css"
 import NextNProgress from 'nextjs-progressbar'
 import Header from './components/header'
-
-
+import 'rsuite/styles/index.less'
+import '../styles/global.css'
 
 function MyApp({ Component, pageProps }: AppProps) {  
   return (

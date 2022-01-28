@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
+import DropDown from './dropDown'
 
 const menu = [
   {
@@ -35,6 +36,7 @@ export default function Header () {
           </ItemStyled>
         ))
       }
+      <DropDown/>
     </NavStyled>    
   )
 }
@@ -42,7 +44,7 @@ export default function Header () {
 const NavStyled = styled(Nav)`
   display: flex;
   color: var(--g-white);
-  width: 100%;
+  width: 85%;
   padding: 10px;
   gap: 20px !important;
   letter-spacing: 2px;
@@ -54,14 +56,14 @@ const NavStyled = styled(Nav)`
 `
 
 const ItemStyled = styled(Nav.Item)`
-  display: flex;
+  display: flex !important;
   height: 35px;
   align-items: center;
   border-radius: 2px;
   padding: 5px;
-  transition: all 500ms;
+  transition: all 500ms;  
   :hover {
-    background-color: #FF4654;    
+    background-color: #FF4654 !important;    
     color: whitesmoke;
   }
 `
