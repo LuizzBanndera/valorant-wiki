@@ -11,3 +11,13 @@ export async function GeoLocation () {
 export async function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+export const handleLoadImage = (e: any) => {  
+  const target = e.target
+  if (target.src.indexOf('data:image/gif;base64') < 0) {
+    return true
+  } else {
+    return false
+  }
+}

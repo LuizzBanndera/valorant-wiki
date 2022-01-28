@@ -6,10 +6,13 @@ import db from '@services/api'
 import { TMap, TMaps } from "../shared/types/types.maps"
 import React, { useState } from "react"
 import {Modal} from '@nextui-org/react'
+import {handleLoadImage} from '@shared/utils'
+import Loading from "@components/loading"
 
 export default function Maps({data}: TMaps) {
 
   const [modal, setModal] = useState(false)
+  const [splashLoaded, setSplashLoaded] = useState(false)
 
   const [map, setMap] = useState<TMap>({
     uuid: data[0].uuid,
@@ -34,6 +37,8 @@ export default function Maps({data}: TMaps) {
   }
 
   handleArr()
+
+  const handleSplashLoad = (e: any) => setSplashLoaded(handleLoadImage(e)) 
     
   return(
     <Container image={map.splash}> 
@@ -53,9 +58,19 @@ export default function Maps({data}: TMaps) {
           <Image quality={100} onClick={() => setModal(true)} className="image" src={map.listViewIcon} alt="map" objectFit="cover" layout="fill"/>
         </div>
         <Modal blur noPadding open={modal} onClose={() => setModal(false)} width="100%">
-          <Modal.Body className="modal-image">
-            <div style={{width: '100%', height: '95vh'}}>              
-              <Image quality={100} className="image" src={map.splash} alt="map" objectFit="cover" layout="fill"/>
+          <Modal.Body>
+            <div              
+              style={{width: '100%', height: '95vh', backgroundColor: '#0f1923'}}>
+              <Loading style={{visibility: splashLoaded ? 'hidden' : 'unset'}}/>
+              <Image
+                quality={100}
+                onLoad={(e) => handleSplashLoad(e)}
+                className="image"
+                src={map.splash}
+                alt="map"
+                objectFit="cover"
+                layout="fill"
+              />                                         
             </div>
           </Modal.Body>        
         </Modal>
