@@ -46,7 +46,7 @@ const CardStyled = styled.button`
     letter-spacing: 3px;
   }
   :hover {    
-    background-color: var(--g-red);
+    background-color: #666666;
     z-index: 1;
   }
 

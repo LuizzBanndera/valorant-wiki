@@ -7,8 +7,17 @@ export default function Card(props: any) {
   <Container {...props}>
     <div className="container">
       <div className="box">
-        <div className="imgBox">          
-          <Image priority className="image" quality={100} placeholder="blur" blurDataURL={props.image} layout="fill" src={props.image} alt=""/>
+        <div className="imgBox">
+          <Image 
+            priority 
+            className="image" 
+            quality={100} 
+            placeholder="blur" 
+            blurDataURL={props.image} 
+            layout="fill" 
+            src={props.image} 
+            alt=""
+          />
         </div>
         <div className="content">
           <h2 className="g-title">{props.name}</h2>

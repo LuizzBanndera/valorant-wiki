@@ -1,4 +1,5 @@
 import Card from '@components/card'
+import CardMenu from '@components/cardMenu'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -31,9 +32,9 @@ const Home: NextPage = () => {
 
   return (
      <ContainerStyled>
-     {Items.map(({title, image, bg, path}, idx) => (
+     {Items.map(({title, bg, path}, idx) => (
        <ItemStyled key={idx} bg={bg} position={idx+1}>
-         <Card onClick={() => handleClick(path)} name={title} image={image} />
+         <CardMenu onClick={() => handleClick(path)} name={title}/>
        </ItemStyled>
      ))}
        <BackGroundStyled/>
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
 const ContainerStyled = styled.ul`
   all: unset;
   display: flex;  
+  gap: 1rem;
   height: 100%;
   justify-content: center;
   align-items: center;
