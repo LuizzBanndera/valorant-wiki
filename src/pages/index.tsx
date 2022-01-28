@@ -1,4 +1,3 @@
-import Card from '@components/card'
 import CardMenu from '@components/cardMenu'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -66,7 +65,7 @@ const BackGroundStyled = styled.div`
   background-position: bottom right;  
   background-repeat: no-repeat;
   background-size: contain;
-  @media (max-width: 880px) {
+  @media (max-width: 600px) {
     display: none;
   }  
   `
