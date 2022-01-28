@@ -46,22 +46,18 @@ export default function Maps({data}: TMaps) {
           <div className="image-bg"></div>
           <Image quality={100} className="image" src={map.displayIcon} alt="map" objectFit="contain" layout="fill"/>
         </div>
+        <div className="list-view-container">
+          <Image quality={100} className="image" src={map.listViewIcon} alt="map" objectFit="cover" layout="fill"/>
+        </div>
       </Map>
     </Container>
   )
 }
 
-
 const Container = styled.div<{image: string}>`
   height: 100%;
   display: flex;
   padding: 1rem;
-  background-color: unset;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transition: background 0.5s ease-in-out;
-  background-image: url(${props => props.image});
   @media(max-width: 600px) {
     flex-direction: column;
   }
@@ -93,9 +89,13 @@ const Button = styled.p<{uuid: string, uuidSelected: string}>`
 
 const Map = styled.div`
   display: flex;
+  flex-direction: column;
   padding: 1rem;
   width: -webkit-fill-available;
   height: -webkit-fill-available;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
   @media(max-width: 600px) {
     padding: unset;
@@ -105,14 +105,21 @@ const Map = styled.div`
     position: relative;    
     width: inherit;
     transition: 0.3s ease-in-out;
-    .image-bg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; 
-      left: 0;
-      background: #000;
-      opacity: 0.5;
+    width: 30rem;
+    height: 30rem;    
+  }
+  .list-view-container {
+    position: relative;    
+    width: inherit;
+    transition: 0.3s ease-in-out;
+    width: 30rem;
+    height: 7rem;    
+    cursor: pointer;
+    border-color: var(--g-white);
+    border-width: 1px;
+    border-style: groove;
+    :hover {
+      border-color: var(--g-red);
     }
   }
 `
