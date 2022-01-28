@@ -5,8 +5,11 @@ import styled from "styled-components"
 import db from '@services/api'
 import { TMap, TMaps } from "../shared/types/types.maps"
 import React, { useState } from "react"
+import Modal from '@nextui-org/react/modal'
 
 export default function Maps({data}: TMaps) {
+
+  const [modal, setModal] = useState(false)
 
   const [map, setMap] = useState<TMap>({
     uuid: data[0].uuid,
@@ -47,8 +50,16 @@ export default function Maps({data}: TMaps) {
           <Image quality={100} className="image" src={map.displayIcon} alt="map" objectFit="contain" layout="fill"/>
         </div>
         <div className="list-view-container">
-          <Image quality={100} className="image" src={map.listViewIcon} alt="map" objectFit="cover" layout="fill"/>
+          <Image quality={100} onClick={() => setModal(true)} className="image" src={map.listViewIcon} alt="map" objectFit="cover" layout="fill"/>
         </div>
+        <Modal blur noPadding open={modal} onClose={() => setModal(false)} width="100%">
+          <Modal.Body className="modal-image">
+            <div style={{width: '100%', height: '95vh'}}>
+            <Image quality={100} className="image" src={map.splash} alt="map" objectFit="cover" layout="fill"/>
+
+            </div>
+          </Modal.Body>        
+        </Modal>
       </Map>
     </Container>
   )
