@@ -3,7 +3,7 @@ import '../styles/global.css'
 import "animate.css"
 import NextNProgress from 'nextjs-progressbar'
 import Header from './components/header'
-import Footer from './components/footer'
+
 
 
 function MyApp({ Component, pageProps }: AppProps) {  

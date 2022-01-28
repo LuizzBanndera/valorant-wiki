@@ -5,7 +5,7 @@ import styled from "styled-components"
 import db from '@services/api'
 import { TMap, TMaps } from "../shared/types/types.maps"
 import React, { useState } from "react"
-import Modal from '@nextui-org/react/modal'
+import {Modal} from '@nextui-org/react'
 
 export default function Maps({data}: TMaps) {
 
@@ -54,9 +54,8 @@ export default function Maps({data}: TMaps) {
         </div>
         <Modal blur noPadding open={modal} onClose={() => setModal(false)} width="100%">
           <Modal.Body className="modal-image">
-            <div style={{width: '100%', height: '95vh'}}>
-            <Image quality={100} className="image" src={map.splash} alt="map" objectFit="cover" layout="fill"/>
-
+            <div style={{width: '100%', height: '95vh'}}>              
+              <Image quality={100} className="image" src={map.splash} alt="map" objectFit="cover" layout="fill"/>
             </div>
           </Modal.Body>        
         </Modal>
