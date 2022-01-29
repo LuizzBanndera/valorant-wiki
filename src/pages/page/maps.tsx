@@ -131,7 +131,11 @@ const Map = styled.div`
     width: inherit;
     transition: 0.3s ease-in-out;
     width: 30rem;
-    height: 30rem;    
+    height: 30rem; 
+    @media(max-width: 600px) {
+      width: 100%;
+      height: 19rem;
+    }   
   }
   .list-view-container {
     position: relative;    
@@ -145,6 +149,9 @@ const Map = styled.div`
     border-style: groove;
     :hover {
       border-color: var(--g-red);
+    }
+    @media(max-width: 600px) {
+      width: 100%;
     }
   }
 `

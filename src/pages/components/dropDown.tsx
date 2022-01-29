@@ -24,6 +24,9 @@ export default function DropDown() {
 const Container = styled.div`
   position: fixed;
   right: 1rem;
+  @media(max-width: 600px) {
+      position: unset;
+    }
   *.rs-dropdown-menu {
     background-color: unset;
     .rs-dropdown-item {

@@ -36,7 +36,9 @@ export default function Header () {
           </ItemStyled>
         ))
       }
-      <DropDown/>
+      <div className="header-right">
+        <DropDown/>
+      </div>
     </NavStyled>    
   )
 }
@@ -44,12 +46,13 @@ export default function Header () {
 const NavStyled = styled(Nav)`
   display: flex;
   color: var(--g-white);
-  width: 85%;
+  width: 100%;
   padding: 10px;
   gap: 20px !important;
   letter-spacing: 2px;
   border-radius: 2px;
   font-family: 'Anton', cursive;
+
   @media (max-width: 576px) {
     justify-content: space-between;  
   }  
