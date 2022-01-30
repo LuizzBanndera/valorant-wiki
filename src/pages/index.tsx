@@ -1,30 +1,38 @@
+import { useContext } from 'react'
 import CardMenu from '@components/cardMenu'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import {ReactContext} from '@ctx/state'
 
-const Items  = [
-  {
-    title : 'AGENTES',
-    image : '/images/agent-logo.png',
-    bg    : '/images/v_agents_bg.svg',
-    path  :'/page/agents'
-  },
-  {
-    title : 'ARMAS',
-    image : '/images/vandal-logo.png',
-    bg    : '/images/v_weapons_bg.svg',    
-    path  : '/page/weapons'
-  },
-  {
-    title : 'MAPAS',
-    image : '/images/maps-logo.png',
-    bg    : '/images/v_maps_bg.svg',    
-    path  : '/page/maps'
-  }
-]
 
 const Home: NextPage = () => {
+
+  const value = useContext(ReactContext)
+
+  console.log(value.state.language);
+  
+  
+  const Items  = [
+    {
+      title : 'AGENTES',
+      image : '/images/agent-logo.png',
+      bg    : '/images/v_agents_bg.svg',
+      path  :'/page/agents'
+    },
+    {
+      title : 'ARMAS',
+      image : '/images/vandal-logo.png',
+      bg    : '/images/v_weapons_bg.svg',    
+      path  : '/page/weapons'
+    },
+    {
+      title : 'MAPAS',
+      image : '/images/maps-logo.png',
+      bg    : '/images/v_maps_bg.svg',    
+      path  : '/page/maps'
+    }
+  ]
 
   const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
