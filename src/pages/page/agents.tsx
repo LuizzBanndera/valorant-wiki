@@ -24,7 +24,7 @@ export const getStaticProps : GetStaticProps = async () => {
   try {
     const res : AxiosResponse<TAgents> = await db.get('/agents', {
       params: {        
-        isPlayableCharacter: true
+        isPlayableCharacter: true,
       }
     })
     

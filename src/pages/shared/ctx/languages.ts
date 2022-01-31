@@ -2,7 +2,7 @@ import { TLanguages } from "../types/types.languages"
 
 const languages: TLanguages[] = [
   {
-    lang: 'br',
+    lang: 'pt-BR',
     menus: {
       agents: 'agentes',
       weapons: 'armas',
@@ -31,7 +31,7 @@ const languages: TLanguages[] = [
 
   },
   {
-    lang: 'en',
+    lang: 'en-US',
     menus: {
       agents: 'agents',
       weapons: 'weapons',
