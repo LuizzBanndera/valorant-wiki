@@ -22,7 +22,8 @@
       "@ctx/*": ["src/context/*"],
       "@db/*":["src/*"],
       "@shared/*":["src/pages/shared/*"],
-      "@services/*":["src/services/*"]
+      "@services/*":["src/services/*"],
+      "@redux/*":["src/redux/*"]
     }    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],

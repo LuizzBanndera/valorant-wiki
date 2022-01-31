@@ -34,5 +34,9 @@ module.exports = {
     );
 
     return config;
+  },
+  env: {
+    url: 'https://valorant-api.com/v1',
+    lang: 'pt-BR'
   }
 }

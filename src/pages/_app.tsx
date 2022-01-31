@@ -1,20 +1,24 @@
 import type { AppProps } from 'next/app'
-import "animate.css"
 import NextNProgress from 'nextjs-progressbar'
 import Header from './components/header'
+import Context from '../context/state'
+import {StoreProvider} from 'easy-peasy'
+import {store} from '@redux/store'
+import "animate.css"
 import 'rsuite/styles/index.less'
 import '../styles/global.css'
-import Context from '../context/state'
 
 function MyApp({ Component, pageProps }: AppProps) {  
   return (
-    <Context>
-      <NextNProgress color='red' options={{ showSpinner: false }} />
-      <Header/>
-      <div className="content">
-        <Component {...pageProps} />
-      </div>
-    </Context>
+    <StoreProvider store={store}>
+      <Context>
+        <NextNProgress color='red' options={{ showSpinner: false }} />
+        <Header/>
+        <div className="content">
+          <Component {...pageProps} />
+        </div>
+      </Context>
+    </StoreProvider>
   )
 }
 export default MyApp
