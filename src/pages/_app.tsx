@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="content">
         <Component {...pageProps} />
       </div>
-      {/* <Footer/> */}
     </Context>
   )
 }

@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains:['media.valorant-api.com', 'img.freepik.com'],
+    domains:['media.valorant-api.com'],
   },
   webpack(config) {
     config.module.rules.push({
