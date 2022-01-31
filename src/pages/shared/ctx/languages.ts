@@ -1,4 +1,6 @@
-const languages = [
+import { TLanguages } from "../types/types.languages"
+
+const languages: TLanguages[] = [
   {
     lang: 'br',
     menus: {
@@ -11,7 +13,7 @@ const languages = [
       en: 'inglês',
     },
     agents: {
-      habilities: 'habilidades',
+      skills: 'habilidades',
       passive: 'passiva'
     },
     weapons: {
@@ -31,7 +33,7 @@ const languages = [
   {
     lang: 'en',
     menus: {
-      agents: 'agent',
+      agents: 'agents',
       weapons: 'weapons',
       maps: 'maps',
     },
@@ -40,7 +42,7 @@ const languages = [
       en: 'english',
     },
     agents: {
-      habilities: 'habilities',
+      skills: 'skills',
       passive: 'passive'
     },
     weapons: {

@@ -1,29 +1,33 @@
+import { useContext } from 'react'
+import { ReactContext } from '@ctx/state'
 import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
 import DropDown from './dropDown'
 
-const menu = [
-  {
-    name: 'HOME',
-    path: '/'
-  },
-  {
-    name: 'AGENTES',
-    path: '/page/agents'
-  },
-  {
-    name: 'ARMAS',
-    path: '/page/weapons'
-  },
-  {
-    name: 'MAPAS',
-    path: '/page/maps'
-  },
-]
 
 export default function Header () {
-
+  const ctx = useContext(ReactContext)
+  const lang = ctx.state.language.value.menus
+  
+  const menu = [
+    {
+      name: 'HOME',
+      path: '/'
+    },
+    {
+      name: lang.agents,
+      path: '/page/agents'
+    },
+    {
+      name: lang.weapons,
+      path: '/page/weapons'
+    },
+    {
+      name: lang.maps,
+      path: '/page/maps'
+    },
+  ]
   const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
 
@@ -60,6 +64,7 @@ const NavStyled = styled(Nav)`
 
 const ItemStyled = styled(Nav.Item)`
   display: flex !important;
+  text-transform: uppercase;
   height: 35px;
   align-items: center;
   border-radius: 2px;

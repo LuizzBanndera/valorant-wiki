@@ -8,26 +8,24 @@ import {ReactContext} from '@ctx/state'
 
 const Home: NextPage = () => {
 
-  const value = useContext(ReactContext)
-
-  console.log(value.state.language);
-  
+  const ctx = useContext(ReactContext)
+  const lang = ctx.state.language.value.menus
   
   const Items  = [
     {
-      title : 'AGENTES',
+      title : lang.agents,
       image : '/images/agent-logo.png',
       bg    : '/images/v_agents_bg.svg',
       path  :'/page/agents'
     },
     {
-      title : 'ARMAS',
+      title : lang.weapons,
       image : '/images/vandal-logo.png',
       bg    : '/images/v_weapons_bg.svg',    
       path  : '/page/weapons'
     },
     {
-      title : 'MAPAS',
+      title : lang.maps,
       image : '/images/maps-logo.png',
       bg    : '/images/v_maps_bg.svg',    
       path  : '/page/maps'

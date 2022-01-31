@@ -4,11 +4,16 @@ import styled from "styled-components"
 import db from '@services/api'
 import Image from 'next/image'
 import {Line} from 'rc-progress'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
 import {TWeaponData, TWeapons} from '@shared/types/types.weapons'
+import { ReactContext } from "@ctx/state"
 
 export default function Weapon({data}: TWeaponData) {
+
+  const ctx = useContext(ReactContext)
+
+  const lang = ctx.state.language.value.weapons
 
   const category = data.category.substring(data.category.indexOf('::')+2)
 
@@ -88,30 +93,30 @@ return (
       </div>
       <div className="weapon-info">
         <p className="g-red-title">{data.displayName+`.`}</p>
-        <p className="g-title">{`//características`}</p>
+        <p className="g-title">{`//${lang.details}`}</p>
         <div className="info-item">
-          <p className="g-label">categoria:</p>
+          <p className="g-label">{lang.category}</p>
           <p className="g-label">{stats.catName}</p>
         </div>
         <div className="info-item">
-          <p className="g-label">valor:</p>
+          <p className="g-label">{lang.value}</p>
           <p className="g-label">{stats.cost}</p>
         </div>                
         <div className="weapon-stats">
           <div className="info-stats">
-            <p className="g-label">taxa de disparo:</p>                        
+            <p className="g-label">{lang.fireRate}</p>                        
             <Line percent={stats.fireRate} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">tam. do pente:</p>
+            <p className="g-label">{lang.magSize}</p>
             <Line percent={stats.magSize} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">penetração:</p>
+            <p className="g-label">{lang.bulletPen}</p>
             <Line percent={stats.wallPen} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">recarregamento:</p>
+            <p className="g-label">{lang.reloadTime}</p>
             <Line percent={stats.reloadTime} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
         </div>

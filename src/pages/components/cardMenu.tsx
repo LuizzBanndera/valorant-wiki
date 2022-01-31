@@ -13,6 +13,7 @@ export default function CardMenu (props: any) {
 }
 
 const Label = styled.p`
+  text-transform: uppercase;
   @media (max-width: 576px) {
     display: ${props => props.className !== 'first' ? 'none' : 'block'};
     visibility: ${props => props.className !== 'first' ? 'hidden' : 'visible'};

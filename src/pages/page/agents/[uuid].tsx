@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import db from '@services/api'
@@ -6,8 +6,12 @@ import { TAgents, TAgentData } from '@shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Loading from '@components/loading'
+import {ReactContext} from '@ctx/state'
 
 export default function Agent(agent: TAgentData) {
+
+  const ctx = useContext(ReactContext)
+  const lang = ctx.state.language.value.agents
 
   const [imageLoaded, setImageLoaded] = useState(false)
   
@@ -23,7 +27,7 @@ export default function Agent(agent: TAgentData) {
   const handleAbilite = (idx: number) => {
     let label : string
     switch (idx) {
-      case 4: label = '(passiva)'
+      case 4: label = `(${lang.passive})`
       break;
       case 3: label = '(ultimate)'
       break;
@@ -43,7 +47,7 @@ export default function Agent(agent: TAgentData) {
         <p className='label'>{data.displayName}.</p>
         <p className='g-label'>{data.description}</p>
         <div>
-          <p className='g-title'>{`//`+data.role.displayName}</p>
+          <p className='g-title'>{`//${data.role.displayName}`}</p>
           <p className='g-label'>{data.role.description}</p>
         </div>        
       </AgentBio>               
@@ -68,7 +72,7 @@ export default function Agent(agent: TAgentData) {
       </AgentImage>
       <AgentDetails>
         <AgentSkills>                
-        <p className='g-title'>{`//HABILIDADES`}</p>
+        <p className='g-title'>{`//`+lang.skills}</p>
         {data.abilities.map((abilitie, idx) => (                  
           <SkillsDetails key={idx}>                               
             <div className='image-container'>
