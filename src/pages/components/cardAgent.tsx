@@ -6,9 +6,9 @@ import {useRouter} from 'next/router'
 
 export default function CardAgent (data: TAgent) {   
   
-  const Router = useRouter()  
+  const Router = useRouter()
 
-  const handleClick = (uuid: string) => Router.push({pathname:`/page/agents/[uuid]`, query: {uuid}}) 
+  const handleClick = (uuid: string) => Router.push({pathname:'/page/agents/[uuid]', query: {uuid}}) 
 
   return (
     <Bounce>

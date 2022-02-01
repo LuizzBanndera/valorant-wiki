@@ -227,17 +227,17 @@ const SkillsDetails = styled.div`
 `
 
 //functions-next
-export const getStaticPaths : GetStaticPaths = async () => {
-
-  const res : AxiosResponse<TAgents> = await db.get('/agents', {
-    params: {        
-      isPlayableCharacter: true
-    }
-  })
+export const getStaticPaths : GetStaticPaths = async ({locales}) => {
+  
+    const res : AxiosResponse<TAgents> = await db.get('/agents', {
+      params: {        
+        isPlayableCharacter: true
+      }
+    })
 
   const data = res.data.data
 
-  const paths = data.map((agent: any) => (
+  const paths = data.map((agent: any) => (  
     {params: {uuid: agent.uuid}}
   ))
   
