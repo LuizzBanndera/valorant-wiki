@@ -36,10 +36,7 @@ const Home: NextPage = () => {
   const handleClick = (path: string) => (router.push(path))
 
   const handleLang = () => {
-    const lang = router.locale
-
-    console.log(lang);
-    
+    const lang = router.locale    
 
     switch (lang) {
       case 'en-US':

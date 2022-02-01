@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import db from '@services/api'
-import { TAgents, TAgentData } from '@shared/types/types.agents'
+import { TAgents, TAgentData, TAgent } from '@shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Loading from '@components/loading'
@@ -228,18 +228,25 @@ const SkillsDetails = styled.div`
 
 //functions-next
 export const getStaticPaths : GetStaticPaths = async ({locales}) => {
+  const lang = locales!
   
-    const res : AxiosResponse<TAgents> = await db.get('/agents', {
-      params: {        
-        isPlayableCharacter: true
-      }
-    })
+  const res : AxiosResponse<TAgents> = await db.get('/agents', {
+    params: {        
+      isPlayableCharacter: true
+    }
+  })
 
   const data = res.data.data
 
-  const paths = data.map((agent: any) => (  
-    {params: {uuid: agent.uuid}}
-  ))
+  let paths: { params: { uuid: any; locale: string } }[] = []
+
+  lang.map((item) => {
+    data.map((agent: any) => (
+      paths.push({params: {uuid: agent.uuid, locale: item}})
+    ))
+  })
+
+  console.log(paths);
   
   return {paths, fallback: false}
 
