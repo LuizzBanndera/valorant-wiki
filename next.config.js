@@ -38,5 +38,9 @@ module.exports = {
   env: {
     url: 'https://valorant-api.com/v1',
     lang: 'pt-BR'
+  },
+  i18n: {
+    locales: ['pt-BR', 'en-US'],
+    defaultLocale: 'pt-BR',
   }
 }

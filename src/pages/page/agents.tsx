@@ -4,6 +4,7 @@ import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
 import {TAgents} from '@shared/types/types.agents'
+import { language } from 'gray-matter'
 
 export default function AgentsMenu ({data}: TAgents) {
 
@@ -20,9 +21,9 @@ export default function AgentsMenu ({data}: TAgents) {
   )
 }
 
-export const getStaticProps : GetStaticProps = async () => {
-  try {
-    const res : AxiosResponse<TAgents> = await db.get('/agents', {
+export const getStaticProps : GetStaticProps = async ({locale}) => {
+  try {    
+    const res : AxiosResponse<TAgents> = await db.get(`/agents?language=${locale}`, {
       params: {        
         isPlayableCharacter: true,
       }

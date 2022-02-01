@@ -237,18 +237,20 @@ export const getStaticPaths : GetStaticPaths = async () => {
 
   const data = res.data.data
 
-  const paths = data.map((agent: any) => ({    
-    params: {uuid: agent.uuid}
-  }))
-
+  const paths = data.map((agent: any) => (
+    {params: {uuid: agent.uuid}}
+  ))
+  
   return {paths, fallback: false}
 
 }
 
-export const getStaticProps : GetStaticProps = async ({params}: any) => {  
+export const getStaticProps : GetStaticProps = async ({params, locale}) => {
+  
+  const param = params!
 
   try {
-    const res : AxiosResponse<TAgents> = await db.get(`/agents/${params.uuid}`, {
+    const res : AxiosResponse<TAgents> = await db.get(`/agents/${param.uuid}?language=${locale}`, {
       params: {        
         isPlayableCharacter: true,
       }

@@ -29,9 +29,9 @@ const Container = styled.div`
   gap: 2rem;
 `
 
-export const getStaticProps : GetStaticProps = async () => {
+export const getStaticProps : GetStaticProps = async ({locale}) => {
   try {
-    const res : AxiosResponse<TWeapons> = await db.get('/weapons')
+    const res : AxiosResponse<TWeapons> = await db.get(`/weapons?language=${locale}`)
     
 
     //TODO remover revalidate

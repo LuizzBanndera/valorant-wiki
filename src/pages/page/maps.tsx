@@ -157,9 +157,9 @@ const Map = styled.div`
 `
 
 //next functions
-export const getStaticProps : GetStaticProps = async () => {
+export const getStaticProps : GetStaticProps = async ({locale}) => {
   try {
-    const res : AxiosResponse<TMaps> = await db.get('/maps')
+    const res : AxiosResponse<TMaps> = await db.get(`/maps?language=${locale}`)
     
     const data = res.data.data
     return {

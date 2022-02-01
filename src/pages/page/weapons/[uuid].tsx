@@ -283,27 +283,26 @@ export const getStaticPaths : GetStaticPaths = async () => {
 
 }
 
-export const getStaticProps : GetStaticProps = async ({params}: any) => {  
+export const getStaticProps : GetStaticProps = async ({params, locale}) => {  
+
+  const param = params!
 
   try {
-    const res : AxiosResponse<TWeapons> = await db.get(`/weapons/${params.uuid}`)    
+    const res : AxiosResponse<TWeapons> = await db.get(`/weapons/${param.uuid}?language=${locale}`)    
     
     const data = res.data.data    
-        
-    //TODO remover revalidate antes de lan�ar em produ��o
+            
     return {
       props: {
         data
-      },
-      revalidate: 180
+      }
     }
 
   } catch (error) {
     return {
       props: {
         error
-      },
-      revalidate: 10
+      }
     }
   }
 
