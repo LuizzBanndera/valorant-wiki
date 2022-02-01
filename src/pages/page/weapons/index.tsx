@@ -3,7 +3,7 @@ import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import styled from 'styled-components'
 import CardWeapons from '@components/cardWeapons';
-import { TWeapons } from '../shared/types/types.weapons';
+import { TWeapons } from '../../shared/types/types.weapons';
 
 
 export default function Weapons({data}: TWeapons) {

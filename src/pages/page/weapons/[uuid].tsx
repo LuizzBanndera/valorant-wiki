@@ -6,7 +6,7 @@ import Image from 'next/image'
 import {Line} from 'rc-progress'
 import { useContext, useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
-import {TWeaponData, TWeapons} from '@shared/types/types.weapons'
+import {TWeapon, TWeaponData, TWeapons} from '@shared/types/types.weapons'
 import { ReactContext } from "@ctx/state"
 
 export default function Weapon({data}: TWeaponData) {
@@ -275,7 +275,7 @@ export const getStaticPaths : GetStaticPaths = async () => {
   
   const data = res.data.data
 
-  const paths = data.map((weapon: any) => ({    
+  const paths = data.map((weapon: TWeapon) => ({    
     params: {uuid: weapon.uuid}
   }))
 

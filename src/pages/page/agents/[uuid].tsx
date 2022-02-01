@@ -227,8 +227,7 @@ const SkillsDetails = styled.div`
 `
 
 //functions-next
-export const getStaticPaths : GetStaticPaths = async ({locales}) => {
-  const lang = locales!
+export const getStaticPaths : GetStaticPaths = async () => {
   
   const res : AxiosResponse<TAgents> = await db.get('/agents', {
     params: {        
@@ -238,15 +237,9 @@ export const getStaticPaths : GetStaticPaths = async ({locales}) => {
 
   const data = res.data.data
 
-  let paths: { params: { uuid: any; locale: string } }[] = []
-
-  lang.map((item) => {
-    data.map((agent: any) => (
-      paths.push({params: {uuid: agent.uuid, locale: item}})
-    ))
-  })
-
-  console.log(paths);
+  const paths = data.map((agent: TAgent) => (
+    {params: {uuid: agent.uuid}}
+  ))
   
   return {paths, fallback: false}
 
