@@ -35,6 +35,27 @@ const Home: NextPage = () => {
   const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
 
+  const handleLang = () => {
+    const lang = router.locale
+
+    console.log(lang);
+    
+
+    switch (lang) {
+      case 'en-US':
+        ctx.state.language.setSelectedLanguage(0)        
+        break;
+      case 'pt-BR':
+        ctx.state.language.setSelectedLanguage(1)
+        break;
+        default:        
+        ctx.state.language.setSelectedLanguage(0)        
+        break;
+    }
+  }
+
+  handleLang()
+
   return (
      <ContainerStyled>
      {Items.map(({title, bg, path}, idx) => (

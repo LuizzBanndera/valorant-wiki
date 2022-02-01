@@ -3,8 +3,6 @@ import { ReactContext } from '@ctx/state'
 import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
-import DropDown from './dropDown'
-
 
 export default function Header () {
   const ctx = useContext(ReactContext)
@@ -40,8 +38,7 @@ export default function Header () {
           </ItemStyled>
         ))
       }
-      <div className="header-right">
-        <DropDown/>
+      <div className="header-right">        
       </div>
     </NavStyled>    
   )
