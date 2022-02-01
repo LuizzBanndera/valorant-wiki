@@ -4,7 +4,6 @@ import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import { GetStaticProps } from 'next'
 import {TAgents} from '@shared/types/types.agents'
-import { language } from 'gray-matter'
 
 export default function AgentsMenu ({data}: TAgents) {
 
