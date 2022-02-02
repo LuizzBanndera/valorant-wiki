@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import languages from '@db/pages/shared/ctx/languages'
 import {TLanguages} from '@shared/types/types.languages'
+import { useRouter } from 'next/router'
 
 type TContext = {
   state : {
@@ -26,8 +27,11 @@ const defaultValues = {
 export const ReactContext = React.createContext<TContext>(defaultValues)
 
 const Context : React.FunctionComponent = props => {
-  const [selectedLanguage, setSelectedLanguage] = useState(0)
+
+  const lang = useRouter().locale
   const languageObject = languages
+  const idx = languageObject.findIndex((value) => value.lang === lang) | 0
+  const [selectedLanguage, setSelectedLanguage] = useState(idx)
 
   return (
   <ReactContext.Provider value={

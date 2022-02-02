@@ -2,6 +2,35 @@ import { TLanguages } from "../types/types.languages"
 
 const languages: TLanguages[] = [
   {
+    lang: 'en-US',
+    menus: {
+      agents: 'agents',
+      weapons: 'weapons',
+      maps: 'maps',
+    },
+    languages: {
+      br: 'portuguese',
+      en: 'english',
+    },
+    agents: {
+      skills: 'skills',
+      passive: 'passive'
+    },
+    weapons: {
+      details: 'details',
+      category: 'category',
+      value: 'cost',
+      fireRate: 'fire rate',
+      magSize: 'magazine size',
+      bulletPen: 'Penetration',
+      reloadTime: 'reload time',
+    },
+    maps: {
+      //this one looks awfull so nothing to do here...
+    }
+
+  },
+  {
     lang: 'pt-BR',
     menus: {
       agents: 'agentes',
@@ -30,35 +59,6 @@ const languages: TLanguages[] = [
     }
 
   },
-  {
-    lang: 'en-US',
-    menus: {
-      agents: 'agents',
-      weapons: 'weapons',
-      maps: 'maps',
-    },
-    languages: {
-      br: 'portuguese',
-      en: 'english',
-    },
-    agents: {
-      skills: 'skills',
-      passive: 'passive'
-    },
-    weapons: {
-      details: 'details',
-      category: 'category',
-      value: 'cost',
-      fireRate: 'fire rate',
-      magSize: 'magazine size',
-      bulletPen: 'Penetration',
-      reloadTime: 'reload time',
-    },
-    maps: {
-      //this one looks awfull so nothing to do here...
-    }
-
-  }
 ]
 
 export default languages
