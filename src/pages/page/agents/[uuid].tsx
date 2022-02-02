@@ -64,8 +64,8 @@ export default function Agent(agent: TAgentData) {
             className='image' 
             src={data.fullPortrait} 
             quality={100}            
-            alt='agent'
-            layout='fill'
+            alt='agent'            
+            layout='fill'            
             objectFit='contain'
           />
         </div>
@@ -125,10 +125,7 @@ const AgentImage = styled.div`
   align-items: center;
 
   .image-container {
-    z-index: 3 !important;
-    >span .image {
-      position: relative !important;
-    }
+    z-index: 1 !important;    
   }
   
   .header-content {
@@ -146,8 +143,8 @@ const AgentDetails = styled.div`
   height: 80vh;
   overflow: auto;
   z-index: 2;
-  border-bottom-style: inset;
-  border-width: 2px;
+  border-bottom-style: groove;
+  border-width: 1px;
   border-color: var(--g-white);
 
   @media (min-width: 500px ) {
