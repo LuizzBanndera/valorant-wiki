@@ -52,22 +52,22 @@ export default function Agent(agent: TAgentData) {
         </div>        
       </AgentBio>               
       <AgentImage>
-        <div className='image-container'>
-          <Image 
-            onLoad={e => handleLoadImage(e)}             
-            className='image' 
-            src={data.fullPortrait} 
-            quality={100}
-            width={800}
-            height={800}
-            alt='agent'
-          />
-        </div>
         <div className='header-content'>
           <AgentName> 
             {Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))}
           </AgentName>
           <SquareBackGround/>    
+        </div>
+        <div className='image-container'>
+          <Image 
+            onLoad={e => handleLoadImage(e)}             
+            className='image' 
+            src={data.fullPortrait} 
+            quality={100}            
+            alt='agent'
+            layout='fill'
+            objectFit='contain'
+          />
         </div>
       </AgentImage>
       <AgentDetails>
@@ -113,8 +113,7 @@ const Container = styled.div`
   justify-content: center;
   padding: 1rem;
   flex-wrap: wrap;
-  
-  @media (min-width: 880px) {
+  @media (min-width: 880px) {  
     gap: 3rem;
     flex-direction: row;    
     align-items: center;
@@ -126,11 +125,9 @@ const AgentImage = styled.div`
   align-items: center;
 
   .image-container {
-    display: contents;
-    > div {
-      position: absolute !important;
-      z-index: 2 !important;   
-      max-width: 40rem !important;
+    z-index: 3 !important;
+    >span .image {
+      position: relative !important;
     }
   }
   
