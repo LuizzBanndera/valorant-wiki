@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import db from '@services/api'
@@ -6,12 +6,11 @@ import { TAgents, TAgentData, TAgent } from '@shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Loading from '@components/loading'
-import {ReactContext} from '@ctx/state'
+import { useTranslations } from 'next-intl'
 
 export default function Agent(agent: TAgentData) {
 
-  const ctx = useContext(ReactContext)
-  const lang = ctx.state.language.value.agents
+  const t = useTranslations('Agents')  
 
   const [imageLoaded, setImageLoaded] = useState(false)
   
@@ -27,7 +26,7 @@ export default function Agent(agent: TAgentData) {
   const handleAbilite = (idx: number) => {
     let label : string
     switch (idx) {
-      case 4: label = `(${lang.passive})`
+      case 4: label = `(${t('passive')})`
       break;
       case 3: label = '(ultimate)'
       break;
@@ -73,7 +72,7 @@ export default function Agent(agent: TAgentData) {
       </AgentImage>
       <AgentDetails>
         <AgentSkills>                
-        <p className='g-title'>{`//`+lang.skills}</p>
+        <p className='g-title'>{`//`+t('skills')}</p>
         {data.abilities.map((abilitie, idx) => (                  
           <SkillsDetails key={idx}>                               
             <div className='image-container'>
@@ -93,8 +92,7 @@ export default function Agent(agent: TAgentData) {
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
                   <p className='g-title'>{abilitie.displayName}</p>
                   <p className='g-label' style={{margin: '0 0 0 5px'}}>{handleAbilite(idx)}</p>
-                </div>
-              
+                </div>              
               </div>
               <p className='g-label'>{abilitie.description}</p>
             </div>         
@@ -254,7 +252,8 @@ export const getStaticProps : GetStaticProps = async ({params, locale}) => {
     const data = res.data.data    
     return {
       props: {
-        data
+        data,
+        messages: (require(`../../../messages/${locale}.json`))
       }
     }
 

@@ -1,0 +1,24 @@
+{
+  "Menus": {
+    "agents": "agents",
+    "weapons": "weapons",
+    "maps": "maps"
+  },
+  "Languages": {
+    "br": "portuguese",
+    "en": "english"
+  },
+  "Agents": {
+    "skills": "skills",
+    "passive": "passive"
+  },
+  "Weapons": {
+    "details": "details",
+    "category": "category",
+    "value": "cost",
+    "fireRate": "fire rate",
+    "magSize": "magazine size",
+    "bulletPen": "Penetration",
+    "reloadTime": "reload time"
+  }
+}

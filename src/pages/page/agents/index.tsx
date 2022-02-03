@@ -31,7 +31,8 @@ export const getStaticProps : GetStaticProps = async ({locale}) => {
     const data = res.data.data
     return {
       props: {
-        data
+        data,        
+        messages: (require(`../../../messages/${locale}.json`))
       }
     }
 

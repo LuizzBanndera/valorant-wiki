@@ -1,31 +1,29 @@
 import { useContext } from 'react'
 import CardMenu from '@components/cardMenu'
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import {ReactContext} from '@ctx/state'
-
+import { useTranslations } from 'next-intl'
 
 const Home: NextPage = () => {
 
-  const ctx = useContext(ReactContext)
-  const lang = ctx.state.language.value.menus
-  
+  const t = useTranslations('Menus')
+
   const Items  = [
     {
-      title : lang.agents,
+      title : t('agents'),
       image : '/images/agent-logo.png',
       bg    : '/images/v_agents_bg.svg',
       path  :'/page/agents'
     },
     {
-      title : lang.weapons,
+      title : t('weapons'),
       image : '/images/vandal-logo.png',
       bg    : '/images/v_weapons_bg.svg',    
       path  : '/page/weapons'
     },
     {
-      title : lang.maps,
+      title : t('maps'),
       image : '/images/maps-logo.png',
       bg    : '/images/v_maps_bg.svg',    
       path  : '/page/maps'
@@ -84,4 +82,15 @@ const ItemStyled = styled.li<{bg: string; position: number}>`
     z-index: 1;
   }
 `
+
 export default Home
+
+export const getStaticProps: GetStaticProps = ({locale}) => {
+  console.log(locale);
+  
+  return {
+    props: {
+      messages: (require(`../messages/${locale}.json`))
+    }
+  }
+}

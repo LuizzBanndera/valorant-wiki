@@ -33,12 +33,11 @@ export const getStaticProps : GetStaticProps = async ({locale}) => {
   try {
     const res : AxiosResponse<TWeapons> = await db.get(`/weapons?language=${locale}`)
     
-
-    //TODO remover revalidate
     const data = res.data.data
     return {
       props: {
-        data
+        data,
+        messages: (require(`../../../messages/${locale}.json`))
       }
     }
 

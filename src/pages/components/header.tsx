@@ -1,12 +1,12 @@
-import { useContext } from 'react'
-import { ReactContext } from '@ctx/state'
 import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
+import { useTranslations } from 'next-intl'
+import { GetStaticProps, NextComponentType } from 'next/types'
 
-export default function Header () {
-  const ctx = useContext(ReactContext)
-  const lang = ctx.state.language.value.menus
+const Header: NextComponentType = () => {
+  
+  const t = useTranslations('Menus')
   
   const menu = [
     {
@@ -14,22 +14,22 @@ export default function Header () {
       path: '/'
     },
     {
-      name: lang.agents,
+      name: t('agents'),
       path: '/page/agents'
     },
     {
-      name: lang.weapons,
+      name: t('weapons'),
       path: '/page/weapons'
     },
     {
-      name: lang.maps,
+      name: t('maps'),
       path: '/page/maps'
     },
   ]
   const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
 
-  return (    
+  return (
     <NavStyled className="header">    
       {
         menu.map((item, idx) => (       
@@ -70,3 +70,4 @@ const ItemStyled = styled(Nav.Item)`
     color: whitesmoke;
   }
 `
+export default Header

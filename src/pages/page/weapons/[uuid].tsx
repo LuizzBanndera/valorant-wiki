@@ -4,16 +4,14 @@ import styled from "styled-components"
 import db from '@services/api'
 import Image from 'next/image'
 import {Line} from 'rc-progress'
-import { useContext, useEffect, useState } from "react"
+import {useEffect, useState } from "react"
 import { sleep } from "@shared/utils"
 import {TWeapon, TWeaponData, TWeapons} from '@shared/types/types.weapons'
-import { ReactContext } from "@ctx/state"
+import { useTranslations } from "next-intl"
 
 export default function Weapon({data}: TWeaponData) {
 
-  const ctx = useContext(ReactContext)
-
-  const lang = ctx.state.language.value.weapons
+  const t = useTranslations('Weapons')
 
   const category = data.category.substring(data.category.indexOf('::')+2)
 
@@ -93,30 +91,30 @@ return (
       </div>
       <div className="weapon-info">
         <p className="g-red-title">{data.displayName+`.`}</p>
-        <p className="g-title">{`//${lang.details}`}</p>
+        <p className="g-title">{`//${t('details')}`}</p>
         <div className="info-item">
-          <p className="g-label">{lang.category}</p>
+          <p className="g-label">{t('category')}</p>
           <p className="g-label">{stats.catName}</p>
         </div>
         <div className="info-item">
-          <p className="g-label">{lang.value}</p>
+          <p className="g-label">{t('value')}</p>
           <p className="g-label">{stats.cost}</p>
         </div>                
         <div className="weapon-stats">
           <div className="info-stats">
-            <p className="g-label">{lang.fireRate}</p>                        
+            <p className="g-label">{t('fireRate')}</p>                        
             <Line percent={stats.fireRate} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">{lang.magSize}</p>
+            <p className="g-label">{t('magSize')}</p>
             <Line percent={stats.magSize} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">{lang.bulletPen}</p>
+            <p className="g-label">{t('bulletPen')}</p>
             <Line percent={stats.wallPen} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
           <div className="info-stats">
-            <p className="g-label">{lang.reloadTime}</p>
+            <p className="g-label">{t('reloadTime')}</p>
             <Line percent={stats.reloadTime} strokeColor="antiquewhite" trailColor="#0f1923"/>
           </div>
         </div>
@@ -294,7 +292,8 @@ export const getStaticProps : GetStaticProps = async ({params, locale}) => {
             
     return {
       props: {
-        data
+        data,
+        messages: (require(`../../../messages/${locale}.json`))
       }
     }
 

@@ -1,0 +1,25 @@
+{
+  "lang": "pt-BR",
+  "Menus": {
+    "agents": "agentes",
+    "weapons": "armas",
+    "maps": "mapas"
+  },
+  "Languages": {
+    "br": "português",
+    "en": "inglês"
+  },
+  "Agents": {
+    "skills": "habilidades",
+    "passive": "passiva"
+  },
+  "Weapons": {
+    "details": "características",
+    "category": "categoria",
+    "value": "valor",
+    "fireRate": "taxa de disparo",
+    "magSize": "tam. do pente",
+    "bulletPen": "penetração",
+    "reloadTime": "recarregamento"
+  }
+}

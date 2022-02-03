@@ -45,6 +45,9 @@
       ],
       "@redux/*": [
         "src/redux/*"
+      ],
+      "@messages/*":[
+        "./messages/*"
       ]
     },
     "incremental": true
