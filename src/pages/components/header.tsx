@@ -38,8 +38,6 @@ export default function Header () {
           </ItemStyled>
         ))
       }
-      <div className="header-right">        
-      </div>
     </NavStyled>    
   )
 }

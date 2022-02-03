@@ -65,8 +65,9 @@ export default function Agent(agent: TAgentData) {
             src={data.fullPortrait} 
             quality={100}            
             alt='agent'
-            layout='fill'
-            objectFit='contain'
+            objectFit="contain"
+            width={500}
+            height={500}
           />
         </div>
       </AgentImage>
@@ -112,35 +113,30 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
+  gap: 1rem;
   flex-wrap: wrap;
+  gap: 5rem;
   @media (min-width: 600px) {  
-    gap: 3rem;
     flex-direction: row;    
     align-items: center;
   }
-  
   `
 const AgentImage = styled.div`
   display: flex;
-  
-  .image-container {
-    z-index: 2 !important;
-    height: 20rem !important;
-    max-width: 20rem;
-  }
-  
+  justify-content: center;
+  flex-direction: column;
+
   .header-content {
     display: flex;
-    align-items: center;
+  }
+  .image-container {
+    position: absolute;
+    z-index: 1;
   }
 
-  @media (max-width: 600px) {
-    gap: 3rem;
-  .image-container {
-    span > .image {
-        position: relative !important;
-        top: 8rem !important;
-      }
+  @media(min-width: 732px) {
+    .image-container {
+      min-width: 500px;
     }
   }
 `
@@ -196,7 +192,7 @@ const AgentName = styled.div`
 const SquareBackGround = styled.div`
   background-color: var(--g-red);
   height: 32rem;
-  width: 25rem;
+  width: 20rem;
   @media (max-width: 600px) {
     left: 25px;
     position: absolute;
@@ -212,7 +208,7 @@ const AgentBio = styled.div`
     font-size: 48px;
     color: var(--g-red);
   }
-  @media (min-width: 600px) {
+  @media (min-width: 732px) {
     max-width: 300px;
   }
 `
