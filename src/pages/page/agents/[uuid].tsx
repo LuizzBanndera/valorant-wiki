@@ -66,8 +66,8 @@ export default function Agent(agent: TAgentData) {
             quality={100}            
             alt='agent'
             objectFit="contain"
-            width={500}
-            height={500}
+            width={700}
+            height={700}
           />
         </div>
       </AgentImage>
@@ -136,7 +136,7 @@ const AgentImage = styled.div`
 
   @media(min-width: 732px) {
     .image-container {
-      min-width: 500px;
+      left: 30%;      
     }
   }
 `
