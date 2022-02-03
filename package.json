@@ -13,7 +13,7 @@
     "axios": "^0.22.0",
     "easy-peasy": "^5.0.4",
     "framer-motion": "^4.1.17",
-    "next": "^12.0.9",
+    "next": "^12.0.10",
     "nextjs-progressbar": "^0.0.13",
     "rc-progress": "^3.2.4",
     "react": "17.0.2",

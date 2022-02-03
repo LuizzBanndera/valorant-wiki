@@ -64,8 +64,8 @@ export default function Agent(agent: TAgentData) {
             className='image' 
             src={data.fullPortrait} 
             quality={100}            
-            alt='agent'            
-            layout='fill'            
+            alt='agent'
+            layout='fill'
             objectFit='contain'
           />
         </div>
@@ -113,19 +113,20 @@ const Container = styled.div`
   justify-content: center;
   padding: 1rem;
   flex-wrap: wrap;
-  @media (min-width: 880px) {  
+  @media (min-width: 600px) {  
     gap: 3rem;
     flex-direction: row;    
     align-items: center;
   }
-
-`
+  
+  `
 const AgentImage = styled.div`
   display: flex;
-  align-items: center;
-
+  
   .image-container {
-    z-index: 1 !important;    
+    z-index: 2 !important;
+    height: 20rem !important;
+    max-width: 20rem;
   }
   
   .header-content {
@@ -133,10 +134,15 @@ const AgentImage = styled.div`
     align-items: center;
   }
 
-  @media (min-width: 880px) {
-  margin: 0 3rem 0 0;
+  @media (max-width: 600px) {
+    gap: 3rem;
+  .image-container {
+    span > .image {
+        position: relative !important;
+        top: 8rem !important;
+      }
+    }
   }
-
 `
 const AgentDetails = styled.div`
   transition: all 500ms;
@@ -147,7 +153,7 @@ const AgentDetails = styled.div`
   border-width: 1px;
   border-color: var(--g-white);
 
-  @media (min-width: 500px ) {
+  @media (min-width: 600px ) {
     max-width: min-content;  
     min-width: 400px;
   }
@@ -157,9 +163,8 @@ const AgentSkills = styled.div`
 
   .image-container {
     img {
-      width: 30px;
+      width: 30px !important;
     }    
-
     .skill-name {      
       display: flex;
       align-items: center;
@@ -179,10 +184,10 @@ const AgentName = styled.div`
   font-size: 5rem;
   margin-left: 15px;
   
-  @media (min-width: 880px) {
+  @media (min-width: 600px) {
     position: absolute;    
   }
-  @media (max-width: 880px) {
+  @media (max-width: 600px) {
     p {
       font-size: 50px;
     }
@@ -192,7 +197,7 @@ const SquareBackGround = styled.div`
   background-color: var(--g-red);
   height: 32rem;
   width: 25rem;
-  @media (max-width: 880px) {
+  @media (max-width: 600px) {
     left: 25px;
     position: absolute;
     width: 15rem;
@@ -207,7 +212,7 @@ const AgentBio = styled.div`
     font-size: 48px;
     color: var(--g-red);
   }
-  @media (min-width: 880px) {
+  @media (min-width: 600px) {
     max-width: 300px;
   }
 `
