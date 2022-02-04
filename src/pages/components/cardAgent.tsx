@@ -8,8 +8,6 @@ export default function CardAgent (data: TAgent) {
   
   const Router = useRouter()
 
-  const { pathname, asPath, query } = Router
-
   const handleClick = (uuid: string, name: string) => {
     const newName =  name.replace('/','');
 

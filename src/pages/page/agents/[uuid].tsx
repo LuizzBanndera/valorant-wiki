@@ -230,8 +230,6 @@ export const getStaticPaths : GetStaticPaths = async ({locales}) => {
       paths.push({params: {uuid: agent.uuid}, locale: locale})
     })
   })
-
-  console.log(paths);
   
   return {paths, fallback: false}
 
