@@ -3,7 +3,7 @@
 </div>
 
 # Sobre
-<h3>Wiki com principais informações sobre o jogo (agentes, mapas, armas, etc...), consumindo a <a href="https://valorant-api.com/">Valorant-API</a>.</h3>
+<h3>Wiki com principais informações sobre o <a href="https://playvalorant.com/">VALORANT</a> (agentes, mapas, armas, etc...), consumindo a <a href="https://valorant-api.com/">Valorant-API</a>.</h3>
 <ul>
   <img src="https://img.shields.io/badge/phs-wellcome-green"/> 
   <img src="https://img.shields.io/badge/version-1.00-green"/>
@@ -39,4 +39,5 @@ e executar:</br>
 <a href="https://nextjs.org/docs">Next.js</a></br>
 <a href="https://styled-components.com/docs">styled-components</a></br>
 <a href="https://www.framer.com/docs/">framer-motion</a></br>
+<a href="https://next-intl-docs.vercel.app/docs/usage">next-intl<a/></br>
 
