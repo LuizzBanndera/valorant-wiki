@@ -2,7 +2,7 @@ import {useRouter} from 'next/router'
 import {Nav} from 'rsuite'
 import styled from 'styled-components'
 import { useTranslations } from 'next-intl'
-import { GetStaticProps, NextComponentType } from 'next/types'
+import { NextComponentType } from 'next/types'
 
 const Header: NextComponentType = () => {
   

@@ -36,8 +36,7 @@ module.exports = {
     return config;
   },
   env: {
-    url: 'https://valorant-api.com/v1',
-    lang: 'en-US'
+    url: 'https://valorant-api.com/v1'
   },
   i18n: {
     locales: ['en-US', 'pt-BR'],

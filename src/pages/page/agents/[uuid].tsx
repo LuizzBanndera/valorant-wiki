@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import db from '@services/api'
-import { TAgents, TAgentData, TAgent } from '@shared/types/types.agents'
+import { TAgents, TAgentData, TAgent } from '@db/lib/shared/types/types.agents'
 import { AxiosResponse } from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Loading from '@components/loading'
+import Loading from '@db/lib/components/loading'
 import { useTranslations } from 'next-intl'
 
 export default function Agent(agent: TAgentData) {

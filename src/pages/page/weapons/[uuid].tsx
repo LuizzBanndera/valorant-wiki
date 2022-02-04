@@ -5,8 +5,8 @@ import db from '@services/api'
 import Image from 'next/image'
 import {Line} from 'rc-progress'
 import {useEffect, useState } from "react"
-import { sleep } from "@shared/utils"
-import {TWeapon, TWeaponData, TWeapons} from '@shared/types/types.weapons'
+import { sleep } from "@db/lib/shared/utils"
+import {TWeapon, TWeaponData, TWeapons} from '@db/lib/shared/types/types.weapons'
 import { useTranslations } from "next-intl"
 
 export default function Weapon({data}: TWeaponData) {

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Image from "next/image"
-import { Bounce } from "@shared/motion"
+import { Bounce } from "@db/lib/shared/motion"
 import { useRouter } from "next/router"
 import { TWeapon } from "../shared/types/types.weapons"
 

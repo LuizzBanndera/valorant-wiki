@@ -3,9 +3,9 @@ import { GetStaticProps } from "next"
 import Image from "next/image"
 import styled from "styled-components"
 import db from '@services/api'
-import { TMap, TMaps } from "../shared/types/types.maps"
+import { TMap, TMaps } from "../../lib/shared/types/types.maps"
 import React, { useState } from "react"
-import {handleLoadImage} from '@shared/utils'
+import {handleLoadImage} from '@db/lib/shared/utils'
 
 export default function Maps({data}: TMaps) {
 
