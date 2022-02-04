@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import {NextIntlProvider} from 'next-intl'
 import Header from './components/header'
-import "animate.css"
 import 'rsuite/styles/index.less'
 import '../styles/global.css'
 
