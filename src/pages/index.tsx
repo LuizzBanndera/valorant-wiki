@@ -86,7 +86,6 @@ const ItemStyled = styled.li<{bg: string; position: number}>`
 export default Home
 
 export const getStaticProps: GetStaticProps = ({locale}) => {
-  console.log(locale);
   
   return {
     props: {
