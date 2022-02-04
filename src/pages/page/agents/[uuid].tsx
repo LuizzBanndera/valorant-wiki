@@ -147,7 +147,7 @@ const AgentDetails = styled.div`
   `
 const AgentSkills = styled.div`
   z-index: 2;
-  padding: 1rem;
+  padding: 0 1rem 0 0;
   .image-container {
     img {
       width: 30px !important;
@@ -213,7 +213,7 @@ const SkillsDetails = styled.div`
 `
 
 //functions-next
-export const getStaticPaths : GetStaticPaths = async () => {
+export const getStaticPaths : GetStaticPaths = async ({locales}) => {
   
   const res : AxiosResponse<TAgents> = await db.get('/agents', {
     params: {        
@@ -223,9 +223,15 @@ export const getStaticPaths : GetStaticPaths = async () => {
 
   const data = res.data.data
 
-  const paths = data.map((agent: TAgent) => (
-    {params: {uuid: agent.uuid}}
-  ))
+  let paths: { params: { uuid: string }; locale: string }[] = []
+
+  locales?.map((locale) => {
+    data.map((agent: TAgent) => {
+      paths.push({params: {uuid: agent.uuid}, locale: locale})
+    })
+  })
+
+  console.log(paths);
   
   return {paths, fallback: false}
 

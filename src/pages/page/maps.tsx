@@ -6,7 +6,6 @@ import db from '@services/api'
 import { TMap, TMaps } from "../shared/types/types.maps"
 import React, { useState } from "react"
 import {handleLoadImage} from '@shared/utils'
-import Loading from "@components/loading"
 
 export default function Maps({data}: TMaps) {
 
@@ -70,8 +69,8 @@ const Container = styled.div<{image: string}>`
   }
 `
 const MapList = styled.div`
-  height: calc(94vh - 57px);
-  overflow: auto;
+  padding-right: 1rem;
+  overflow-y : auto;
   display: flex;
   min-width: max-content;
   flex-direction: column;
@@ -110,8 +109,8 @@ const Map = styled.div`
     position: relative;
     width: inherit;
     transition: 0.3s ease-in-out;
-    width: 30rem;
-    height: 30rem; 
+    width: 47rem;
+    height: 47rem; 
     @media(max-width: 600px) {
       width: 100%;
       height: 19rem;

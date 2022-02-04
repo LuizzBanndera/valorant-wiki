@@ -267,18 +267,21 @@ const SkinsContainer = styled.div`
 `
 
 //functions-next
-export const getStaticPaths : GetStaticPaths = async () => {
+export const getStaticPaths : GetStaticPaths = async ({locales}) => {
 
   const res : AxiosResponse<TWeapons> = await db.get('/weapons')
   
   const data = res.data.data
 
-  const paths = data.map((weapon: TWeapon) => ({    
-    params: {uuid: weapon.uuid}
-  }))
+  let paths: { params: { uuid: string }; locale: string }[] = []
+
+  locales?.map((locale) => {
+    data.map((weapon) => {
+      paths.push({params: {uuid: weapon.uuid}, locale: locale})
+    })
+  })
 
   return {paths, fallback: false}
-
 }
 
 export const getStaticProps : GetStaticProps = async ({params, locale}) => {  
