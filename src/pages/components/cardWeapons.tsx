@@ -29,8 +29,8 @@ export default function CardWeapons(data: TWeapon) {
           <div className="square-background"/>
         </div>
         <div className="description">
-          <a className="g-title">_{data.displayName}</a>
-          <p className="g-title">/{handleCategory()}</p>
+          <p className="g-title">_{data.displayName}</p>
+          <p className="g-title sub">/{handleCategory()}</p>
         </div>
       </Bounce>
     </Container>
@@ -75,7 +75,7 @@ const Container = styled.div`
     position: relative;    
     color: var(--g-white);  
     top: -10.5rem;
-    p {
+    .sub {
       font-size: 12px;
       color: var(--g-gray)
     }
