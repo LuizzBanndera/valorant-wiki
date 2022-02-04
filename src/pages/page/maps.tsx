@@ -74,10 +74,8 @@ const MapList = styled.div`
   overflow: auto;
   display: flex;
   min-width: max-content;
-  border-bottom-style: groove;
-  border-width: 1px;
   flex-direction: column;
-  gap: 5px;
+  gap: 5px; 
 
 `
 const Button = styled.p<{uuid: string, uuidSelected: string}>`
@@ -109,7 +107,7 @@ const Map = styled.div`
   }
 
   .image-container {
-    position: relative;    
+    position: relative;
     width: inherit;
     transition: 0.3s ease-in-out;
     width: 30rem;
@@ -146,7 +144,8 @@ export const getStaticProps : GetStaticProps = async ({locale}) => {
     const data = res.data.data
     return {
       props: {
-        data
+        data,
+        messages: (require(`../../messages/${locale}.json`))
       }
     }
 

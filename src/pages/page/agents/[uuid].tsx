@@ -89,7 +89,7 @@ export default function Agent(agent: TAgentData) {
                     :
                     <></>
                 }
-                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                   <p className='g-title'>{abilitie.displayName}</p>
                   <p className='g-label' style={{margin: '0 0 0 5px'}}>{handleAbilite(idx)}</p>
                 </div>              
@@ -148,11 +148,9 @@ const AgentDetails = styled.div`
   height: 80vh;
   overflow: auto;
   z-index: 2;
-  border-bottom-style: groove;
-  border-width: 1px;
-  border-color: var(--g-white);
   background-color: #0f19238f;
 
+  scrollbar-color: red;
   @media (min-width: 600px ) {
     max-width: min-content;  
     min-width: 400px;
@@ -160,7 +158,7 @@ const AgentDetails = styled.div`
   `
 const AgentSkills = styled.div`
   z-index: 2;
-
+  padding: 1rem;
   .image-container {
     img {
       width: 30px !important;
