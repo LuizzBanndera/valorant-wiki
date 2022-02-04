@@ -47,21 +47,19 @@ a {
 
 * {  
   box-sizing: border-box;
-  /* -ms-overflow-style: none;  */
-  /* scrollbar-width: none;    */
   border-radius: 0px !important;
 }
 
 
 *::-webkit-scrollbar {
-  background: #666666;
+  background: #66666683;
   width: 3px;
 }
 *::-webkit-scrollbar-track {
   background: var(--g-gray);
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--g-white);
+  background: rgba(250, 235, 215, 0.555);
 }
 
 .content {

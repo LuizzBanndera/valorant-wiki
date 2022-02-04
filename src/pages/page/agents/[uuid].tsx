@@ -109,7 +109,7 @@ export default function Agent(agent: TAgentData) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
@@ -130,17 +130,6 @@ const AgentImage = styled.div`
   .image-container {
     position: absolute;
     z-index: 1;
-  }
-
-  @media(min-width: 732px) {
-    .image-container {      
-      left: 25%;      
-    }
-  }
-  @media(min-width: 732px) and (max-width: 1083px) {
-    .image-container {
-      left: 50%;
-    }
   }
 `
 const AgentDetails = styled.div`

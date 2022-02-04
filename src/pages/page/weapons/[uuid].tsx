@@ -226,7 +226,7 @@ const SkinsContainer = styled.div`
   .skins {
     height: calc(100% - 57px);
     overflow: auto;
-    /* border-top-style: groove; */
+    padding: 1rem;
     margin-top: 5px;
     border-width: 1px;  
   }
