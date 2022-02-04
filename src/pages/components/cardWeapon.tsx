@@ -19,10 +19,12 @@ export default function CardWeapons(data: TWeapon) {
 
   const Router = useRouter()
 
-  const handleClick = (uuid: string) => Router.push({pathname:`/page/weapons/[uuid]`, query: {uuid}}) 
+  const handleClick = (uuid: string, name: string) => {
+    Router.push({pathname:`/page/weapons/[uuid]`, query: {uuid}}, `/weapons/${name}`)
+  }
   
   return(
-    <Container onClick={() => handleClick(data.uuid)}>
+    <Container onClick={() => handleClick(data.uuid, data.displayName)}>
       <Bounce>           
         <div className="image-container">
           <Image className="image" src={data.displayIcon} alt="weapon" layout="fill" objectFit="contain"/>

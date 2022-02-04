@@ -8,11 +8,15 @@ export default function CardAgent (data: TAgent) {
   
   const Router = useRouter()
 
-  const handleClick = (uuid: string) => Router.push({pathname:'/page/agents/[uuid]', query: {uuid}}) 
+  const handleClick = (uuid: string, name: string) => {
+    const newName =  name.replace('/','');
+
+    Router.push({pathname:'/page/agents/[uuid]', query: {uuid}}, `/agents/${newName}`) 
+  }
 
   return (
     <Bounce>
-    <Card id="card" onClick={() => handleClick(data.uuid)}>      
+    <Card id="card" onClick={() => handleClick(data.uuid, data.displayName)}>      
       <Image id="picture" src={data.displayIcon} width="200" height="200" alt="logo"/>
       <p className='label'>{data.displayName}</p>
       <p>{data.role.displayName}</p>
