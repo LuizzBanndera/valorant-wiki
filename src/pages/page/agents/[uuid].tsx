@@ -111,10 +111,12 @@ const Container = styled.div`
   /* flex-direction: column; */
   height: calc(100vh - 56px);
   justify-content: space-evenly;
-  padding: 1rem;
+  height: 100%;
   overflow: scroll;
+  padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
+  
   @media (min-width: 600px) {  
     flex-direction: row;    
     align-items: center;
@@ -125,23 +127,29 @@ const AgentImage = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: relative;
   .header-content {
     display: flex;
     align-items: center;    
+    z-index: 0;
   }
   .image-container {
     position: absolute;
     z-index: 1;
+    width: 200%;
+    left: -65px;
   }
 `
 const AgentDetails = styled.div`
+  overflow: scroll;
   scroll-snap-align: start;
+  border-bottom-style: groove;
+  border-width: 1px;
   transition: all 500ms;
   height: 80vh;
-  overflow: auto;
   z-index: 2;
   background-color: #0f19238f;
-  scrollbar-color: red;
+
   @media (min-width: 600px ) {
     max-width: min-content;  
     min-width: 400px;
@@ -149,7 +157,6 @@ const AgentDetails = styled.div`
   `
 const AgentSkills = styled.div`
   z-index: 2;
-  padding: 0 1rem 0 0;
   .image-container {
     img {
       width: 30px !important;
@@ -172,6 +179,7 @@ const AgentName = styled.div`
   z-index: 1;
   font-size: 5rem;
   margin-left: 15px;
+  position: absolute;
   
   @media (min-width: 600px) {
     position: absolute;    
@@ -187,8 +195,7 @@ const SquareBackGround = styled.div`
   height: 32rem;
   width: 20rem;
   @media (max-width: 600px) {
-    left: 25px;
-    position: absolute;
+    position: relative;
     width: 15rem;
     height: 20rem;
   }

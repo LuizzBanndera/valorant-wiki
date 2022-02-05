@@ -148,12 +148,15 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  overflow: scroll;
   gap: 5rem;
   justify-content: center;
+  scroll-snap-type: y mandatory;  
 `
 const WeaponContainer = styled.div`
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;  
   .weapon-image {
     height: 15rem;  
     max-width: 34rem;
@@ -221,7 +224,8 @@ const WeaponContainer = styled.div`
     }
   }
 `
-const SkinsContainer = styled.div`  
+const SkinsContainer = styled.div`
+  scroll-snap-align: start;
   height: 100%;
   .skins {
     height: calc(100% - 57px);
