@@ -3,10 +3,9 @@ import { GetStaticProps } from "next"
 import Image from "next/image"
 import styled from "styled-components"
 import db from '@services/api'
-import { TMap, TMaps } from "../../lib/shared/types/types.maps"
+import { TMap, TMaps } from "@shared/types/types.maps"
 import React, { useState } from "react"
-import {handleLoadImage} from '@db/lib/shared/utils'
-
+import {handleLoadImage} from '@shared/utils'
 export default function Maps({data}: TMaps) {
 
   const [modal, setModal] = useState(false)
@@ -39,7 +38,7 @@ export default function Maps({data}: TMaps) {
   const handleSplashLoad = (e: any) => setSplashLoaded(handleLoadImage(e)) 
     
   return(
-    <Container image={map.splash}> 
+    <Container image={map.splash}>    
       <MapList>
       {
         data.map((value, idx) => (
