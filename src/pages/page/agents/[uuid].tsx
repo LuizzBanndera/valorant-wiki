@@ -108,24 +108,26 @@ export default function Agent(agent: TAgentData) {
 //styled-components
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  height: calc(100vh - 56px);
   justify-content: space-evenly;
   padding: 1rem;
+  overflow: scroll;
   gap: 1rem;
   flex-wrap: wrap;
   @media (min-width: 600px) {  
     flex-direction: row;    
     align-items: center;
   }
+  scroll-snap-type: y mandatory;
   `
 const AgentImage = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   .header-content {
     display: flex;
-    align-items: center;
+    align-items: center;    
   }
   .image-container {
     position: absolute;
@@ -133,12 +135,12 @@ const AgentImage = styled.div`
   }
 `
 const AgentDetails = styled.div`
+  scroll-snap-align: start;
   transition: all 500ms;
   height: 80vh;
   overflow: auto;
   z-index: 2;
   background-color: #0f19238f;
-
   scrollbar-color: red;
   @media (min-width: 600px ) {
     max-width: min-content;  
@@ -194,7 +196,7 @@ const SquareBackGround = styled.div`
 const AgentBio = styled.div`
   display: flex;
   flex-direction: column;  
-  
+  scroll-snap-align: start;  
   .label {    
     font-size: 48px;
     color: var(--g-red);
