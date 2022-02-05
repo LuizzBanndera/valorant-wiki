@@ -108,7 +108,6 @@ export default function Agent(agent: TAgentData) {
 //styled-components
 const Container = styled.div`
   display: flex;
-  /* flex-direction: column; */
   height: calc(100vh - 56px);
   justify-content: space-evenly;
   height: 100%;
@@ -136,8 +135,14 @@ const AgentImage = styled.div`
   .image-container {
     position: absolute;
     z-index: 1;
-    width: 200%;
+    width: 180%;    
     left: -65px;
+  }
+  @media(min-width: 600px) {
+    .image-container {    
+      width: 250%;
+      left: -100px;
+  } 
   }
 `
 const AgentDetails = styled.div`
@@ -146,7 +151,7 @@ const AgentDetails = styled.div`
   border-bottom-style: groove;
   border-width: 1px;
   transition: all 500ms;
-  height: 80vh;
+  max-height: 80vh;
   z-index: 2;
   background-color: #0f19238f;
 
