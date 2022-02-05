@@ -111,7 +111,8 @@ const Container = styled.div`
   height: calc(100vh - 56px);
   justify-content: space-evenly;
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
