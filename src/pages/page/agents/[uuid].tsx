@@ -107,6 +107,10 @@ export default function Agent(agent: TAgentData) {
 
 //styled-components
 const Container = styled.div`
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: none !important;
+  } 
   display: flex;
   height: calc(100vh - 56px);
   justify-content: space-evenly;
@@ -147,6 +151,7 @@ const AgentImage = styled.div`
   } 
   }
 `
+
 const AgentDetails = styled.div`
   overflow: scroll;
   scroll-snap-align: start;
@@ -161,7 +166,8 @@ const AgentDetails = styled.div`
     max-width: min-content;  
     min-width: 400px;
   }
-  `
+`
+
 const AgentSkills = styled.div`
   z-index: 2;
   .image-container {
