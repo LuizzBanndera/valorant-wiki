@@ -107,7 +107,7 @@ export default function Agent(agent: TAgentData) {
 
 //styled-components
 const Container = styled.div`
-  ::-webkit-scrollbar {
+  *-webkit-scrollbar {
     display: none !important;
     width: none !important;
   } 
