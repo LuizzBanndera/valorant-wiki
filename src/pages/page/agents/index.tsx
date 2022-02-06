@@ -8,7 +8,7 @@ import {TAgents} from '@db/lib/shared/types/types.agents'
 export default function AgentsMenu ({data}: TAgents) {
 
   return (
-    <ContainerStyled className="container">        
+    <ContainerStyled>        
       {            
         data.map((agent, idx) => (            
           <div key={idx}>     
@@ -52,8 +52,9 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  padding: 2% 5%;  
+  padding: 2% 5% 60px;  
   flex: 1;
   justify-content: center;
+  margin-bottom: 50px;
   gap: 1rem;
 `

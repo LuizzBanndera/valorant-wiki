@@ -24,8 +24,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  height: 100%;
-  padding-top: 2rem;
+  padding: 2rem 0 60px;
   gap: 2rem;
 `
 

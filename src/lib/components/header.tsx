@@ -53,7 +53,7 @@ const NavStyled = styled(Nav)`
   font-family: 'Anton', cursive;
 
   @media (max-width: 576px) {
-    justify-content: space-between;  
+    justify-content: space-evenly;  
   }  
 `
 

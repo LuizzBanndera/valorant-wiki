@@ -66,7 +66,7 @@ a {
 } */
 
 .content {
-  height: calc(100vh - 57px);
+  height: calc(100vh - 97px);
 }
 
 .header {
@@ -78,6 +78,7 @@ a {
 }
 
 .footer {
+  z-index: 5;
   display: flex;
   position: fixed;  
   bottom: 0;

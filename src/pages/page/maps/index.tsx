@@ -6,6 +6,7 @@ import db from '@services/api'
 import { TMap, TMaps } from "@shared/types/types.maps"
 import React, { useState } from "react"
 import {handleLoadImage} from '@shared/utils'
+import WorkInProgress from "@components/workInProgress"
 export default function Maps({data}: TMaps) {
 
   const [modal, setModal] = useState(false)
@@ -38,8 +39,9 @@ export default function Maps({data}: TMaps) {
   const handleSplashLoad = (e: any) => setSplashLoaded(handleLoadImage(e)) 
     
   return(
-    <Container image={map.splash}>    
-      <MapList>
+    <Container image={map.splash}>  
+    <div className="g-title wip">WORK IN PROGRESS!</div>  
+      {/* <MapList>
       {
         data.map((value, idx) => (
           <Button onClick={() => setMap(value)} key={idx} uuid={value.uuid} uuidSelected={map.uuid} className="g-title">{value.displayName}</Button>          
@@ -54,7 +56,7 @@ export default function Maps({data}: TMaps) {
         <div className="list-view-container">
           <Image quality={100} onClick={() => setModal(true)} className="image" src={map.listViewIcon} alt="map" objectFit="cover" layout="fill"/>
         </div>
-      </Map>
+      </Map> */}
     </Container>
   )
 }
@@ -63,6 +65,12 @@ const Container = styled.div<{image: string}>`
   height: 100%;
   display: flex;
   padding: 1rem;
+  .wip {
+    position: absolute;
+    left: 35%;
+    top: calc(50% - 56px);
+    color: var(--g-gray);
+  }
   @media(max-width: 600px) {
     flex-direction: column;
   }
@@ -143,7 +151,7 @@ export const getStaticProps : GetStaticProps = async ({locale}) => {
     return {
       props: {
         data,
-        messages: (require(`../../messages/${locale}.json`))
+        messages: (require(`../../../messages/${locale}.json`))
       }
     }
 
