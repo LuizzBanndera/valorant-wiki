@@ -163,9 +163,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   height: 100%;
   overflow: scroll;
-  *-webkit-scrollbar {
-    display: none !important;    
-  }   
   gap: 5rem;
   justify-content: center;
   scroll-snap-type: y mandatory;  
@@ -244,9 +241,6 @@ const WeaponContainer = styled.div`
 `
 const SkinsContainer = styled.div`
   scroll-snap-align: start;
-  *-webkit-scrollbar {
-    display: none !important;    
-  }   
   height: 100%;
   .skins {
     height: calc(100% - 57px);
