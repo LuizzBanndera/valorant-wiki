@@ -2,9 +2,8 @@ import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import {NextIntlProvider} from 'next-intl'
 import Header from '../lib/components/header'
-import 'rsuite/styles/index.less'
-import '../styles/global.css'
 import Footer from '@components/footer'
+import '../styles/global.css'
 
 function MyApp({ Component, pageProps }: AppProps) {  
   return (

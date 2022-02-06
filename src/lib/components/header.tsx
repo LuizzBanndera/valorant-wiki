@@ -1,5 +1,4 @@
 import {useRouter} from 'next/router'
-import {Nav} from 'rsuite'
 import styled from 'styled-components'
 import { useTranslations } from 'next-intl'
 import { NextComponentType } from 'next/types'
@@ -42,7 +41,7 @@ const Header: NextComponentType = () => {
   )
 }
 
-const NavStyled = styled(Nav)`
+const NavStyled = styled.nav`
   display: flex;
   color: var(--g-white);
   width: 100%;
@@ -57,8 +56,9 @@ const NavStyled = styled(Nav)`
   }  
 `
 
-const ItemStyled = styled(Nav.Item)`
+const ItemStyled = styled.li`
   display: flex !important;
+  cursor: pointer;
   text-transform: uppercase;
   height: 35px;
   align-items: center;
