@@ -3,10 +3,15 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useTranslations } from 'next-intl'
+import Loading from '@components/loading'
+import { sleep } from '@db/lib/shared/utils'
+import { useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
 
   const t = useTranslations('Menus')
+
+  const [isLoading, setLoading] = useState(true)
 
   const Items  = [
     {
@@ -32,15 +37,27 @@ const Home: NextPage = () => {
   const router = useRouter()
   const handleClick = (path: string) => (router.push(path))
 
+  const loading = async () => {
+    await sleep(500)
+    setLoading(false)
+  }
+
+  loading()
+
+  useEffect(() => {},[isLoading])
+
   return (
-     <ContainerStyled>
-     {Items.map(({title, bg, path}, idx) => (
-       <ItemStyled key={idx} bg={bg} position={idx+1}>
-         <CardMenu onClick={() => handleClick(path)} name={title}/>
-       </ItemStyled>
-     ))}
-       <BackGroundStyled/>
-     </ContainerStyled>
+    <>
+      <Loading style={{display: isLoading ? 'unset' : 'none'}}/>
+      <ContainerStyled style={{opacity: isLoading ? '0' : '1'}}>
+      {Items.map(({title, bg, path}, idx) => (
+        <ItemStyled key={idx} bg={bg} position={idx+1}>
+          <CardMenu onClick={() => handleClick(path)} name={title}/>
+        </ItemStyled>
+      ))}
+        <BackGroundStyled/>
+      </ContainerStyled>
+    </>
   )
 }
 
@@ -52,6 +69,7 @@ const ContainerStyled = styled.ul`
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  transition: opacity 500ms ease-in;
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 1rem;

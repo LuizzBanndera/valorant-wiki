@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import CardWeapons from '@db/lib/components/cardWeapon';
 import { TWeapons } from '../../../lib/shared/types/types.weapons';
 
-
 export default function Weapons({data}: TWeapons) {
 
   return (

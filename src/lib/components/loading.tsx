@@ -27,7 +27,7 @@ const Animation = styled.div`
   position: absolute;
   left: 5px;
   width: 13px;
-  background: var(--g-white);
+  background: var(--g-gray);
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {

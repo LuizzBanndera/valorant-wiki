@@ -40,8 +40,8 @@ export default function Agent(agent: TAgentData) {
 
   return (  
  <>
-  <Loading style={{visibility: imageLoaded ? 'hidden' : 'unset'}}/>  
-  <Container style={{visibility: imageLoaded ? 'unset' : 'hidden'}}>
+  <Loading style={{display: imageLoaded ? 'none' : 'unset'}}/>  
+  <Container style={{opacity: imageLoaded ? '1' : '0'}}>
       <AgentBio>
         <p className='label'>{data.displayName}.</p>
         <p className='g-label'>{data.description}</p>
@@ -116,6 +116,7 @@ const Container = styled.div`
   padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
+  transition: opacity 500ms ease-in;
   
   @media (min-width: 600px) {  
     flex-direction: row;    
