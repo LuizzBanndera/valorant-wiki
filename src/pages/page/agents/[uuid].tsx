@@ -108,8 +108,7 @@ export default function Agent(agent: TAgentData) {
 //styled-components
 const Container = styled.div`
   *-webkit-scrollbar {
-    display: none !important;
-    width: none !important;
+    display: none !important;    
   } 
   display: flex;
   height: calc(100vh - 56px);
@@ -154,6 +153,9 @@ const AgentImage = styled.div`
 
 const AgentDetails = styled.div`
   overflow: scroll;
+  *-webkit-scrollbar {
+    display: none !important;    
+  }   
   scroll-snap-align: start;
   border-bottom-style: groove;
   border-width: 1px;
