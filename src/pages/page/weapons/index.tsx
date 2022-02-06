@@ -22,7 +22,7 @@ export default function Weapons({data}: TWeapons) {
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 2rem 0 60px;
   gap: 2rem;
 `
