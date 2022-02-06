@@ -8,6 +8,7 @@ import {useEffect, useState } from "react"
 import { sleep } from "@db/lib/shared/utils"
 import {TWeapon, TWeaponData, TWeapons} from '@db/lib/shared/types/types.weapons'
 import { useTranslations } from "next-intl"
+import Loading from "@components/loading"
 
 export default function Weapon({data}: TWeaponData) {
 
@@ -17,6 +18,7 @@ export default function Weapon({data}: TWeaponData) {
 
   const [stats, setStats] = useState({fireRate : 0, magSize : 0, wallPen : 0, reloadTime : 0, catName: '*****', cost: 0})
 
+  const [isLoading, setIsLoading] = useState(true)
   const [loaded, setLoaded] = useState(false)
   
   const handleStats = async () => {
@@ -69,20 +71,29 @@ export default function Weapon({data}: TWeaponData) {
 
     }    
   }  
+
+  const handleLoadImage = (e: any) => {
+    const target = e.target
+    if (target.src.indexOf('data:image/gif;base64') < 0) {
+      setIsLoading(false)
+    }
+  }
   
   handleStats()
 
-  useEffect(() => {}, [stats])
+  useEffect(() => {}, [stats, isLoading])
 
 return (
-
-  <Container>
+<>
+  <Loading style={{display: isLoading ? 'unset' : 'none'}}/>
+  <Container style={{opacity: isLoading ? '0' : '1'}}>
     <WeaponContainer>
       <div className="weapon-image">
         <Image 
           quality={100} 
           className="image" 
           src={data.displayIcon} 
+          onLoad={(e) => handleLoadImage(e)}
           alt="weapon" 
           layout="fill" 
           objectFit="contain"
@@ -141,10 +152,13 @@ return (
         }
       </div>
     </SkinsContainer>
-  </Container>)
+  </Container>
+  </>
+  )
 }
 
 const Container = styled.div`
+  transition: opacity 500ms ease-in;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -152,6 +166,7 @@ const Container = styled.div`
   gap: 5rem;
   justify-content: center;
   scroll-snap-type: y mandatory;  
+  transition: opacity 500ms ease-in;
 `
 const WeaponContainer = styled.div`
   display: flex;
