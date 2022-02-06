@@ -8,7 +8,7 @@ html,body {
   -webkit-tap-highlight-color: transparent;
 }
 *::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }  
 
 a {
