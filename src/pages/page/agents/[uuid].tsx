@@ -108,38 +108,54 @@ export default function Agent(agent: TAgentData) {
 //styled-components
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  height: calc(100vh - 56px);
   justify-content: space-evenly;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
+  
   @media (min-width: 600px) {  
     flex-direction: row;    
     align-items: center;
   }
+  scroll-snap-type: y mandatory;
   `
 const AgentImage = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+  position: relative;
   .header-content {
     display: flex;
-    align-items: center;
+    align-items: center;    
+    z-index: 0;
   }
   .image-container {
     position: absolute;
     z-index: 1;
+    width: 180%;    
+    left: -65px;
+  }
+  @media(min-width: 600px) {
+    .image-container {    
+      width: 250%;
+      left: -100px;
+  } 
   }
 `
 const AgentDetails = styled.div`
+  overflow: scroll;
+  scroll-snap-align: start;
+  border-bottom-style: groove;
+  border-width: 1px;
   transition: all 500ms;
-  height: 80vh;
-  overflow: auto;
+  max-height: 80vh;
   z-index: 2;
   background-color: #0f19238f;
 
-  scrollbar-color: red;
   @media (min-width: 600px ) {
     max-width: min-content;  
     min-width: 400px;
@@ -147,7 +163,6 @@ const AgentDetails = styled.div`
   `
 const AgentSkills = styled.div`
   z-index: 2;
-  padding: 0 1rem 0 0;
   .image-container {
     img {
       width: 30px !important;
@@ -170,6 +185,7 @@ const AgentName = styled.div`
   z-index: 1;
   font-size: 5rem;
   margin-left: 15px;
+  position: absolute;
   
   @media (min-width: 600px) {
     position: absolute;    
@@ -185,8 +201,7 @@ const SquareBackGround = styled.div`
   height: 32rem;
   width: 20rem;
   @media (max-width: 600px) {
-    left: 25px;
-    position: absolute;
+    position: relative;
     width: 15rem;
     height: 20rem;
   }
@@ -194,7 +209,7 @@ const SquareBackGround = styled.div`
 const AgentBio = styled.div`
   display: flex;
   flex-direction: column;  
-  
+  scroll-snap-align: start;  
   .label {    
     font-size: 48px;
     color: var(--g-red);

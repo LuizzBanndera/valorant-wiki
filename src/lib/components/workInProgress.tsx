@@ -6,14 +6,12 @@ export default function WorkInProgress() {
 
   return(
     <Container>
-      <Image src={WorkInPrgsSVG} layout='fixed' alt="work in progress"/>
+      <Image src={WorkInPrgsSVG} layout='fixed' objectFit='cover' alt="work in progress"/>
     </Container>
   )
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
   >div {
     max-width: 300px;
   }

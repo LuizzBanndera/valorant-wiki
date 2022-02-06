@@ -4,6 +4,7 @@ import {NextIntlProvider} from 'next-intl'
 import Header from '../lib/components/header'
 import 'rsuite/styles/index.less'
 import '../styles/global.css'
+import Footer from '@components/footer'
 
 function MyApp({ Component, pageProps }: AppProps) {  
   return (
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="content">
         <Component {...pageProps} />
       </div>
+      <Footer/>
     </NextIntlProvider>
   )
 }

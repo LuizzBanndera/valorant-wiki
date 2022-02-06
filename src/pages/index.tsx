@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import CardMenu from '@db/lib/components/cardMenu'
 import type { NextPage, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'

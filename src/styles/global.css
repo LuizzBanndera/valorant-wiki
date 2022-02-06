@@ -7,6 +7,9 @@ html,body {
   -webkit-font-smoothing: antialiased;  
   -webkit-tap-highlight-color: transparent;
 }
+*::-webkit-scrollbar {
+  display: none;
+}  
 
 a {
   color: inherit;
@@ -51,7 +54,7 @@ a {
 }
 
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   background: #66666683;
   width: 3px;
 }
@@ -60,10 +63,10 @@ a {
 }
 *::-webkit-scrollbar-thumb {
   background: rgba(250, 235, 215, 0.555);
-}
+} */
 
 .content {
-  height: calc(100vh - 57px);
+  height: calc(100vh - 97px);
 }
 
 .header {
@@ -75,6 +78,7 @@ a {
 }
 
 .footer {
+  z-index: 5;
   display: flex;
   position: fixed;  
   bottom: 0;

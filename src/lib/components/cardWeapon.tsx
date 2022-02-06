@@ -54,7 +54,7 @@ const Container = styled.div`
   }
   
   .image-container {
-    width: 312px;    
+    width: 330px;    
     position: relative;
     z-index: 0;
     @media (min-width: 880px) { 
