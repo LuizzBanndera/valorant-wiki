@@ -66,9 +66,9 @@ const Container = styled.div<{image: string}>`
   display: flex;
   padding: 1rem;
   .wip {
-    position: absolute;
+    position: relative;
     text-align: center;
-    width: 100vw;
+    width: -webkit-fill-available;
     top: calc(50% - 56px);
     color: var(--g-gray);
   }

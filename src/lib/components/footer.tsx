@@ -11,5 +11,6 @@ export default function FooterFC () {
 
 const FooterStyled = styled.div`  
   background-color: var(--g-darkblue);
+  color: var(--g-gray);
   text-align: center;
 `
