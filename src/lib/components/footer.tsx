@@ -13,4 +13,5 @@ const FooterStyled = styled.div`
   background-color: var(--g-darkblue);
   color: var(--g-gray);
   text-align: center;
+  font-size: 12px;
 `
