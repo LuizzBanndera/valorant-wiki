@@ -20,7 +20,7 @@ export default function CardWeapons(data: TWeapon) {
   const Router = useRouter()
 
   const handleClick = (uuid: string, name: string) => {
-    Router.push({pathname:`/page/weapons/[uuid]`, query: {uuid}}, `/weapons/${name}`)
+    Router.push({pathname:`/page/weapons/[uuid]`, query: {uuid}})
   }
   
   return(

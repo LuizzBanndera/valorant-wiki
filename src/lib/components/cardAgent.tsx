@@ -11,7 +11,7 @@ export default function CardAgent (data: TAgent) {
   const handleClick = (uuid: string, name: string) => {
     const newName =  name.replace('/','');
 
-    Router.push({pathname:'/page/agents/[uuid]', query: {uuid}}, `/agents/${newName}`) 
+    Router.push({pathname:'/page/agents/[uuid]', query: {uuid}}) 
   }
 
   return (
