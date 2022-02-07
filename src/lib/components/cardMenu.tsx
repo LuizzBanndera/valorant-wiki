@@ -20,12 +20,13 @@ const Label = styled.p`
   }
 `
 
-const CardStyled = styled.button`
+const CardStyled = styled.button<{background : string}>`
   all: unset;
   display: flex;
   align-items: center;
   justify-content: center;  
   flex-direction: column;
+  background-position: top;
   width: 250px;
   color: var(--g-white);
   font-size: 52px;
@@ -35,6 +36,7 @@ const CardStyled = styled.button`
   box-shadow: 0px 12px 16px -6px rgba(0,0,0,0.55);
   transition: all 500ms;
   border-radius: 2px;
+  background-image: url(${props => props.background ? props.background : ''});    
   cursor: pointer;
   .sec {
     color: #d3c7b882;    
@@ -48,7 +50,10 @@ const CardStyled = styled.button`
   }
   :hover {    
     background-color: #666666;
+    background-color: var(--g-red);
     z-index: 1;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(255,70,84,0.81); 
+    box-shadow: 0px 0px 20px 1px rgba(255,70,84,0.81);
   }
 
   @media (max-width: 576px) {

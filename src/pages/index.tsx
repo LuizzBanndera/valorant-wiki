@@ -52,7 +52,7 @@ const Home: NextPage = () => {
       <ContainerStyled style={{opacity: isLoading ? '0' : '1'}}>
       {Items.map(({title, bg, path}, idx) => (
         <ItemStyled key={idx} bg={bg} position={idx+1}>
-          <CardMenu onClick={() => handleClick(path)} name={title}/>
+          <CardMenu background={bg} onClick={() => handleClick(path)} name={title}/>
         </ItemStyled>
       ))}
         <BackGroundStyled/>
