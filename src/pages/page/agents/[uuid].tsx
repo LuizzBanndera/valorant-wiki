@@ -56,6 +56,7 @@ export default function Agent(agent: TAgentData) {
             {Array.from({length: 5}, (_, idx) => (<p key={idx} className='label'>{data.displayName}</p>))}
           </AgentName>
           <SquareBackGround/>    
+          <div className='ground'></div>
         </div>
         <div className='image-container'>
           <Image 

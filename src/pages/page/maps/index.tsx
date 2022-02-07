@@ -6,7 +6,6 @@ import db from '@services/api'
 import { TMap, TMaps } from "@shared/types/types.maps"
 import React, { useState } from "react"
 import {handleLoadImage} from '@shared/utils'
-import WorkInProgress from "@components/workInProgress"
 export default function Maps({data}: TMaps) {
 
   const [modal, setModal] = useState(false)
