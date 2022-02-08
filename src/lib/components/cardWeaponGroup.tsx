@@ -3,14 +3,15 @@ import styled from 'styled-components'
 const CardWeaponGroup = (props: any) => {
   const {description, image} = props
 
-  return (    
-    <Container>
+  return (
+    <Container {...props}>
       <p className='g-title'>{description}</p>
-    </Container>    
+    </Container>
   )
 }
 
-const Container = styled.div`
+const Container = styled.button`
+  all: unset;
   display: flex;
   cursor: pointer;
   transition: all 0.3s ease-in-out;  
@@ -32,7 +33,7 @@ const Container = styled.div`
     margin: 0;    
   }
   :hover p{
-    transform: translate(-0.6rem, -1.5rem) !important;
+    /* transform: translate(-0.6rem, -1.5rem) !important; */
   }
 `
 

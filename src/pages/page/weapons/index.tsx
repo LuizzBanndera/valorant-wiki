@@ -3,44 +3,50 @@ import db from '@services/api'
 import { AxiosResponse } from 'axios'
 import styled from 'styled-components'
 import CardWeapons from '@db/lib/components/cardWeapon'
-import { TWeapons } from '../../../lib/shared/types/types.weapons'
+import { TWeapon, TWeapons } from '../../../lib/shared/types/types.weapons'
 import CardWeaponGroup from '@components/cardWeaponGroup'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Weapons({data}: TWeapons) {
-  let uniqueCat = new Set()
 
-  let category : [{description: string, image: string}] = [{description: '', image: ''}]
+  let uniqueCat = new Set()  
 
-  const categoryData = data.map((weapon, idx) => {
+  const [weapons, setWeapons] = useState<TWeapon[]>(data)
+
+  const categoryData = data.map((weapon) => {
     return {
       description: weapon.shopData?.categoryText || 'Combat',
       image: weapon.displayIcon
     }
   })
 
-  category = categoryData.filter((value) => {
+  const category = categoryData.filter((value) => {
     const isPresentInSet = uniqueCat.has(value.description)
 
     uniqueCat.add(value.description)
 
     return !isPresentInSet
   })
+  const handleCategory = (category: string) => {
+    setWeapons(data.filter((value) => value.shopData?.categoryText === category))
+    
+  }  
 
-  console.log(category)
-  
-  
+  useEffect(() => {}, [weapons])
+
   return (
   <Container>
     <div className="categories">
     {      
       category.map((cat, idx) => (        
-        <CardWeaponGroup key={idx} description={cat.description}/>
-        ))
-      }
+        <CardWeaponGroup onClick={() => handleCategory(cat.description)} key={idx} description={cat.description}/>
+      ))
+    }
     </div>
     <div className='items'>
     {
-      data.map((weapon, idx) => (
+      weapons.map((weapon, idx) => (
         <div key={idx}>
           <CardWeapons {...weapon}/>
         </div>
@@ -54,13 +60,17 @@ const Container = styled.div`
   .categories {  
     display: flex;
     position: sticky;
-    z-index: 5;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+    z-index: 4;
     width: -webkit-fill-available;
     justify-content: space-evenly;
     border-bottom-style: groove;
     background-color: var(--g-darkblue);
     padding-bottom: 2rem;
-    border-width: 1px;   
+    border-width: 1px;
+    margin-top: 20px;
   }
   .items {
   display: flex;
