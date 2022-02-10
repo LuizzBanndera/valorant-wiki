@@ -10,7 +10,7 @@ export default function FooterFC () {
 }
 
 const FooterStyled = styled.div`  
-  background-color: var(--g-darkblue);
+  background-color: #0f1923a6;
   color: var(--g-gray);
   text-align: center;
   font-size: 12px;

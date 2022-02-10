@@ -65,7 +65,7 @@ const Container = styled.div`
     padding: 1rem;
     z-index: 4;
     width: -webkit-fill-available;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     border-bottom-style: groove;
     background-color: var(--g-darkblue);
     padding-bottom: 2rem;

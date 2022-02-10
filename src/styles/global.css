@@ -54,15 +54,15 @@ a {
 }
 
 .content {
-  height: calc(100vh - 97px);
+  height: calc(100vh - 56px);
 }
 
 .header {
   display: flex;
   position: sticky;
   top: 0;
-  z-index: 5;  
-  background-color: #0f1922;
+  z-index: 5;
+  background-color: #0f1923a6;
 }
 
 .footer {
