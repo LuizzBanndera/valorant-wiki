@@ -204,6 +204,7 @@ const WeaponContainer = styled.div`
     }
     .g-red-title {
       margin-top: 0;
+      margin-bottom: 0;
     }
     .info-item {
       display: flex;
