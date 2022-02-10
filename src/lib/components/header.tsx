@@ -68,6 +68,8 @@ const ItemStyled = styled.li`
   :hover {
     background-color: #FF4654 !important;    
     color: whitesmoke;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(255,70,84,0.81); 
+    box-shadow: 0px 0px 20px 1px rgba(255,70,84,0.81);     
   }
 `
 export default Header

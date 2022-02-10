@@ -6,7 +6,7 @@ import Image from 'next/image'
 import {Line} from 'rc-progress'
 import {useEffect, useState } from "react"
 import { sleep } from "@db/lib/shared/utils"
-import {TWeapon, TWeaponData, TWeapons} from '@db/lib/shared/types/types.weapons'
+import {TWeaponData, TWeapons} from '@db/lib/shared/types/types.weapons'
 import { useTranslations } from "next-intl"
 import Loading from "@components/loading"
 

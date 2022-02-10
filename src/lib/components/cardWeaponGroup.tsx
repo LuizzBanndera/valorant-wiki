@@ -1,28 +1,24 @@
-import {NextComponentType} from 'next/types'
 import styled from 'styled-components'
-import Img from '@public/images/v_weapons_bg.svg'
 
-const CardWeaponGroup: NextComponentType = () => {
+const CardWeaponGroup = (props: any) => {
+  const {description, image} = props
 
   return (
-    
-      <Container background={Img}>
-        <p className='g-title'>ARMAS PESADAS</p>
-      </Container>
-    
+    <Container {...props}>
+      <p className='g-label'>{description}</p>
+    </Container>
   )
-
 }
 
-const Container = styled.div<{background: string}>`
+const Container = styled.button`
+  all: unset;
   display: flex;
   cursor: pointer;
   transition: all 0.3s ease-in-out;  
-  position: absolute;
-  height: 7rem;
-  width: 15rem;
-  background-color: var(--g-gray);
-  /* background-image: url(props => props.background); */
+  height: 3rem;
+  width: 10rem;
+  background-color: #66666612;
+  align-items: center;
   :hover {
     background-color: var(--g-red);
     -webkit-box-shadow: 0px 0px 20px 1px rgba(255,70,84,0.81); 
@@ -32,12 +28,10 @@ const Container = styled.div<{background: string}>`
   p {
     transition: all 0.3s ease-in-out;
     width: 100%;    
-    font-size: 30px;
+    font-size: 14px;
     text-align: center;
     margin: 0;    
-  }
-  :hover p{
-    transform: translate(-0.6rem, -1.5rem) !important;
+    text-transform: uppercase;
   }
 `
 
