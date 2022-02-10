@@ -29,7 +29,7 @@ export default function Weapons({data}: TWeapons) {
     return !isPresentInSet
   })
   const handleCategory = (category: string) => {
-    setWeapons(data.filter((value) => value.shopData?.categoryText === category))
+    setWeapons(data.filter((value) => value.shopData ? value.shopData?.categoryText === category : 'Combat' === category))
     
   }  
 
