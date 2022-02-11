@@ -5,7 +5,7 @@ const CardWeaponGroup = (props: any) => {
 
   return (
     <Container {...props}>
-      <p className='g-title'>{description}</p>
+      <p className='g-label'>{description}</p>
     </Container>
   )
 }
@@ -31,9 +31,7 @@ const Container = styled.button`
     font-size: 14px;
     text-align: center;
     margin: 0;    
-  }
-  :hover p{
-    /* transform: translate(-0.6rem, -1.5rem) !important; */
+    text-transform: uppercase;
   }
 `
 
