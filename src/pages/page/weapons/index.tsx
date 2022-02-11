@@ -27,10 +27,10 @@ export default function Weapons({data}: TWeapons) {
     uniqueCat.add(value.description)
 
     return !isPresentInSet
-  })
+  })  
+
   const handleCategory = (category: string) => {
-    setWeapons(data.filter((value) => value.shopData?.categoryText === category))
-    
+    setWeapons(data.filter((value) => value.shopData ? value.shopData?.categoryText === category : value.category === 'EEquippableCategory::Melee'))    
   }  
 
   useEffect(() => {}, [weapons])
@@ -76,7 +76,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 0 60px;
+  padding: 5rem 0 60px;
   gap: 2rem;  
   }
 `
