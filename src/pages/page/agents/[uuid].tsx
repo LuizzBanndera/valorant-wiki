@@ -62,7 +62,7 @@ export default function Agent(agent: TAgentData) {
           <Image 
             onLoad={e => handleLoadImage(e)}             
             className='image' 
-            src={data.fullPortrait} 
+            src={data.fullPortraitV2} 
             quality={100}            
             alt='agent'
             objectFit="contain"

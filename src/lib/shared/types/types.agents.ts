@@ -18,7 +18,8 @@ export type TAgentData = {
     displayName : string
     description : string
     displayIcon : string
-    fullPortrait : string
+    fullPortrait: string
+    fullPortraitV2: string
     role : TRole
     abilities : TAbilitie[] 
   }
@@ -29,7 +30,8 @@ export type TAgent = {
   displayName : string
   description : string
   displayIcon : string
-  fullPortrait : string    
+  fullPortrait: string    
+  fullPortraitV2: string  
   role : TRole
   abilities : TAbilitie[] 
     
